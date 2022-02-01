@@ -75,7 +75,7 @@
             android:maxLines="1"
             android:lines="1"
             />
-        <EditText
+        <com.hbb20.CountryCodePicker
             android:id="@+id/etCountry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
