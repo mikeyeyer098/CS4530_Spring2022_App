@@ -3,9 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/CS4530/CS4530_Spring2022_App/app/src/main/res/layout/activity_main.xml" value="0.192481884057971" />
-        <entry key="..\:/CS4530/CS4530_Spring2022_App/app/src/main/res/layout/load_page.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/load_page.xml" value="0.335" />
+        <entry key="app/src/main/res/drawable/button.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/drawable/button_disabled.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/drawable/button_pressed.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/drawable/edit_text.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/drawable/profile_pic_button.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/drawable/styles.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/drawable/themes.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/font/comfortaa.xml" value="0.3723958333333333" />
+        <entry key="app/src/main/res/font/font.xml" value="0.3723958333333333" />
+        <entry key="app/src/main/res/layout-v26/load_page.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/load_page.xml" value="0.22959183673469388" />
         <entry key="app/src/main/res/layout/main_window.xml" value="0.1503623188405797" />
       </map>
     </option>
