@@ -5,6 +5,8 @@
       <map>
         <entry key="app/src/main/res/layout-v26/load_page.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13994565217391305" />
+        <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.184375" />
+        <entry key="app/src/main/res/layout/fragment_load_page.xml" value="0.184375" />
         <entry key="app/src/main/res/layout/load_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/main_window.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.228125" />
