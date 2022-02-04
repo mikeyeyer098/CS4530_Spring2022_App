@@ -3,19 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/button.xml" value="0.21458333333333332" />
-        <entry key="app/src/main/res/drawable/button_disabled.xml" value="0.21458333333333332" />
-        <entry key="app/src/main/res/drawable/button_pressed.xml" value="0.21458333333333332" />
-        <entry key="app/src/main/res/drawable/edit_text.xml" value="0.21458333333333332" />
-        <entry key="app/src/main/res/drawable/profile_pic_button.xml" value="0.21458333333333332" />
-        <entry key="app/src/main/res/drawable/styles.xml" value="0.21458333333333332" />
-        <entry key="app/src/main/res/drawable/themes.xml" value="0.21458333333333332" />
-        <entry key="app/src/main/res/font/comfortaa.xml" value="0.3723958333333333" />
-        <entry key="app/src/main/res/font/font.xml" value="0.3723958333333333" />
-        <entry key="app/src/main/res/layout-v26/load_page.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17325227963525835" />
-        <entry key="app/src/main/res/layout/load_page.xml" value="0.22959183673469388" />
+        <entry key="app/src/main/res/layout-v26/load_page.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13994565217391305" />
+        <entry key="app/src/main/res/layout/load_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/main_window.xml" value="0.1503623188405797" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.228125" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2520833333333333" />
       </map>
     </option>
   </component>
@@ -24,5 +17,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1503623188405797" />
+      </ProjectState>
+    </option>
   </component>
 </project>
