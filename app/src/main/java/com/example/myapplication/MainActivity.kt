@@ -11,7 +11,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.load_page)
 
         val createProfileButton = findViewById<ImageButton>(R.id.createProfile)
-        val nameText = findViewById<
         createProfileButton.setOnClickListener {
             Log.d("test", "create profile button pressed")
         }
