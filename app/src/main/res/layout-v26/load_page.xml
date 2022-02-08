@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -49,6 +50,7 @@
                 android:textAlignment="center"
                 />
             <EditText
+                android:id="@+id/nameTextField"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/edit_text"
@@ -76,7 +78,7 @@
             >
 
             <EditText
-                android:id="@+id/etHeight"
+                android:id="@+id/heightTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="40dp"
@@ -97,7 +99,7 @@
                 android:textColorHint="@color/white" />
 
             <EditText
-                android:id="@+id/etWeight"
+                android:id="@+id/weightTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="40dp"
@@ -140,7 +142,7 @@
             >
 
             <EditText
-                android:id="@+id/etAge"
+                android:id="@+id/ageTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="40dp"
@@ -163,7 +165,7 @@
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/etGender"
+                android:id="@+id/genderTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".6"
                 android:layout_height="40dp"
@@ -193,7 +195,7 @@
 
 
             <EditText
-                android:id="@+id/etCity"
+                android:id="@+id/cityTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="40dp"
@@ -236,14 +238,12 @@
                 android:textSize="20sp"
                 android:textAlignment="center"
                 />
-            <ImageButton
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:src="@drawable/profile_pic_button"
-                />
+
+            <ImageView
+                android:id="@+id/ProfilePicImageView"
+                android:layout_width="136dp"
+                android:layout_height="135dp"
+                app:srcCompat="@drawable/profile_pic_button" />
         </LinearLayout>
 
         <LinearLayout
@@ -255,12 +255,22 @@
             >
 
             <ImageButton
-                android:id="@+id/createProfile"
+                android:id="@+id/createProfileButton"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:fontFamily="@font/comfortaa_bold"
                 android:text="Create Profile"
                 android:background="@drawable/button"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <ImageButton
+                android:id="@+id/TakePictureButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/button"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="Take Picture"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
         </LinearLayout>
