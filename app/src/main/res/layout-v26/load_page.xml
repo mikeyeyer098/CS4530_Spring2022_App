@@ -50,6 +50,7 @@
                 android:textAlignment="center"
                 />
             <EditText
+                android:id="@+id/nameTextField"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/edit_text"
@@ -77,7 +78,7 @@
             >
 
             <EditText
-                android:id="@+id/etHeight"
+                android:id="@+id/heightTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="40dp"
@@ -98,7 +99,7 @@
                 android:textColorHint="@color/white" />
 
             <EditText
-                android:id="@+id/etWeight"
+                android:id="@+id/weightTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="40dp"
@@ -141,7 +142,7 @@
             >
 
             <EditText
-                android:id="@+id/etAge"
+                android:id="@+id/ageTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="40dp"
@@ -164,7 +165,7 @@
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/etGender"
+                android:id="@+id/genderTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".6"
                 android:layout_height="40dp"
@@ -194,7 +195,7 @@
 
 
             <EditText
-                android:id="@+id/etCity"
+                android:id="@+id/cityTextField"
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="40dp"
@@ -254,7 +255,7 @@
             >
 
             <ImageButton
-                android:id="@+id/createProfile"
+                android:id="@+id/createProfileButton"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:fontFamily="@font/comfortaa_bold"
