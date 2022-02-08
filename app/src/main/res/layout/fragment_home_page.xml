@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0C343D"
     tools:context=".home_page">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
+
+        <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:padding="0dp"
+                android:src="@drawable/menu_button"
+                />
 
     <TextView
         android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:paddingHorizontal="10dp"
@@ -17,8 +38,116 @@
         android:fontFamily="@font/comfortaa_bold"
         android:text="Healthy Health"
         android:textColor="@color/white"
+        android:textAlignment="center"
         android:textSize="20sp"
         tools:ignore="TextContrastCheck" />
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:src="@drawable/profile_pic"
+            />
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="5dp"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#666666"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingHorizontal="10dp"
+                    android:background="transparent"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="Find hikes near me:"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    tools:ignore="TextContrastCheck" />
+                <ImageButton
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="#666666"
+                    android:src="@drawable/maps"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#666666"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingHorizontal="10dp"
+                    android:background="transparent"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="Today's Weather"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    tools:ignore="TextContrastCheck" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#6fa8dc"
+                    android:layout_gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:src="@drawable/sun"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="55*"
+                        android:fontFamily="@font/comfortaa_bold"
+                        android:textSize="25dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="35*"
+                        android:fontFamily="@font/comfortaa_bold"
+                        android:textSize="25dp"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+</LinearLayout>
+</FrameLayout>
