@@ -52,6 +52,19 @@ class load_page : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         nav = parentFragmentManager
 
+        val takePictureButton: Button = view.findViewById(R.id.TakePictureButton)
+
+        val photoPath: String = ""
+
+        takePictureButton.setOnClickListener{
+            if (ContextCompat.checkSelfPermission(requireActivity().applicationContext, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(intent, CAMERACODE)
+            } else {
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.CAMERA), PERMISSIONCODE)
+            }
+        }
+
         val createProfileButton: Button = view.findViewById(R.id.createProfileButton)
 
         createProfileButton.setOnClickListener {
@@ -63,7 +76,7 @@ class load_page : Fragment() {
             val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
 
             val profile = Profile(nameText, heightText, weightText, ageText, genderText,
-                cityText, "", false, "", "")
+                cityText, photoPath, false, "", "")
             Log.i ("test", profile.printForStoring())
             Log.i("test", requireActivity().application.cacheDir.absolutePath)
             File.createTempFile("filename", profile.printForStoring(), requireActivity().application.cacheDir)
@@ -73,16 +86,6 @@ class load_page : Fragment() {
             fragmentTransaction?.commit()
         }
 
-        val takePictureButton: Button = view.findViewById(R.id.TakePictureButton)
-
-        takePictureButton.setOnClickListener{
-            if (ContextCompat.checkSelfPermission(requireActivity().applicationContext, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                startActivityForResult(intent, CAMERACODE)
-            } else {
-                ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.CAMERA), PERMISSIONCODE)
-            }
-        }
         super.onViewCreated(view, savedInstanceState)
     }
 
