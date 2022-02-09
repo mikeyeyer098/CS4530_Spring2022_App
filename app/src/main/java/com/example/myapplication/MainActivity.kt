@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         replaceFragment(load_page())
-
-
     }
 
     private fun replaceFragment(fragment : Fragment) {
@@ -37,7 +35,4 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }
-
-
-
 }

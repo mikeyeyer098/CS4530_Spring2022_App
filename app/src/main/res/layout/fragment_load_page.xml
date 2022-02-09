@@ -118,21 +118,6 @@
                 android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
-            <!--        <com.hbb20.CountryCodePicker-->
-            <!--            android:id="@+id/etCountry"-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginBottom="8dp"-->
-            <!--            android:layout_marginEnd="8dp"-->
-            <!--            android:layout_marginLeft="8dp"-->
-            <!--            android:layout_marginRight="8dp"-->
-            <!--            android:layout_marginStart="8dp"-->
-            <!--            android:layout_marginTop="8dp"-->
-            <!--            android:hint="Country:"-->
-            <!--            android:fontFamily="sans-serif-light"-->
-            <!--            android:maxLines="1"-->
-            <!--            android:lines="1"-->
-            <!--            />-->
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -192,8 +177,6 @@
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             >
-
-
             <EditText
                 android:id="@+id/cityTextField"
                 android:layout_width="0dp"
@@ -213,6 +196,22 @@
                 android:maxLines="1"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="0dp"
+                android:layout_weight=".4"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                app:ccp_showFullName="true"
+                app:ccp_showPhoneCode="false"
+                app:ccp_showNameCode="false"
+                app:ccp_contentColor="@color/white"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
