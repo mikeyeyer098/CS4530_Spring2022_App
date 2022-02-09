@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -31,6 +32,8 @@ private val CAMERACODE = 200
 class load_page : Fragment() {
     // TODO: Rename and change types of parameters
     var nav: FragmentManager ?= null
+    private val PERMISSIONCODE = 100
+    private val CAMERACODE = 200
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +52,7 @@ class load_page : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         nav = parentFragmentManager
 
-        val createProfileButton: ImageButton = view.findViewById(R.id.createProfileButton)
+        val createProfileButton: Button = view.findViewById(R.id.createProfileButton)
 
         createProfileButton.setOnClickListener {
             val nameText: String = view.findViewById<EditText>(R.id.nameTextField).text.toString()
@@ -70,19 +73,16 @@ class load_page : Fragment() {
             fragmentTransaction?.commit()
         }
 
+        val takePictureButton: Button = view.findViewById(R.id.TakePictureButton)
 
-
-//        val takePictureButton: ImageButton = view.findViewById(R.id.takePictureButton)
-//
-//        takePictureButton.setOnClickListener{
-//            if (ContextCompat.checkSelfPermission(requireActivity().applicationContext, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-//                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//                startActivityForResult(intent, CAMERACODE)
-//            } else {
-//                ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.CAMERA), PERMISSIONCODE)
-//            }
-//        }
-
+        takePictureButton.setOnClickListener{
+            if (ContextCompat.checkSelfPermission(requireActivity().applicationContext, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(intent, CAMERACODE)
+            } else {
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.CAMERA), PERMISSIONCODE)
+            }
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -103,11 +103,13 @@ class load_page : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        //val profilePicImageView = findViewById(R.id.ProfilePicImageView)
+        val profilePicImageView = view?.findViewById<ImageView>(R.id.ProfilePicImageView)
+        //val profilePicHomePage = view?.findViewById<ImageButton>(R.id.ProfilePicThumbnail)
 
         if (resultCode == Activity.RESULT_OK && requestCode == CAMERACODE) {
             val picDisplay: Bitmap = data!!.extras!!.get("data") as Bitmap
-            //profilePicImageView.setImageBitmap(picDisplay)
+            profilePicImageView?.setImageBitmap(picDisplay)
+            //profilePicHomePage?.setImageBitmap(picDisplay)
         }
     }
 

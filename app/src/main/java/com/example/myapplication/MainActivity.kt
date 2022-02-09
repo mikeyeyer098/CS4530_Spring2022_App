@@ -20,8 +20,6 @@ import java.io.File
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    private val PERMISSIONCODE = 100
-    private val CAMERACODE = 200
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
