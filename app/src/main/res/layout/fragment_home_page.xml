@@ -58,13 +58,18 @@
             android:paddingTop="20dp"
             android:paddingBottom="5dp"
             android:orientation="horizontal"
+            android:padding="2dp"
+            android:layout_marginTop="60dp"
             >
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:orientation="vertical"
-                android:background="#666666"
+                android:background="@drawable/widget_background"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+
                 >
                 <TextView
                     android:layout_width="wrap_content"
@@ -83,21 +88,24 @@
                     android:textSize="20sp"
                     tools:ignore="TextContrastCheck" />
                 <ImageButton
-                    android:layout_height="wrap_content"
+                    android:layout_height="110dp"
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
                     android:background="#666666"
                     android:src="@drawable/maps"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center_horizontal"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:orientation="vertical"
-                android:background="#666666"
+                android:background="@drawable/widget_background"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+
                 >
                 <TextView
                     android:layout_width="wrap_content"
@@ -117,16 +125,23 @@
                     tools:ignore="TextContrastCheck" />
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:orientation="horizontal"
-                    android:background="#6fa8dc"
-                    android:layout_gravity="center_horizontal">
+                    android:background="@drawable/weather_background"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="10dp">
                     <ImageView
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:src="@drawable/sun"
-                        android:scaleType="centerInside"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
                         />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -141,10 +156,159 @@
                         android:fontFamily="@font/comfortaa_bold"
                         android:textSize="25dp"
                         />
-
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/widget_background"
+            android:layout_marginTop="40dp"
+            android:padding="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comfortaa_bold"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginBottom="7dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:text="My Fitness Regimen"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:layout_gravity="center_horizontal"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="Current Goal"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                   />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="Daily Calories"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="Weight Loss"
+                    android:textColor="#666666"
+                    android:background="@drawable/yellow_background"
+                    android:textAlignment="center"
+                    android:textSize="23sp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="1530"
+                    android:background="@drawable/green_background"
+                    android:textColor="#666666"
+                    android:textAlignment="center"
+                    android:textSize="23sp"
+                    />
+            </LinearLayout>
+
+            <ImageButton
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/widget_button_background"
+                android:text="Change Fitness Data"
+                android:fontFamily="@font/comfortaa_bold"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:textColor="#666666"
+                android:textAlignment="center"
+                android:textSize="23sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="Weight Loss"
+                    android:textColor="#666666"
+                    android:background="@drawable/yellow_background"
+                    android:textAlignment="center"
+                    android:textSize="23sp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="1530"
+                    android:background="@drawable/green_background"
+                    android:textColor="#666666"
+                    android:textAlignment="center"
+                    android:textSize="23sp"
+                    />
+            </LinearLayout>
         </LinearLayout>
 </LinearLayout>
 </FrameLayout>
