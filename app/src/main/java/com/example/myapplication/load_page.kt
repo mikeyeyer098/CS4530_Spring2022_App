@@ -34,6 +34,7 @@ class load_page : Fragment() {
     var nav: FragmentManager ?= null
     private val PERMISSIONCODE = 100
     private val CAMERACODE = 200
+    var profilePic: Bitmap ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,7 +83,11 @@ class load_page : Fragment() {
             File.createTempFile("filename", profile.printForStoring(), requireActivity().application.cacheDir)
 
             val fragmentTransaction = fragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.fragmentContainer, home_page())
+            profilePic?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
+                fragmentTransaction?.replace(R.id.fragmentContainer,
+                    it2
+                )
+            }
             fragmentTransaction?.commit()
         }
 
@@ -112,7 +117,7 @@ class load_page : Fragment() {
         if (resultCode == Activity.RESULT_OK && requestCode == CAMERACODE) {
             val picDisplay: Bitmap = data!!.extras!!.get("data") as Bitmap
             profilePicImageView?.setImageBitmap(picDisplay)
-            //profilePicHomePage?.setImageBitmap(picDisplay)
+            profilePic = picDisplay
         }
     }
 

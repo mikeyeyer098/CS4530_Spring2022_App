@@ -5,18 +5,18 @@
     android:layout_height="match_parent"
     android:background="#0C343D"
     tools:context=".home_page">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            >
 
-        <ImageButton
+            <ImageButton
                 android:id="@+id/menuSelector"
                 android:layout_height="wrap_content"
                 android:layout_width="40dp"
@@ -24,34 +24,34 @@
                 android:adjustViewBounds="true"
                 android:padding="0dp"
                 android:src="@drawable/menu_button"
-           />
+                />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingHorizontal="10dp"
-        android:background="#B4A7D6"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="Healthy Health"
-        android:textColor="@color/white"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        tools:ignore="TextContrastCheck" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingHorizontal="10dp"
+                android:background="#B4A7D6"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="Healthy Health"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                tools:ignore="TextContrastCheck" />
 
-        <ImageButton
-            android:id="@+id/ProfilePicThumbnail"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/profile_pic" />
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/ProfilePicThumbnail"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/profile_pic" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,22 +149,22 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="10dp">
-                    <TextView
-                        android:id="@+id/TemperatureHighText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="55*"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:textSize="25dp"
-                        />
-                    <TextView
-                        android:id="@+id/TemperatureLowText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="35*"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:textSize="25dp"
-                        />
+                        <TextView
+                            android:id="@+id/TemperatureHighText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="55*"
+                            android:fontFamily="@font/comfortaa_bold"
+                            android:textSize="25dp"
+                            />
+                        <TextView
+                            android:id="@+id/TemperatureLowText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="35*"
+                            android:fontFamily="@font/comfortaa_bold"
+                            android:textSize="25dp"
+                            />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -209,7 +209,7 @@
                     android:textColor="@color/white"
                     android:textAlignment="center"
                     android:textSize="20sp"
-                   />
+                    />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -284,109 +284,109 @@
                 android:textSize="15sp"/>
 
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/widget_background"
-        android:layout_marginTop="30dp"
-        android:padding="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/comfortaa_bold"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:text="BMI Calculator"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:layout_gravity="center_horizontal"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-        <EditText
-            android:id="@+id/heightTextField"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/widget_background"
+            android:layout_marginTop="30dp"
             android:padding="5dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:fontFamily="@font/comfortaa_bold"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:background="@drawable/edit_text"
-            android:hint="Height:"
-            android:lines="1"
-            android:maxLines="1"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"/>
-        <EditText
-            android:id="@+id/weightTextField"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:fontFamily="@font/comfortaa_bold"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:background="@drawable/edit_text"
-            android:hint="Weight:"
-            android:lines="1"
-            android:maxLines="1"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-        </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comfortaa_bold"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:text="BMI Calculator"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <EditText
+                    android:id="@+id/heightTextField"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/edit_text"
+                    android:hint="Height:"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"/>
+                <EditText
+                    android:id="@+id/weightTextField"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/edit_text"
+                    android:hint="Weight:"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
-        <TextView
-            android:id="@+id/BMIText"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginBottom="7dp"
-            android:fontFamily="@font/comfortaa_bold"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:text="23.1"
-            android:textColor="#666666"
-            android:background="@drawable/pink_background"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            />
-        <Button
-            android:id="@+id/CalculateBMIButton"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/widget_button_background"
-            android:text="Calculate BMI"
-            android:fontFamily="@font/comfortaa_bold"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:textColor="#666666"
-            android:textAlignment="center"
-            android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/BMIText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="23.1"
+                    android:textColor="#666666"
+                    android:background="@drawable/pink_background"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    />
+                <Button
+                    android:id="@+id/CalculateBMIButton"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/widget_button_background"
+                    android:text="Calculate BMI"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:textColor="#666666"
+                    android:textAlignment="center"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
 </FrameLayout>
