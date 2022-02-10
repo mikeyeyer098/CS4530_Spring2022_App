@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.media.Image
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -14,7 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -34,7 +32,8 @@ class load_page : Fragment() {
     var nav: FragmentManager ?= null
     private val PERMISSIONCODE = 100
     private val CAMERACODE = 200
-    var profilePic: Bitmap ?= null
+    var profilePic: Bitmap? = null
+    var profile: Profile ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,14 +75,14 @@ class load_page : Fragment() {
             val genderText: String = view.findViewById<EditText>(R.id.genderTextField).text.toString()
             val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
 
-            val profile = Profile(nameText, heightText, weightText, ageText, genderText,
-                cityText, photoPath, false, "", "")
-            Log.i ("test", profile.printForStoring())
+            profile = Profile(nameText, heightText, weightText, ageText, genderText,
+                cityText, photoPath, false, "", "", profilePic)
+            Log.i ("test", profile!!.printForStoring())
             Log.i("test", requireActivity().application.cacheDir.absolutePath)
-            File.createTempFile("filename", profile.printForStoring(), requireActivity().application.cacheDir)
+            File.createTempFile("filename", profile!!.printForStoring(), requireActivity().application.cacheDir)
 
             val fragmentTransaction = fragmentManager?.beginTransaction()
-            profilePic?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
+            profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
                 fragmentTransaction?.replace(R.id.fragmentContainer,
                     it2
                 )
@@ -112,7 +111,6 @@ class load_page : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         val profilePicImageView = view?.findViewById<ImageView>(R.id.ProfilePicImageView)
-        //val profilePicHomePage = view?.findViewById<ImageButton>(R.id.ProfilePicThumbnail)
 
         if (resultCode == Activity.RESULT_OK && requestCode == CAMERACODE) {
             val picDisplay: Bitmap = data!!.extras!!.get("data") as Bitmap
