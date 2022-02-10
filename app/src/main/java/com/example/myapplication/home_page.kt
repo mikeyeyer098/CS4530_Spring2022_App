@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.content.Intent
-import android.widget.Toast
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ class home_page : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var profilePic: Bitmap? = null
+    private var profile: Profile? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ class home_page : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
-        profileThumb.setImageBitmap(profilePic)
+
         val mapsButton = view.findViewById(R.id.HikesFinderButton) as ImageButton
         mapsButton.setOnClickListener {
             val gmmIntentUri = Uri.parse("geo:0,0?q=hikes")
@@ -55,6 +55,17 @@ class home_page : Fragment() {
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
         }
+        profileThumb.setImageBitmap(profile?.image)
+
+        var heightTag = requireView().findViewById<TextView>(R.id.heightTextField)
+        heightTag.hint = "Height: ${profile?.height}"
+
+        var weightTag = requireView().findViewById<TextView>(R.id.weightTextField)
+        weightTag.hint = "Weight: ${profile?.weight}"
+
+        var BMItag = requireView().findViewById<TextView>(R.id.BMIText)
+        BMItag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height.toString())
+
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -69,9 +80,9 @@ class home_page : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(profilePic: Bitmap) =
+        fun newInstance(profile: Profile) =
             home_page().apply {
-                this.profilePic = profilePic
+                this.profile = profile
                 arguments = Bundle().apply {
 
                     putString(ARG_PARAM1, param1)

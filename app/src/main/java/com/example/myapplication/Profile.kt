@@ -1,8 +1,8 @@
 package com.example.myapplication
 
-import java.io.File
+import android.graphics.Bitmap
 
-class Profile (
+class Profile(
     var name: String,
     var height: String,
     var weight: String,
@@ -13,6 +13,7 @@ class Profile (
     var active: Boolean,
     var bmr: String,
     var weightGoal: String,
+    var image: Bitmap?,
 ){
     init {
         if (this.name == "")
@@ -49,7 +50,6 @@ class Profile (
         active = false
         bmr = "NA"
         weightGoal = "NA"
-
     }
 
     fun printForStoring(): String {
