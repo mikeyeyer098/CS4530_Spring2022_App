@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -66,10 +67,11 @@ class FitnessDataPage : Fragment() {
 //        val regimens = resources.getStringArray(R.array.regimen_arr)
 //        val regimenSpinner = view.findViewById(R.id.regimenSpinner) as Spinner
 //        if (regimenSpinner != null) {
-//            val adapter = ArrayAdapter.createFromResource(this,
-//                R.array.regimen_arr, regimens)
+//            val adapter = ArrayAdapter.createFromResource(
+//                getActivity(),
+//                R.array.regimen_arr, resources.getStringArray(R.array.regimen_arr))
 //            regimenSpinner.adapter = adapter
-        super.onViewCreated(view, savedInstanceState)
+//        super.onViewCreated(view, savedInstanceState)
     }
 
     companion object {
@@ -82,12 +84,10 @@ class FitnessDataPage : Fragment() {
          * @return A new instance of fragment FitnessDataPage.
          */
         // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(profile: Profile) =
             FitnessDataPage().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }
