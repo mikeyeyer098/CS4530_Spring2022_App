@@ -3,11 +3,15 @@ package com.example.myapplication
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.preference.EditTextPreference
+import android.text.Editable
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 
@@ -48,18 +52,33 @@ class BMI_calculator : Fragment() {
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)
 
-        var heightTag = requireView().findViewById<TextView>(R.id.heightTextField)
+        var heightTag = requireView().findViewById<EditText>(R.id.heightTextField)
         heightTag.hint = "Height: ${profile?.height}"
 
-        var weightTag = requireView().findViewById<TextView>(R.id.weightTextField)
+        var weightTag = requireView().findViewById<EditText>(R.id.weightTextField)
         weightTag.hint = "Weight: ${profile?.weight}"
 
-        var BMItag = requireView().findViewById<TextView>(R.id.BMIText)
-        BMItag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height.toString())
+        var BMItag = requireView().findViewById<EditText>(R.id.BMIText)
+        Log.i("test", "bmi: " + HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height.toString()))
+        BMItag.text = Editable.Factory.getInstance().newEditable(HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height.toString()))
 
-        val BMiButton = view.findViewById(R.id.CalculateBMIButton) as Button
+        val BMiButton = view.findViewById<Button>(R.id.CalculateBMIButton)
+
         BMiButton.setOnClickListener {
-            BMItag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height.toString())
+            var checkWeight = weightTag.text.toString()
+            var checkHeight = heightTag.text.toString()
+            if (checkHeight == "" || checkWeight == "")
+            {
+                checkHeight = profile?.height.toString()
+                checkWeight = profile?.weight.toString()
+            }
+            try {
+                BMItag.text = Editable.Factory.getInstance().newEditable(HealthCalculator().calculateBMI(checkWeight, checkHeight))
+            }
+            catch (e: Exception) {
+                BMItag.text = Editable.Factory.getInstance().newEditable("Invalid")
+            }
+
         }
 
         super.onViewCreated(view, savedInstanceState)
