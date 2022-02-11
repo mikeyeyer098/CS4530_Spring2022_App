@@ -241,7 +241,7 @@
                     android:fontFamily="@font/comfortaa_bold"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    android:text="Weight Loss"
+                    android:text="Hold Weight"
                     android:textColor="#666666"
                     android:background="@drawable/yellow_background"
                     android:textAlignment="center"

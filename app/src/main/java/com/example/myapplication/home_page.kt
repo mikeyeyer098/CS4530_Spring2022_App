@@ -10,12 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.content.Intent
+import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -31,8 +35,8 @@ class home_page : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+//            param1 = it.getString(ARG_PARAM1)
+//            param2 = it.getString(ARG_PARAM2)
         }
 
     }
@@ -50,7 +54,7 @@ class home_page : Fragment() {
 
         val mapsButton = view.findViewById(R.id.HikesFinderButton) as ImageButton
         mapsButton.setOnClickListener {
-            val gmmIntentUri = Uri.parse("geo:0,0?q=hikes")
+            val gmmIntentUri = Uri.parse("geo:0,0?q=${profile?.city} hikes")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
@@ -66,7 +70,30 @@ class home_page : Fragment() {
         var BMItag = requireView().findViewById<TextView>(R.id.BMIText)
         BMItag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height.toString())
 
+        var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
+        calorieTag.text = HealthCalculator().calculateDailyCalories(
+            HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),
+                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString()),
+                profile?.weightGoal.toString(), profile?.sex.toString())
+
+        getWeatherDetails(view)
+
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    fun getWeatherDetails(view: View) {
+        Log.i("test", "temp")
+        var tempUrl = "api.openweathermap.org/data/2.5/weather?q=${profile?.city}&appid=44dbd2ed7d890d4f83982194472e820f5"
+        Log.i("test", "temp2")
+        var request: StringRequest = StringRequest(Request.Method.POST, tempUrl, Response.Listener<String>() {
+            fun onResponse(response: String) {
+                Log.i("test", response)
+            }
+        }, Response.ErrorListener() {
+            fun onErrorResponse(error: VolleyError) {
+                Log.i("test", "bad api response")
+        }
+        })
     }
 
     companion object {
@@ -85,8 +112,8 @@ class home_page : Fragment() {
                 this.profile = profile
                 arguments = Bundle().apply {
 
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+//                    putString(ARG_PARAM1, param1)
+//                    putString(ARG_PARAM2, param2)
                 }
             }
     }
