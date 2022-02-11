@@ -68,26 +68,38 @@ class load_page : Fragment() {
         val createProfileButton: Button = view.findViewById(R.id.createProfileButton)
 
         createProfileButton.setOnClickListener {
-            val nameText: String = view.findViewById<EditText>(R.id.nameTextField).text.toString()
-            val heightText: String = view.findViewById<EditText>(R.id.heightTextField).text.toString()
-            val weightText: String = view.findViewById<EditText>(R.id.weightTextField).text.toString()
-            val ageText: String = view.findViewById<EditText>(R.id.ageTextField).text.toString()
-            val genderText: String = view.findViewById<EditText>(R.id.genderTextField).text.toString()
-            val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
+            if (view.findViewById<EditText>(R.id.nameTextField).text.toString() != "") {
+                val nameText: String = view.findViewById<EditText>(R.id.nameTextField).text.toString()
+                val heightText: String =
+                    view.findViewById<EditText>(R.id.heightTextField).text.toString()
+                val weightText: String =
+                    view.findViewById<EditText>(R.id.weightTextField).text.toString()
+                val ageText: String = view.findViewById<EditText>(R.id.ageTextField).text.toString()
+                val genderText: String =
+                    view.findViewById<EditText>(R.id.genderTextField).text.toString()
+                val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
 
-            profile = Profile(nameText, heightText, weightText, ageText, genderText,
-                cityText, photoPath, "0", "", "", profilePic)
-            Log.i ("test", profile!!.printForStoring())
-            Log.i("test", requireActivity().application.cacheDir.absolutePath)
-            File.createTempFile("filename", profile!!.printForStoring(), requireActivity().application.cacheDir)
-
-            val fragmentTransaction = fragmentManager?.beginTransaction()
-            profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(R.id.fragmentContainer,
-                    it2
+                profile = Profile(
+                    nameText, heightText, weightText, ageText, genderText,
+                    cityText, photoPath, "0", "", "", profilePic
                 )
+                Log.i("test", profile!!.printForStoring())
+                Log.i("test", requireActivity().application.cacheDir.absolutePath)
+                File.createTempFile(
+                    "filename",
+                    profile!!.printForStoring(),
+                    requireActivity().application.cacheDir
+                )
+
+                val fragmentTransaction = fragmentManager?.beginTransaction()
+                profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
+                    fragmentTransaction?.replace(
+                        R.id.fragmentContainer,
+                        it2
+                    )
+                }
+                fragmentTransaction?.commit()
             }
-            fragmentTransaction?.commit()
         }
 
         super.onViewCreated(view, savedInstanceState)
