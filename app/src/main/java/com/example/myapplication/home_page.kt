@@ -13,10 +13,10 @@ import android.content.Intent
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
-//import com.android.volley.Request
-//import com.android.volley.Response
-//import com.android.volley.VolleyError
-//import com.android.volley.toolbox.StringRequest
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,25 +67,25 @@ class home_page : Fragment() {
 //                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString()),
 //                profile?.weightGoal.toString(), profile?.sex.toString())
 
-        //getWeatherDetails(view)
+        getWeatherDetails(view)
 
         super.onViewCreated(view, savedInstanceState)
     }
 
-//    fun getWeatherDetails(view: View) {
-//        Log.i("test", "temp")
-//        var tempUrl = "api.openweathermap.org/data/2.5/weather?q=${profile?.city}&appid=44dbd2ed7d890d4f83982194472e820f5"
-//        Log.i("test", "temp2")
-//        var request: StringRequest = StringRequest(Request.Method.POST, tempUrl, Response.Listener<String>() {
-//            fun onResponse(response: String) {
-//                Log.i("test", response)
-//            }
-//        }, Response.ErrorListener() {
-//            fun onErrorResponse(error: VolleyError) {
-//                Log.i("test", "bad api response")
-//        }
-//        })
-//    }
+    fun getWeatherDetails(view: View) {
+        Log.i("test", "temp")
+        var tempUrl = "api.openweathermap.org/data/2.5/weather?q=${profile?.city}&appid=44dbd2ed7d890d4f83982194472e820f5"
+        Log.i("test", "temp2")
+        var request: StringRequest = StringRequest(Request.Method.POST, tempUrl, Response.Listener<String>() {
+            fun onResponse(response: String) {
+                Log.i("test", response)
+            }
+        }, Response.ErrorListener() {
+            fun onErrorResponse(error: VolleyError) {
+                Log.i("test", "bad api response")
+        }
+        })
+    }
 
     companion object {
         /**

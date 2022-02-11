@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -66,11 +67,12 @@ class FitnessDataPage : Fragment() {
 //        val regimens = resources.getStringArray(R.array.regimen_arr)
 //        val regimenSpinner = view.findViewById(R.id.regimenSpinner) as Spinner
 //        if (regimenSpinner != null) {
-//            val adapter = ArrayAdapter.createFromResource(this,
-//                R.array.regimen_arr, regimens)
+//            val adapter = ArrayAdapter.createFromResource(
+//                getActivity(),
+//                R.array.regimen_arr, resources.getStringArray(R.array.regimen_arr))
 //            regimenSpinner.adapter = adapter
-        super.onViewCreated(view, savedInstanceState)
-    }
+//        super.onViewCreated(view, savedInstanceState)
+//    }
 
     companion object {
         /**
