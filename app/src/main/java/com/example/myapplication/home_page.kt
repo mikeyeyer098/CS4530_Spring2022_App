@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.content.Intent
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.android.volley.Request
@@ -18,6 +19,7 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.material.button.MaterialButton
 
 //import com.android.volley.Request
 //import com.android.volley.Response
@@ -58,7 +60,7 @@ class home_page : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
 
-        val mapsButton = view.findViewById(R.id.HikesFinderButton) as ImageButton
+        val mapsButton = view.findViewById<ImageButton>(R.id.HikesFinderButton)
         mapsButton.setOnClickListener {
             val gmmIntentUri = Uri.parse("geo:0,0?q=${profile?.city} hikes")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
@@ -66,6 +68,18 @@ class home_page : Fragment() {
             startActivity(mapIntent)
         }
         profileThumb.setImageBitmap(profile?.image)
+
+        val bmiButton = view.findViewById<Button>(R.id.BMICalcButton)
+        bmiButton.setOnClickListener {
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+            profile?.let { it1 -> BMI_calculator.newInstance(it1) }?.let { it2 ->
+                fragmentTransaction?.replace(
+                    R.id.fragmentContainer,
+                    it2
+                )
+            }
+            fragmentTransaction?.commit()
+        }
 
 //        var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
 //        calorieTag.text = HealthCalculator().calculateDailyCalories(
