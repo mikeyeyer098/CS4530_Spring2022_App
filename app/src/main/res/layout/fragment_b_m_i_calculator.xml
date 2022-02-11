@@ -161,7 +161,7 @@
                 android:textSize="20sp"
                 android:textAlignment="center"
                 />
-        <TextView
+        <EditText
             android:id="@+id/BMIText"
             android:layout_width="0dp"
             android:layout_weight="1"
