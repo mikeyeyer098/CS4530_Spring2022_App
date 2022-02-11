@@ -17,6 +17,8 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,7 +78,9 @@ class home_page : Fragment() {
         Log.i("test", "temp")
         var tempUrl = "api.openweathermap.org/data/2.5/weather?q=${profile?.city}&appid=44dbd2ed7d890d4f83982194472e820f5"
         Log.i("test", "temp2")
-        var request: StringRequest = StringRequest(Request.Method.POST, tempUrl, Response.Listener<String>() {
+
+        val queue = Volley.newRequestQueue(this.context)
+        var request: StringRequest = StringRequest(Request.Method.GET, tempUrl, Response.Listener<String>() {
             fun onResponse(response: String) {
                 Log.i("test", response)
             }
@@ -85,6 +89,7 @@ class home_page : Fragment() {
                 Log.i("test", "bad api response")
         }
         })
+        queue.add(request)
     }
 
     companion object {
