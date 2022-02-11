@@ -80,8 +80,7 @@ class BMI_calculator : Fragment() {
             BMI_calculator().apply {
                 this.profile = profile
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }

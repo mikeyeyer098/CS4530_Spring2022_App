@@ -76,12 +76,18 @@ class home_page : Fragment() {
             }
             fragmentTransaction?.commit()
         }
+            val myFitRegButt = view.findViewById<Button>(R.id.MyFitnessRegimenButton)
+            myFitRegButt.setOnClickListener {
+                val fragmentTransaction = fragmentManager?.beginTransaction()
+                profile?.let { it1 -> FitnessDataPage.newInstance(it1) }?.let { it2 ->
+                    fragmentTransaction?.replace(
+                        R.id.fragmentContainer,
+                        it2
+                    )
+                }
+                fragmentTransaction?.commit()
+            }
 
-//        var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
-//        calorieTag.text = HealthCalculator().calculateDailyCalories(
-//            HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),
-//                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString()),
-//                profile?.weightGoal.toString(), profile?.sex.toString())
 
         getWeatherDetails(view)
 

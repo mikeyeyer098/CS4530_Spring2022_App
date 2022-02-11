@@ -174,9 +174,9 @@
             android:fontFamily="@font/comfortaa_bold"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            android:text="23.1"
+            android:text=""
             android:textAlignment="center"
-            android:textColor="#666666"
+            android:textColor="@color/white"
             android:background="@drawable/edit_text"
             android:textSize="20sp"
             />

@@ -24,17 +24,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class FitnessDataPage : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
     private var profile: Profile? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -48,14 +45,6 @@ class FitnessDataPage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
-
-        val mapsButton = view.findViewById(R.id.HikesFinderButton) as ImageButton
-        mapsButton.setOnClickListener {
-            val gmmIntentUri = Uri.parse("geo:0,0?q=hikes")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
-        }
         profileThumb.setImageBitmap(profile?.image)
 
         var heightTag = requireView().findViewById<TextView>(R.id.heightTextField)
@@ -64,28 +53,33 @@ class FitnessDataPage : Fragment() {
         var weightTag = requireView().findViewById<TextView>(R.id.weightTextField)
         weightTag.hint = "Weight: ${profile?.weight}"
 
-//        val regimens = resources.getStringArray(R.array.regimen_arr)
-//        val regimenSpinner = view.findViewById(R.id.regimenSpinner) as Spinner
-//        if (regimenSpinner != null) {
-//            val adapter = ArrayAdapter.createFromResource(
-//                getActivity(),
-//                R.array.regimen_arr, resources.getStringArray(R.array.regimen_arr))
-//            regimenSpinner.adapter = adapter
-//        super.onViewCreated(view, savedInstanceState)
+        val regimens = resources.getStringArray(R.array.regimen_arr)
+        val regimenSpinner = view.findViewById(R.id.regimenSpinner) as Spinner
+        ArrayAdapter.createFromResource(
+            this.requireContext(),
+            R.array.regimen_arr,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            regimenSpinner.adapter = adapter
+        }
+
+        //        var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
+//        calorieTag.text = HealthCalculator().calculateDailyCalories(
+//            HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),
+//                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString()),
+//                profile?.weightGoal.toString(), profile?.sex.toString())
+
+        super.onViewCreated(view, savedInstanceState)
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FitnessDataPage.
-         */
-        // TODO: Rename and change types and number of parameters
+
         fun newInstance(profile: Profile) =
             FitnessDataPage().apply {
+                this.profile = profile
                 arguments = Bundle().apply {
 
                 }
