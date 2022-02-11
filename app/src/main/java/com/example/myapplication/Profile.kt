@@ -7,10 +7,10 @@ class Profile(
     var height: String,
     var weight: String,
     var age: String,
-    var gender: String,
+    var sex: String,
     var city: String,
     var imagePath: String,
-    var active: Boolean,
+    var active: String,
     var bmr: String,
     var weightGoal: String,
     var image: Bitmap?,
@@ -32,9 +32,9 @@ class Profile(
             age = "NA"
         }
 
-        if (gender == "")
+        if (sex == "")
         {
-            gender = "NA"
+            sex = "NA"
         }
 
         if (city == "")
@@ -47,15 +47,14 @@ class Profile(
             imagePath = "NA"
         }
 
-        active = false
-        bmr = "NA"
-        weightGoal = "NA"
+        active = "0"
+        weightGoal = "0"
     }
 
     fun printForStoring(): String {
         return "${this.name} ${this.height} ${this.weight} " +
-                "${this.age} ${this.gender} ${this.city} " +
-                "${this.imagePath}, ${this.active} ${this.bmr}" +
+                "${this.age} ${this.sex} ${this.city} " +
+                "${this.imagePath} ${this.active} " +
                 "${this.weightGoal}"
     }
 }

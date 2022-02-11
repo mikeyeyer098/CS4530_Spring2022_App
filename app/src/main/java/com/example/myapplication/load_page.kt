@@ -76,7 +76,7 @@ class load_page : Fragment() {
             val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
 
             profile = Profile(nameText, heightText, weightText, ageText, genderText,
-                cityText, photoPath, false, "", "", profilePic)
+                cityText, photoPath, "0", "", "", profilePic)
             Log.i ("test", profile!!.printForStoring())
             Log.i("test", requireActivity().application.cacheDir.absolutePath)
             File.createTempFile("filename", profile!!.printForStoring(), requireActivity().application.cacheDir)
