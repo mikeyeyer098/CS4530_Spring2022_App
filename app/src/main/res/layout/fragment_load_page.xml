@@ -21,7 +21,7 @@
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:paddingHorizontal="10dp"
-            android:background="#B4A7D6"
+            android:background="#8E7CC3"
             android:fontFamily="@font/comfortaa_bold"
             android:text="Healthy Health"
             android:textColor="@color/white"
@@ -46,7 +46,7 @@
                 android:layout_marginBottom="18dp"
                 android:fontFamily="@font/comfortaa_bold"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textAlignment="center"
                 />
             <EditText
@@ -74,7 +74,6 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-
             >
 
             <EditText

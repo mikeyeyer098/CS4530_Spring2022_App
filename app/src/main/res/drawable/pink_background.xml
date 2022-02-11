@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content">
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="#d5a6bd"/>
-            <corners android:radius="5dp" />
-
-            <stroke
-                android:width="3dp"
-                android:color="@color/white"
-                />
-        </shape>
-    </item>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--When Button is not enabled -->
+<item android:state_enabled="false" android:color="#d5a6bd" />
+<!--When Button is in pressed state -->
+<item android:state_pressed="true" android:color="#a64d79" />
+<!--When Button is in selected state -->
+<item android:state_selected="true" android:color="#a64d79" />
+<!--Default Background Color -->
+<item android:color="#d5a6bd" />
 </selector>

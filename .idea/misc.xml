@@ -3,15 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/activity_level_array.xml" value="0.1545" />
         <entry key="app/src/main/res/drawable/button.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/drawable/edit_text.xml" value="0.1545" />
         <entry key="app/src/main/res/drawable/green_background.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/drawable/pink_background.xml" value="0.1915" />
+        <entry key="app/src/main/res/drawable/regimen_array.xml" value="0.1545" />
+        <entry key="app/src/main/res/drawable/regimen_choices_array.xml" value="0.1545" />
         <entry key="app/src/main/res/drawable/weather_background.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/drawable/widget_background.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/drawable/widget_button_background.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/drawable/yellow_background.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout-v26/load_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13994565217391305" />
+        <entry key="app/src/main/res/layout/fragment_b_m_i_calculator.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_fitness_data_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_load_page.xml" value="0.184375" />
         <entry key="app/src/main/res/layout/load_page.xml" value="0.335" />

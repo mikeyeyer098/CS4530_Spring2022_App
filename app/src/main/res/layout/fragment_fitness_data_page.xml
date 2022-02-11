@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FitnessDataPage"
+    android:background="#0C343D">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp"
+                >
+
+                <ImageButton
+                    android:id="@+id/backArrow"
+                    android:layout_height="40dp"
+                    android:layout_width="65dp"
+                    android:scaleType="fitCenter"
+                    android:layout_marginLeft="5dp"
+                    android:padding="0dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/back_arrow"
+                    />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:background="#b4a7d6"
+                        android:fontFamily="@font/comfortaa_bold"
+                        android:text="Healthy Health"
+                        android:textColor="#434343"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        tools:ignore="TextContrastCheck" />
+
+                    <ImageButton
+                        android:id="@+id/ProfilePicThumbnail"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:padding="0dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/profile_pic" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Fitness Data:"
+                android:layout_gravity="center"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:textAlignment="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp">
+                <EditText
+                    android:id="@+id/heightTextField"
+                    android:layout_width="0dp"
+                    android:layout_weight=".4"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edit_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="8dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:hint="Height:"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:id="@+id/weightTextField"
+                    android:layout_width="0dp"
+                    android:layout_weight=".4"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edit_text"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:padding="8dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:hint="Weight:"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="0dp">
+                <Spinner
+                    android:id="@+id/regimenSpinner"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="8dp"
+                    android:background="@drawable/edit_text"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:hint="Fitness Regimen:"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    />
+                <Spinner
+                    android:id="@+id/activityLevelSpinner"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="8dp"
+                    android:background="@drawable/edit_text"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:hint="Activity Level:"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>

@@ -3,4 +3,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_hikes">HikesActivity</string>
+    <string-array name="regimen_arr">
+        <item>Gain Weight</item>
+        <item>Lose Weight</item>
+        <item>Maintain Weight</item>
+    </string-array>
+    <string-array name="activity_level_array">
+        <item>Sedentary</item>
+        <item>Active</item>
+    </string-array>
 </resources>
