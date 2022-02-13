@@ -7,15 +7,13 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
+import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import java.io.File
 
@@ -52,6 +50,17 @@ class load_page : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         nav = parentFragmentManager
 
+        val genderSpinner = view.findViewById(R.id.genderSpinner) as Spinner
+        ArrayAdapter.createFromResource(
+            this.requireContext(),
+            R.array.gender_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            genderSpinner.adapter = adapter
+        }
+        genderSpinner.prompt = "Select gender:"
+
         val takePictureButton: Button = view.findViewById(R.id.TakePictureButton)
 
         val photoPath: String = ""
@@ -75,9 +84,10 @@ class load_page : Fragment() {
                 val weightText: String =
                     view.findViewById<EditText>(R.id.weightTextField).text.toString()
                 val ageText: String = view.findViewById<EditText>(R.id.ageTextField).text.toString()
-                val genderText: String =
-                    view.findViewById<EditText>(R.id.genderTextField).text.toString()
+                val genderText: String = genderSpinner.selectedItem.toString()
                 val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
+
+
 
                 profile = Profile(
                     nameText, heightText, weightText, ageText, genderText,

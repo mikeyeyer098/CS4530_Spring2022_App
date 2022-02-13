@@ -12,4 +12,9 @@
         <item>Sedentary</item>
         <item>Active</item>
     </string-array>
+    <string-array name="gender_array">
+        <item>Female</item>
+        <item>Male</item>
+        <item>Other</item>
+    </string-array>
 </resources>

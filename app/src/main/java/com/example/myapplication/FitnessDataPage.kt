@@ -53,17 +53,24 @@ class FitnessDataPage : Fragment() {
         var weightTag = requireView().findViewById<TextView>(R.id.weightTextField)
         weightTag.hint = "Weight: ${profile?.weight}"
 
-        val regimens = resources.getStringArray(R.array.regimen_arr)
         val regimenSpinner = view.findViewById(R.id.regimenSpinner) as Spinner
         ArrayAdapter.createFromResource(
             this.requireContext(),
             R.array.regimen_arr,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
             regimenSpinner.adapter = adapter
+        }
+
+        val activitySpinner = view.findViewById(R.id.activityLevelSpinner) as Spinner
+        ArrayAdapter.createFromResource(
+            this.requireContext(),
+            R.array.activity_level_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            activitySpinner.adapter = adapter
         }
 
         //        var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
