@@ -31,16 +31,12 @@ import com.google.android.material.button.MaterialButton
  * create an instance of this fragment.
  */
 class home_page : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var profile: Profile? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
+
         }
 
     }
@@ -127,9 +123,6 @@ class home_page : Fragment() {
             home_page().apply {
                 this.profile = profile
                 arguments = Bundle().apply {
-
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
                 }
             }
     }
