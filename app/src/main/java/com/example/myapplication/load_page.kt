@@ -94,7 +94,7 @@ class load_page : Fragment() {
                     view.findViewById<EditText>(R.id.heightTextField).text.toString()
                 val weightText: String =
                     view.findViewById<EditText>(R.id.weightTextField).text.toString()
-                val ageText: String = view.findViewById<EditText>(R.id.ageTextField).text.toString()
+                val ageText: String = ageSpinner.selectedItem.toString()
                 val genderText: String = genderSpinner.selectedItem.toString()
                 val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
 
