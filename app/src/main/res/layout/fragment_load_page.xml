@@ -64,7 +64,7 @@
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/comfortaa_bold"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="#d9d9d9"
                 android:hint="Name:"
                 android:lines="1"
                 android:maxLines="1" />
@@ -95,7 +95,7 @@
                 android:maxLines="1"
                 android:minHeight="48dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColorHint="#d9d9d9" />
 
             <EditText
                 android:id="@+id/weightTextField"
@@ -116,7 +116,7 @@
                 android:maxLines="1"
                 android:minHeight="48dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColorHint="#d9d9d9" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -125,12 +125,11 @@
             android:paddingBottom="5dp"
             >
 
-            <EditText
-                android:id="@+id/ageTextField"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ageSpinner"
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="40dp"
-                android:background="@drawable/edit_text"
                 android:paddingHorizontal="10dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -138,15 +137,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:fontFamily="@font/comfortaa_bold"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:hint="Age:"
-                android:lines="1"
-                android:maxLines="1"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:inputType="number" />
+                android:background="@drawable/edit_text"  />
 
             <Spinner
                 android:id="@+id/genderSpinner"
@@ -186,7 +177,7 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColorHint="#d9d9d9" />
             <com.hbb20.CountryCodePicker
                 android:id="@+id/ccp"
                 android:layout_width="0dp"

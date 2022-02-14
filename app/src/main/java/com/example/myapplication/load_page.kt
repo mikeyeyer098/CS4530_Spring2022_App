@@ -61,6 +61,17 @@ class load_page : Fragment() {
         }
         genderSpinner.prompt = "Select gender:"
 
+        val ageSpinner = view.findViewById(R.id.ageSpinner) as Spinner
+        var ages : ArrayList<String> = arrayListOf()
+        for(i in 18..100){
+            ages.add("$i years old")
+        }
+        var ageAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, ages)
+        ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ageSpinner.adapter = ageAdapter
+        ageSpinner.prompt = "Select age:"
+
+
         val takePictureButton: Button = view.findViewById(R.id.TakePictureButton)
 
         val photoPath: String = ""

@@ -82,7 +82,7 @@
                     android:lines="1"
                     android:maxLines="1"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColorHint="#d9d9d9" />
 
                 <EditText
                     android:id="@+id/weightTextField"
@@ -98,7 +98,7 @@
                     android:lines="1"
                     android:maxLines="1"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColorHint="#d9d9d9" />
 
             </LinearLayout>
             <LinearLayout
