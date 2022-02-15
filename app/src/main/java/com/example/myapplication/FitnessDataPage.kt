@@ -74,11 +74,29 @@ class FitnessDataPage : Fragment() {
             activitySpinner.adapter = adapter
         }
         activitySpinner.prompt = "Select activity level:"
-        //        var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
-//        calorieTag.text = HealthCalculator().calculateDailyCalories(
-//            HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),
-//                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString()),
-//                profile?.weightGoal.toString(), profile?.sex.toString())
+
+        val poundsSpinner : Spinner = view.findViewById(R.id.poundsGoalSpinner)
+        ArrayAdapter.createFromResource(
+            this.requireContext(),
+            R.array.pounds_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            poundsSpinner.adapter = adapter
+        }
+
+        var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
+        calorieTag.text = HealthCalculator().calculateDailyCalories(
+            HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),
+                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString()),
+            profile?.weightGoal.toString(), profile?.sex.toString())
+
+        var bmrTag = requireView().findViewById<TextView>(R.id.BMRText)
+        bmrTag.text = HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),
+                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString())
+
+        var bmiTag = view.findViewById<TextView>(R.id.BMRText)
+        bmiTag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height.toString())
 
         super.onViewCreated(view, savedInstanceState)
     }

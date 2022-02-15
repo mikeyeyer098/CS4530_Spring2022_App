@@ -17,4 +17,8 @@
         <item>Male</item>
         <item>Other</item>
     </string-array>
+    <string-array name="pounds_array">
+        <item>1 lb</item>
+        <item>2 lbs</item>
+    </string-array>
 </resources>
