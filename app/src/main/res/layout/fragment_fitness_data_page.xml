@@ -105,19 +105,19 @@
                 android:layout_marginTop="5dp">
 
 
-                <EditText
-                    android:id="@+id/heightTextField"
+                <Spinner
+                    android:id="@+id/heightSpinner"
                     android:layout_width="0dp"
                     android:layout_weight=".4"
                     android:layout_height="40dp"
-                    android:background="@drawable/edit_text"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:padding="8dp"
-                    android:fontFamily="@font/comfortaa_bold"
-                    android:lines="1"
-                    android:maxLines="1"
-                    android:textColor="@color/white" />
+                    android:paddingHorizontal="10dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/edit_text" />
 
                 <EditText
                     android:id="@+id/weightTextField"
@@ -234,22 +234,46 @@
                 android:textColor="@color/white"
                 />
             </LinearLayout>
-            <Button
-                android:id="@+id/createProfileButton"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="15dp"
-                android:padding="10dp"
-                android:fontFamily="@font/comfortaa_bold"
-                android:text="update fitness data"
-                android:backgroundTint="@drawable/green_background"
-                android:textColor="#434343"
-                android:textSize="18sp"
-                android:layout_gravity="center_horizontal"
-                />
+                android:layout_marginBottom="0dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/editProfileButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="0.5"
+                    android:backgroundTint="@drawable/green_background"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:padding="10dp"
+                    android:text="edit profile"
+                    android:textColor="#434343"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/updateProfileButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="0.6"
+                    android:backgroundTint="@drawable/green_background"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:padding="10dp"
+                    android:text="update profile"
+                    android:textColor="#434343"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -276,7 +300,7 @@
                     android:layout_weight=".4"
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    android:background="#b6d7a8"
+                    android:background="#b4a7d6"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="15dp"
@@ -313,7 +337,7 @@
                     android:layout_weight=".4"
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    android:background="#b6d7a8"
+                    android:background="#b4a7d6"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
@@ -350,7 +374,7 @@
                     android:layout_weight=".4"
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    android:background="#b6d7a8"
+                    android:background="#b4a7d6"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"

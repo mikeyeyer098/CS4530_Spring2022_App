@@ -74,7 +74,7 @@ class load_page : Fragment() {
         val heightSpinner : Spinner = view.findViewById(R.id.heightSpinner)
         var heights : ArrayList<String> = arrayListOf()
         for(i in 4..7) {
-            for (j in 1..11) {
+            for (j in 0..11) {
                 heights.add("$i \' $j \"")
             }
         }
