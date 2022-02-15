@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -79,6 +80,13 @@ class FitnessDataPage : Fragment() {
 //            HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),
 //                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString()),
 //                profile?.weightGoal.toString(), profile?.sex.toString())
+
+        val backButton = view.findViewById<ImageButton>(R.id.backArrow)
+
+        backButton.setOnClickListener {
+            Log.i("test", "back button pressed")
+            fragmentManager?.popBackStack()
+        }
 
         super.onViewCreated(view, savedInstanceState)
     }
