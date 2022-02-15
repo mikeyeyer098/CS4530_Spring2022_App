@@ -71,6 +71,17 @@ class load_page : Fragment() {
         ageSpinner.adapter = ageAdapter
         ageSpinner.prompt = "Select age:"
 
+        val heightSpinner : Spinner = view.findViewById(R.id.heightSpinner)
+        var heights : ArrayList<String> = arrayListOf()
+        for(i in 4..7) {
+            for (j in 1..11) {
+                heights.add("$i \' $j \"")
+            }
+        }
+        var heightAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, heights)
+        heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        heightSpinner.adapter = heightAdapter
+        heightSpinner.prompt = "Select height:"
 
         val takePictureButton: Button = view.findViewById(R.id.TakePictureButton)
 
@@ -91,7 +102,7 @@ class load_page : Fragment() {
             if (view.findViewById<EditText>(R.id.nameTextField).text.toString() != "") {
                 val nameText: String = view.findViewById<EditText>(R.id.nameTextField).text.toString()
                 val heightText: String =
-                    view.findViewById<EditText>(R.id.heightTextField).text.toString()
+                    heightSpinner.selectedItem.toString()
                 val weightText: String =
                     view.findViewById<EditText>(R.id.weightTextField).text.toString()
                 val ageText: String = ageSpinner.selectedItem.toString()

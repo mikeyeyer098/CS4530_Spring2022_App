@@ -62,6 +62,7 @@ class FitnessDataPage : Fragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             regimenSpinner.adapter = adapter
         }
+        regimenSpinner.prompt = "Select weight goal:"
 
         val activitySpinner = view.findViewById(R.id.activityLevelSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -72,7 +73,7 @@ class FitnessDataPage : Fragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             activitySpinner.adapter = adapter
         }
-
+        activitySpinner.prompt = "Select activity level:"
         //        var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
 //        calorieTag.text = HealthCalculator().calculateDailyCalories(
 //            HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),

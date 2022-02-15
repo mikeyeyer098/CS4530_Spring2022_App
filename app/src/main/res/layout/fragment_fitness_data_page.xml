@@ -117,9 +117,7 @@
                     android:padding="8dp"
                     android:background="@drawable/edit_text"
                     android:fontFamily="@font/comfortaa_bold"
-                    android:hint="Fitness Regimen:"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
                     />
                 <Spinner
                     android:id="@+id/activityLevelSpinner"
@@ -131,12 +129,68 @@
                     android:padding="8dp"
                     android:background="@drawable/edit_text"
                     android:fontFamily="@font/comfortaa_bold"
-                    android:hint="Activity Level:"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
                     />
 
 
+            </LinearLayout>
+            <Spinner
+                android:id="@+id/poundsGoal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="15dp"
+                android:padding="8dp"
+                android:background="@drawable/edit_text"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="@color/white"
+                />
+            <Button
+                android:id="@+id/createProfileButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:padding="10dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="update fitness data"
+                android:backgroundTint="@drawable/green_background"
+                android:textColor="#434343"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.6"
+                    android:padding="5sp"
+                    android:layout_height="wrap_content"
+                    android:text="Daily calories to meet your goal:"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textAlignment="center"/>
+                <EditText
+                    android:id="@+id/dailyCalsText"
+                    android:layout_width="0dp"
+                    android:layout_weight=".4"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#b6d7a8"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="8dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textColor="#434343"
+                    android:textColorHint="#d9d9d9" />
             </LinearLayout>
 
         </LinearLayout>
