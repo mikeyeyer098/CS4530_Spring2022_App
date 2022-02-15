@@ -81,6 +81,13 @@ class BMI_calculator : Fragment() {
 
         }
 
+        val backButton = view.findViewById<ImageButton>(R.id.backArrow)
+
+        backButton.setOnClickListener {
+            Log.i("test", "back button pressed")
+            fragmentManager?.popBackStack()
+        }
+
         super.onViewCreated(view, savedInstanceState)
     }
 

@@ -70,19 +70,23 @@ class home_page : Fragment() {
                     it2
                 )
             }
+            fragmentTransaction?.setReorderingAllowed(true)
+            fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
         }
-            val myFitRegButt = view.findViewById<Button>(R.id.MyFitnessRegimenButton)
-            myFitRegButt.setOnClickListener {
-                val fragmentTransaction = fragmentManager?.beginTransaction()
-                profile?.let { it1 -> FitnessDataPage.newInstance(it1) }?.let { it2 ->
-                    fragmentTransaction?.replace(
-                        R.id.fragmentContainer,
-                        it2
-                    )
-                }
-                fragmentTransaction?.commit()
+
+        val myFitRegButt = view.findViewById<Button>(R.id.MyFitnessRegimenButton)
+        myFitRegButt.setOnClickListener {
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+
+            profile?.let { it1 -> FitnessDataPage.newInstance(it1) }?.let { it2 ->
+                fragmentTransaction?.replace(R.id.fragmentContainer, it2)
             }
+
+            fragmentTransaction?.setReorderingAllowed(true)
+            fragmentTransaction?.addToBackStack(null)
+            fragmentTransaction?.commit()
+        }
 
 
         getWeatherDetails(view)
@@ -91,21 +95,22 @@ class home_page : Fragment() {
     }
 
     fun getWeatherDetails(view: View) {
-        Log.i("test", "temp")
-        var tempUrl = "api.openweathermap.org/data/2.5/weather?q=${profile?.city}&appid=44dbd2ed7d890d4f83982194472e820f5"
-        Log.i("test", "temp2")
+        // Instantiate the RequestQueue.
+        val queue = Volley.newRequestQueue(view.context)
+        val city = profile?.city
+        val id = "4dbd2ed7d890d4f83982194472e820f5"
+        val url = "api.openweathermap.org/data/2.5/weather?q=Batimore&appid=4dbd2ed7d890d4f83982194472e820f5"
 
-        val queue = Volley.newRequestQueue(this.context)
-        var request: StringRequest = StringRequest(Request.Method.GET, tempUrl, Response.Listener<String>() {
-            fun onResponse(response: String) {
-                Log.i("test", response)
-            }
-        }, Response.ErrorListener() {
-            fun onErrorResponse(error: VolleyError) {
-                Log.i("test", "bad api response")
-        }
-        })
-        queue.add(request)
+        // Request a string response from the provided URL.
+        val stringRequest = StringRequest(Request.Method.GET, url,
+            Response.Listener<String> { response ->
+                // Display the first 500 characters of the response string.
+                Log.i("test", "Response is: ${response.substring(0, 500)}")
+            },
+            Response.ErrorListener { Log.i("test", "bad api request")})
+
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest)
     }
 
     companion object {
