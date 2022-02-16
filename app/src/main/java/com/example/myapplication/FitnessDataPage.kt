@@ -123,6 +123,9 @@ class FitnessDataPage : Fragment() {
             fragmentManager?.popBackStack()
         }
 
+        val updateProfileButton = view.findViewById<Button>(R.id.updateProfileButton)
+        updateProfileButton.isEnabled = false
+
         val editProfileButton = view.findViewById<Button>(R.id.editProfileButton)
         editProfileButton.setOnClickListener{
             weightTag.setTextIsSelectable(true)
@@ -131,9 +134,10 @@ class FitnessDataPage : Fragment() {
             regimenSpinner.isEnabled = true
             activitySpinner.isEnabled = true
             editProfileButton.isEnabled = false
+
+            updateProfileButton.isEnabled = true
         }
 
-        val updateProfileButton = view.findViewById<Button>(R.id.updateProfileButton)
         updateProfileButton.setOnClickListener{
             val heightText: Int =
                 heightTag.selectedItemPosition
@@ -145,6 +149,9 @@ class FitnessDataPage : Fragment() {
                 regimenSpinner.selectedItem.toString()
             val activityText : String =
                 activitySpinner.selectedItem.toString()
+
+            updateProfileButton.isEnabled = false
+            editProfileButton.isEnabled = true
 
             profile?.active = activityText
             profile?.weightGoal = poundsText
