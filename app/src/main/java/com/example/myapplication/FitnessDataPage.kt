@@ -45,13 +45,27 @@ class FitnessDataPage : Fragment() {
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)
 
-        var heightTag = requireView().findViewById<Spinner>(R.id.heightTextField)
-        heightTag.setSelection(48 + (profile?.height?.toInt() ?: 48))
+        var heightTag = requireView().findViewById<Spinner>(R.id.heightSpinner)
+        var heights : ArrayList<String> = arrayListOf()
+        for(i in 4..7) {
+            for (j in 0..11) {
+                heights.add("$i \' $j \"")
+            }
+        }
+        var heightAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, heights)
+        heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        heightTag.adapter = heightAdapter
+
+        profile?.height?.toInt().let {
+            if (it != null) {
+                heightTag.setSelection(it)
+            }
+        }
 
         var weightTag = requireView().findViewById<TextView>(R.id.weightTextField)
         weightTag.hint = "Weight: ${profile?.weight}"
 
-        weightTag.setTextIsSelectable(false);
+        weightTag.setTextIsSelectable(false)
 
         val regimenSpinner = view.findViewById(R.id.regimenSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -63,7 +77,7 @@ class FitnessDataPage : Fragment() {
             regimenSpinner.adapter = adapter
         }
         regimenSpinner.prompt = "Select weight goal:"
-        regimenSpinner.isEnabled = false;
+        regimenSpinner.isEnabled = false
 
         val activitySpinner = view.findViewById(R.id.activityLevelSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -75,7 +89,7 @@ class FitnessDataPage : Fragment() {
             activitySpinner.adapter = adapter
         }
         activitySpinner.prompt = "Select activity level:"
-        activitySpinner.isEnabled = false;
+        activitySpinner.isEnabled = false
 
         val poundsSpinner : Spinner = view.findViewById(R.id.poundsGoalSpinner)
         ArrayAdapter.createFromResource(
@@ -86,21 +100,21 @@ class FitnessDataPage : Fragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             poundsSpinner.adapter = adapter
         }
-        poundsSpinner.isEnabled = false;
+        poundsSpinner.isEnabled = false
 
 
         var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
         calorieTag.text = HealthCalculator().calculateDailyCalories(
-            HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),
+            HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
                 profile?.age.toString(), profile?.active.toString(), profile?.sex.toString()),
             profile?.weightGoal.toString(), profile?.sex.toString())
 
         var bmrTag = requireView().findViewById<TextView>(R.id.BMRText)
-        bmrTag.text = HealthCalculator().calculateBMR(profile?.weight.toString(), profile?.height.toString(),
+        bmrTag.text = HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
                 profile?.age.toString(), profile?.active.toString(), profile?.sex.toString())
 
         var bmiTag = view.findViewById<TextView>(R.id.BMRText)
-        bmiTag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height.toString())
+        bmiTag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)))
 
         val backButton = view.findViewById<ImageButton>(R.id.backArrow)
 
@@ -121,17 +135,25 @@ class FitnessDataPage : Fragment() {
 
         val updateProfileButton = view.findViewById<Button>(R.id.updateProfileButton)
         updateProfileButton.setOnClickListener{
-            val heightText: String =
-                heightTag.selectedItem.toString()
+            val heightText: Int =
+                heightTag.selectedItemPosition
             val weightText: String =
                 view.findViewById<EditText>(R.id.weightTextField).text.toString()
             val poundsText : String =
-                view.findViewById<EditText>(R.id.poundsGoalSpinner).text.toString()
+                poundsSpinner.selectedItem.toString()
             val regimenText : String =
-                view.findViewById<EditText>(R.id.regimenSpinner).text.toString()
+                regimenSpinner.selectedItem.toString()
             val activityText : String =
-                view.findViewById<EditText>(R.id.activityLevelSpinner).text.toString()
+                activitySpinner.selectedItem.toString()
+
+            profile?.active = activityText
+            profile?.weightGoal = poundsText
+            profile?.height = heightText.toString()
+            profile?.weight = weightText
+          //  profile?:regimen = regimenText
         }
+
+
 
         super.onViewCreated(view, savedInstanceState)
     }

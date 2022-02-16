@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 
 class Profile(
     var name: String,
-    var height: String,
+    var height: String, // saved as the index selection in the spinner (0 = 4' tall)
     var weight: String,
     var age: String,
     var sex: String,
@@ -12,6 +12,8 @@ class Profile(
     var imagePath: String,
     var active: String,
     var bmr: String,
+    var bmi: String,
+    var regimen: String,
     var weightGoal: String,
     var image: Bitmap?,
 ){
@@ -47,6 +49,7 @@ class Profile(
             imagePath = "NA"
         }
 
+        regimen = "0"
         active = "0"
         weightGoal = "0"
     }
@@ -55,7 +58,8 @@ class Profile(
         return "${this.name} ${this.height} ${this.weight} " +
                 "${this.age} ${this.sex} ${this.city} " +
                 "${this.imagePath} ${this.active} " +
-                "${this.weightGoal}"
+                "${this.weightGoal} ${this.regimen} " +
+                "${this.bmr} ${this.bmi} "
     }
 }
 

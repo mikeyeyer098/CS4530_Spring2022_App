@@ -5,7 +5,7 @@ import java.lang.Exception
 import kotlin.math.pow
 
 class HealthCalculator {
-    fun calculateBMR(weight: String, height: String, age: String, activity: String, sex: String): String {
+    fun calculateBMR(weight: String, height: Int, age: String, activity: String, sex: String): String {
         try {
             var activityLevel: Double
             when (activity.toInt()) {
@@ -57,7 +57,7 @@ class HealthCalculator {
 
     }
 
-    fun calculateBMI(weight: String, height: String): String {
+    fun calculateBMI(weight: String, height: Int): String {
         return try {
             (703 * (weight.toDouble() / height.toDouble().pow(2.0))).toInt().toString()
         } catch (e: Exception){

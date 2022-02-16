@@ -26,7 +26,6 @@ private val CAMERACODE = 200
  * create an instance of this fragment.
  */
 class load_page : Fragment() {
-    // TODO: Rename and change types of parameters
     var nav: FragmentManager ?= null
     private val PERMISSIONCODE = 100
     private val CAMERACODE = 200
@@ -101,8 +100,8 @@ class load_page : Fragment() {
         createProfileButton.setOnClickListener {
             if (view.findViewById<EditText>(R.id.nameTextField).text.toString() != "") {
                 val nameText: String = view.findViewById<EditText>(R.id.nameTextField).text.toString()
-                val heightText: String =
-                    heightSpinner.selectedItem.toString()
+                val heightSelection: Int =
+                    heightSpinner.selectedItemPosition
                 val weightText: String =
                     view.findViewById<EditText>(R.id.weightTextField).text.toString()
                 val ageText: String = ageSpinner.selectedItem.toString()
@@ -112,8 +111,8 @@ class load_page : Fragment() {
 
 
                 profile = Profile(
-                    nameText, heightText, weightText, ageText, genderText,
-                    cityText, photoPath, "0", "", "", profilePic
+                    nameText, heightSelection.toString(), weightText, ageText, genderText,
+                    cityText, photoPath, "0", "", "", "", "", profilePic
                 )
                 Log.i("test", profile!!.printForStoring())
                 Log.i("test", requireActivity().application.cacheDir.absolutePath)

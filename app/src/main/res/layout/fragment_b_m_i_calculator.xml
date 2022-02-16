@@ -90,53 +90,81 @@
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_gravity="center_horizontal"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp">
-        <EditText
-            android:id="@+id/heightTextField"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/comfortaa_bold"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:background="@drawable/edit_text"
-            android:hint="Height:"
-            android:textSize="20sp"
-            android:lines="1"
-            android:maxLines="1"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"/>
-        <EditText
-            android:id="@+id/weightTextField"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:padding="5sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="Height:"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textAlignment="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:padding="5sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="Weight:"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/comfortaa_bold"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:background="@drawable/edit_text"
-            android:hint="Weight:"
-            android:textSize="20sp"
-            android:lines="1"
-            android:maxLines="1"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+
+            <Spinner
+                android:id="@+id/heightSpinner"
+                android:layout_width="0dp"
+                android:layout_weight=".4"
+                android:layout_height="40dp"
+                android:paddingHorizontal="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/edit_text" />
+
+            <EditText
+                android:id="@+id/weightTextField"
+                android:layout_width="0dp"
+                android:layout_weight=".4"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text"
+                android:paddingHorizontal="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:lines="1"
+                android:maxLines="1"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
