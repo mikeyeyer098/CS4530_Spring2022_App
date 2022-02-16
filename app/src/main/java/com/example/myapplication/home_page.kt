@@ -99,7 +99,7 @@ class home_page : Fragment() {
         val queue = Volley.newRequestQueue(view.context)
         val city = profile?.city
         val id = "4dbd2ed7d890d4f83982194472e820f5"
-        val url = "api.openweathermap.org/data/2.5/weather?q=Batimore&appid=4dbd2ed7d890d4f83982194472e820f5"
+        val url = "http://api.openweathermap.org/data/2.5/weather?q=Beijing&appid=4dbd2ed7d890d4f83982194472e820f5"
 
         // Request a string response from the provided URL.
         val stringRequest = StringRequest(Request.Method.GET, url,

@@ -1,8 +1,5 @@
 package com.example.myapplication
 
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -114,7 +111,7 @@ class FitnessDataPage : Fragment() {
                 profile?.age.toString(), profile?.active.toString(), profile?.sex.toString())
 
         var bmiTag = view.findViewById<TextView>(R.id.BMRText)
-        bmiTag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)))
+        bmiTag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)).toString())
 
         val backButton = view.findViewById<ImageButton>(R.id.backArrow)
 

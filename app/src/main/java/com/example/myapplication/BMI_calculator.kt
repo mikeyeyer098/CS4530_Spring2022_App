@@ -58,20 +58,23 @@ class BMI_calculator : Fragment() {
         weightTag.setText(profile?.weight)
 
         var BMItag = requireView().findViewById<EditText>(R.id.BMIText)
-        Log.i("test", "bmi: " + HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height!!.toInt()))
-        BMItag.text = Editable.Factory.getInstance().newEditable(HealthCalculator().calculateBMI(profile?.weight.toString(), profile?.height!!.toInt()))
+        Log.i("test", "bmi: " + HealthCalculator().calculateBMI(profile?.weight.toString(), (profile?.height?.toInt()
+            ?.plus(48)).toString()))
+        BMItag.text = Editable.Factory.getInstance().newEditable(HealthCalculator().calculateBMI(profile?.weight.toString(), (profile?.height?.toInt()
+            ?.plus(48)).toString()))
 
         val BMiButton = view.findViewById<Button>(R.id.CalculateBMIButton)
 
         BMiButton.setOnClickListener {
             var checkWeight = weightTag.text.toString()
-            var checkHeight = heightTag.selectedItemPosition
+            var checkHeight = (heightTag.selectedItemPosition + 48).toString()
             if (checkHeight == null || checkWeight == "")
             {
-                checkHeight = profile?.height!!.toInt()
-                checkWeight = profile?.weight.toString()
+                checkHeight = (profile?.height!!.toInt() + 48).toString()
+                checkWeight = profile?.weight!!.toInt().toString()
             }
             try {
+                Log.i("test", "${checkHeight}, $checkWeight")
                 BMItag.text = Editable.Factory.getInstance().newEditable(HealthCalculator().calculateBMI(checkWeight, checkHeight))
             }
             catch (e: Exception) {

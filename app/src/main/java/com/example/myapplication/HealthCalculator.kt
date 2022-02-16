@@ -57,7 +57,7 @@ class HealthCalculator {
 
     }
 
-    fun calculateBMI(weight: String, height: Int): String {
+    fun calculateBMI(weight: String, height: String): String {
         return try {
             (703 * (weight.toDouble() / height.toDouble().pow(2.0))).toInt().toString()
         } catch (e: Exception){
