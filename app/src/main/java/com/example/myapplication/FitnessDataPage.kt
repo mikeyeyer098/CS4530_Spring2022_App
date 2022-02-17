@@ -146,7 +146,11 @@ class FitnessDataPage : Fragment() {
                 regimenSpinner.selectedItem.toString()
             val activityText : String =
                 activitySpinner.selectedItem.toString()
-
+            weightTag.setTextIsSelectable(false)
+            heightTag.isEnabled = false
+            poundsSpinner.isEnabled = false
+            regimenSpinner.isEnabled = false
+            activitySpinner.isEnabled = false
             updateProfileButton.isEnabled = false
             editProfileButton.isEnabled = true
 

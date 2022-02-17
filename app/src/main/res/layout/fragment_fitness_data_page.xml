@@ -13,7 +13,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="10dp"
                 >
 
                 <ImageButton
@@ -73,7 +73,7 @@
                     android:layout_weight="0.6"
                     android:padding="5sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="5dp"
@@ -87,7 +87,7 @@
                     android:layout_weight="0.6"
                     android:padding="5sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="5dp"
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="0dp"
                 android:layout_marginTop="5dp">
 
 
@@ -176,7 +176,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="0dp">
                 <Spinner
                     android:id="@+id/regimenSpinner"
@@ -211,6 +211,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
+                    android:layout_gravity="center_vertical"
                     android:layout_width="0dp"
                     android:layout_weight="0.6"
                     android:padding="5sp"
@@ -222,13 +223,13 @@
                     android:text="Weight goal:"
                     android:fontFamily="@font/comfortaa_bold"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textAlignment="center"/>
+                    android:textSize="18sp" />
             <Spinner
                 android:id="@+id/poundsGoalSpinner"
                 android:layout_width="0dp"
                 android:layout_weight="0.7"
                 android:layout_height="40dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp"
@@ -252,7 +253,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="0.5"
                     android:backgroundTint="@drawable/green_background"
                     android:fontFamily="@font/comfortaa_bold"
