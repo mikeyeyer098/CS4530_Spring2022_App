@@ -8,18 +8,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.content.Intent
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.button.MaterialButton
+import org.json.JSONException
+import org.json.JSONObject
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -88,28 +87,57 @@ class home_page : Fragment() {
             fragmentTransaction?.commit()
         }
 
-
         getWeatherDetails(view)
 
         super.onViewCreated(view, savedInstanceState)
     }
 
-    fun getWeatherDetails(view: View) {
+    fun getWeatherDetails(view: View){
         // Instantiate the RequestQueue.
-        val queue = Volley.newRequestQueue(view.context)
+        //val queue = Volley.newRequestQueue(view.context)
         val city = profile?.city
         val id = "4dbd2ed7d890d4f83982194472e820f5"
-        val url = "http://api.openweathermap.org/data/2.5/weather?q=Beijing&appid=4dbd2ed7d890d4f83982194472e820f5"
+        val url = " https://api.openweathermap.org/data/2.5/weather?q=${city?.replace("\\s".toRegex(), "")}&appid=4dbd2ed7d890d4f83982194472e820f5"
+        val queue = Volley.newRequestQueue(view.context)
 
-        // Request a string response from the provided URL.
+        //Request a string response from the provided URL.
         val stringRequest = StringRequest(Request.Method.GET, url,
-            Response.Listener<String> { response ->
+            { response ->
                 // Display the first 500 characters of the response string.
                 Log.i("test", "Response is: ${response.substring(0, 500)}")
-            },
-            Response.ErrorListener { Log.i("test", "bad api request")})
+                var jsonresponse = JSONObject(response)
+                var temp = jsonresponse.getJSONObject("main").getDouble("temp")
+                temp -= 273.15
+                temp *= (9 / 5)
+                temp += 32
 
-        // Add the request to the RequestQueue.
+                view.findViewById<TextView>(R.id.TemperatureHighText).text = temp.toInt().toString() + " \u2109"
+
+                when(jsonresponse.getJSONArray("weather").getJSONObject(0).getString("icon")) {
+                    "01d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a01d)
+                    "01n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a01n)
+                    "02d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a02d)
+                    "02n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a02n)
+                    "03d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a03n)
+                    "03n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a03n)
+                    "04d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a04d)
+                    "04n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a04n)
+                    "09d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a09d)
+                    "09n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a09n)
+                    "10d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a10d)
+                    "10n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a10n)
+                    "11d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a11d)
+                    "11n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a11n)
+                    "13d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a13d)
+                    "13n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a13n)
+                    "50d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a50d)
+                    "50n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a50n)
+                }
+
+            },
+            { Log.i("test", "That didn't work!") })
+
+        //Add the request to the RequestQueue.
         queue.add(stringRequest)
     }
 

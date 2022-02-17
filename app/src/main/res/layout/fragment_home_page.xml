@@ -131,7 +131,6 @@
                         android:id="@+id/WeatherImageView"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:src="@drawable/sun"
                         android:scaleType="centerCrop"
                         android:layout_gravity="center"
                         />
@@ -144,15 +143,7 @@
                             android:id="@+id/TemperatureHighText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="55*"
-                            android:fontFamily="@font/comfortaa_bold"
-                            android:textSize="25sp"
-                            />
-                        <TextView
-                            android:id="@+id/TemperatureLowText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="35*"
+                            android:text="NA"
                             android:fontFamily="@font/comfortaa_bold"
                             android:textSize="25sp"
                             />
