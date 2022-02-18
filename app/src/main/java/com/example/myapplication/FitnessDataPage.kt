@@ -178,6 +178,33 @@ class FitnessDataPage : Fragment() {
             arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.modules_side_bar, modules)
 
             moduleListView.adapter = arrayAdapter
+
+            moduleListView.setOnItemClickListener { parent, _, position, _ ->
+                val selectedItem = parent.getItemAtPosition(position) as String
+                if (selectedItem == "Homepage") {
+                    val fragmentTransaction = fragmentManager?.beginTransaction()
+
+                    profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
+                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
+                    }
+
+                    fragmentTransaction?.setReorderingAllowed(true)
+                    fragmentTransaction?.addToBackStack(null)
+                    fragmentTransaction?.commit()
+                } else if (selectedItem == "BMI Calculator") {
+                    val fragmentTransaction = fragmentManager?.beginTransaction()
+
+                    profile?.let { it1 -> BMI_calculator.newInstance(it1) }?.let { it2 ->
+                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
+                    }
+
+                    fragmentTransaction?.setReorderingAllowed(true)
+                    fragmentTransaction?.addToBackStack(null)
+                    fragmentTransaction?.commit()
+                } else if (selectedItem == "My Profile") {
+                    // TODO: ADD NAVIGATION TO PROFILE WHEN XML IS DONE
+                }
+            }
         }
 
 

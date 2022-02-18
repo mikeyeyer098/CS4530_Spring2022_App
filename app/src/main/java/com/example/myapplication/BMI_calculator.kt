@@ -107,6 +107,33 @@ class BMI_calculator : Fragment() {
             arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.modules_side_bar, modules)
 
             moduleListView.adapter = arrayAdapter
+
+            moduleListView.setOnItemClickListener { parent, _, position, _ ->
+                val selectedItem = parent.getItemAtPosition(position) as String
+                if (selectedItem == "My Fitness Regime") {
+                    val fragmentTransaction = fragmentManager?.beginTransaction()
+
+                    profile?.let { it1 -> FitnessDataPage.newInstance(it1) }?.let { it2 ->
+                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
+                    }
+
+                    fragmentTransaction?.setReorderingAllowed(true)
+                    fragmentTransaction?.addToBackStack(null)
+                    fragmentTransaction?.commit()
+                } else if (selectedItem == "Homepage") {
+                    val fragmentTransaction = fragmentManager?.beginTransaction()
+
+                    profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
+                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
+                    }
+
+                    fragmentTransaction?.setReorderingAllowed(true)
+                    fragmentTransaction?.addToBackStack(null)
+                    fragmentTransaction?.commit()
+                } else if (selectedItem == "My Profile") {
+                    // TODO: ADD NAVIGATION TO PROFILE WHEN XML IS DONE
+                }
+            }
         }
 
         super.onViewCreated(view, savedInstanceState)
