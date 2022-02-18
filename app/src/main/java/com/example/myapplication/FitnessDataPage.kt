@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -36,6 +38,12 @@ class FitnessDataPage : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_fitness_data_page, container, false)
+    }
+
+    fun isTablet(context: Context): Boolean {
+        return ((context.getResources().getConfiguration().screenLayout
+                and Configuration.SCREENLAYOUT_SIZE_MASK)
+                >= Configuration.SCREENLAYOUT_SIZE_LARGE)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -161,6 +169,16 @@ class FitnessDataPage : Fragment() {
           //  profile?:regimen = regimenText
         }
 
+        if(isTablet(this.requireContext())) {
+            val arrayAdapter : ArrayAdapter<String>
+            val modules = arrayOf(
+                "Homepage", "My Profile", "BMI Calculator"
+            )
+            var moduleListView = view.findViewById<ListView>(R.id.moduleListFitness)
+            arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.modules_side_bar, modules)
+
+            moduleListView.adapter = arrayAdapter
+        }
 
 
         super.onViewCreated(view, savedInstanceState)

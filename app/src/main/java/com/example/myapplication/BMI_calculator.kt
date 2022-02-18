@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -27,6 +29,12 @@ class BMI_calculator : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_b_m_i_calculator, container, false)
+    }
+
+    fun isTablet(context: Context): Boolean {
+        return ((context.getResources().getConfiguration().screenLayout
+                and Configuration.SCREENLAYOUT_SIZE_MASK)
+                >= Configuration.SCREENLAYOUT_SIZE_LARGE)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -88,6 +96,17 @@ class BMI_calculator : Fragment() {
         backButton.setOnClickListener {
             Log.i("test", "back button pressed")
             fragmentManager?.popBackStack()
+        }
+
+        if(isTablet(this.requireContext())) {
+            val arrayAdapter : ArrayAdapter<String>
+            val modules = arrayOf(
+                "Homepage", "My Profile", "My Fitness Regime"
+            )
+            var moduleListView = view.findViewById<ListView>(R.id.moduleListBMI)
+            arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.modules_side_bar, modules)
+
+            moduleListView.adapter = arrayAdapter
         }
 
         super.onViewCreated(view, savedInstanceState)

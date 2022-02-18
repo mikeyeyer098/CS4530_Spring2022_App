@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0C343D"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingHorizontal="10dp"
+            android:background="#B4A7D6"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="Healthy Health"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="TextContrastCheck" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please fill in the following information:"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="18dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                />
+            <EditText
+                android:id="@+id/nameTextField"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text"
+                android:paddingHorizontal="10dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:hint="Name:"
+                android:lines="1"
+                android:maxLines="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+
+            >
+
+            <EditText
+                android:id="@+id/heightTextField"
+                android:layout_width="0dp"
+                android:layout_weight=".4"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text"
+                android:paddingHorizontal="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:hint="Height:"
+                android:lines="1"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/weightTextField"
+                android:layout_width="0dp"
+                android:layout_weight=".4"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text"
+                android:paddingHorizontal="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:hint="Weight:"
+                android:lines="1"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+            <!--        <com.hbb20.CountryCodePicker-->
+            <!--            android:id="@+id/etCountry"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginBottom="8dp"-->
+            <!--            android:layout_marginEnd="8dp"-->
+            <!--            android:layout_marginLeft="8dp"-->
+            <!--            android:layout_marginRight="8dp"-->
+            <!--            android:layout_marginStart="8dp"-->
+            <!--            android:layout_marginTop="8dp"-->
+            <!--            android:hint="Country:"-->
+            <!--            android:fontFamily="sans-serif-light"-->
+            <!--            android:maxLines="1"-->
+            <!--            android:lines="1"-->
+            <!--            />-->
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            >
+
+            <EditText
+                android:id="@+id/ageTextField"
+                android:layout_width="0dp"
+                android:layout_weight=".4"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text"
+                android:paddingHorizontal="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:hint="Age:"
+                android:lines="1"
+                android:maxLines="1"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/genderTextField"
+                android:layout_width="0dp"
+                android:layout_weight=".6"
+                android:layout_height="40dp"
+                android:paddingHorizontal="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:background="@drawable/edit_text"
+                android:hint="Gender:"
+                android:lines="1"
+                android:maxLines="1"
+                android:minWidth="48dp"
+                android:minHeight="48dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            >
+
+
+            <EditText
+                android:id="@+id/cityTextField"
+                android:layout_width="0dp"
+                android:layout_weight=".4"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text"
+                android:paddingHorizontal="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:hint="City:"
+                android:lines="1"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Take a profile picture:"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="25dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                />
+
+            <ImageView
+                android:id="@+id/ProfilePicImageView"
+                android:layout_width="136dp"
+                android:layout_height="135dp"
+                app:srcCompat="@drawable/profile_pic_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="5dp"
+            android:gravity="center"
+            >
+
+            <ImageButton
+                android:id="@+id/createProfileButton"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="Create Profile"
+                android:background="@drawable/button"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <ImageButton
+                android:id="@+id/TakePictureButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/button"
+                android:fontFamily="@font/comfortaa_bold"
+                android:text="Take Picture"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
