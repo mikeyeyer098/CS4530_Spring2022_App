@@ -131,7 +131,15 @@ class BMI_calculator : Fragment() {
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
                 } else if (selectedItem == "My Profile") {
-                    // TODO: ADD NAVIGATION TO PROFILE WHEN XML IS DONE
+                    val fragmentTransaction = fragmentManager?.beginTransaction()
+
+                    profile?.let { it1 -> ProfilePage.newInstance(it1) }?.let { it2 ->
+                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
+                    }
+
+                    fragmentTransaction?.setReorderingAllowed(true)
+                    fragmentTransaction?.addToBackStack(null)
+                    fragmentTransaction?.commit()
                 }
             }
         }
