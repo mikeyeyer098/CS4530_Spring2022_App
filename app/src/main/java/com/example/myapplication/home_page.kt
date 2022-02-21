@@ -75,6 +75,21 @@ class home_page : Fragment() {
             fragmentTransaction?.commit()
         }
 
+        val profileThumbnail = view.findViewById<ImageButton>(R.id.ProfilePicThumbnail)
+
+        profileThumbnail.setOnClickListener {
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+            profile?.let { it1 -> ProfilePage.newInstance(it1) }?.let { it2 ->
+                fragmentTransaction?.replace(
+                    R.id.fragmentContainer,
+                    it2
+                )
+            }
+            fragmentTransaction?.setReorderingAllowed(true)
+            fragmentTransaction?.addToBackStack(null)
+            fragmentTransaction?.commit()
+        }
+
         val bmiButton = view.findViewById<Button>(R.id.BMICalcButton)
         bmiButton.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
