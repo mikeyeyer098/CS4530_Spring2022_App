@@ -23,6 +23,16 @@ class BMI_calculator : Fragment() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("FRAGMENT", "bmi")
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroy() {
+
+        super.onDestroy()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

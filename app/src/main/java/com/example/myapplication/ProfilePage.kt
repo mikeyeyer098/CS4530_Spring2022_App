@@ -31,6 +31,11 @@ class ProfilePage : Fragment() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("FRAGMENT", "prof")
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
