@@ -98,6 +98,21 @@ class BMI_calculator : Fragment() {
             fragmentManager?.popBackStack()
         }
 
+        val profileThumbnail = view.findViewById<ImageButton>(R.id.ProfilePicThumbnail)
+
+        profileThumbnail.setOnClickListener {
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+            profile?.let { it1 -> ProfilePage.newInstance(it1) }?.let { it2 ->
+                fragmentTransaction?.replace(
+                    R.id.fragmentContainer,
+                    it2
+                )
+            }
+            fragmentTransaction?.setReorderingAllowed(true)
+            fragmentTransaction?.addToBackStack(null)
+            fragmentTransaction?.commit()
+        }
+
         if(isTablet(this.requireContext())) {
             val arrayAdapter : ArrayAdapter<String>
             val modules = arrayOf(
