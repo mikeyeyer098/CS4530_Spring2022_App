@@ -258,7 +258,7 @@
                     android:backgroundTint="@drawable/green_background"
                     android:fontFamily="@font/comfortaa_bold"
                     android:padding="10dp"
-                    android:text="edit profile"
+                    android:text="edit data"
                     android:textColor="#434343"
                     android:textSize="16sp" />
 
@@ -274,7 +274,7 @@
                     android:backgroundTint="@drawable/green_background"
                     android:fontFamily="@font/comfortaa_bold"
                     android:padding="10dp"
-                    android:text="update profile"
+                    android:text="update data"
                     android:textColor="#434343"
                     android:textSize="16sp" />
             </LinearLayout>
