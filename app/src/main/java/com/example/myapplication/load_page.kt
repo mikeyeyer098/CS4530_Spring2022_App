@@ -67,6 +67,7 @@ class load_page : Fragment() {
 
         val ageSpinner = view.findViewById(R.id.ageSpinner) as Spinner
         var ages : ArrayList<String> = arrayListOf()
+        ages.add("Age:")
         for(i in 18..100){
             ages.add("$i years old")
         }
@@ -77,6 +78,7 @@ class load_page : Fragment() {
 
         val heightSpinner : Spinner = view.findViewById(R.id.heightSpinner)
         var heights : ArrayList<String> = arrayListOf()
+        heights.add("Height:")
         for(i in 4..7) {
             for (j in 0..11) {
                 heights.add("$i \' $j \"")
