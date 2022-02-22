@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.hbb20.CountryCodePicker
 import java.io.File
 
 private val PERMISSIONCODE = 100
@@ -100,6 +101,8 @@ class load_page : Fragment() {
             }
         }
 
+        val countrySpinner : CountryCodePicker = view.findViewById(R.id.ccp)
+
         val createProfileButton: Button = view.findViewById(R.id.createProfileButton)
 
         createProfileButton.setOnClickListener {
@@ -109,15 +112,16 @@ class load_page : Fragment() {
                     heightSpinner.selectedItemPosition
                 val weightText: String =
                     view.findViewById<EditText>(R.id.weightTextField).text.toString()
-                val ageText: String = ageSpinner.selectedItem.toString()
-                val genderText: String = genderSpinner.selectedItem.toString()
+                val ageSelection: Int = ageSpinner.selectedItemPosition
+                val genderSelection: Int = genderSpinner.selectedItemPosition
                 val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
+                val countrySelection: Int = countrySpinner.selectedCountryCodeAsInt
 
 
 
                 profile = Profile(
-                    nameText, heightSelection.toString(), weightText, ageText, genderText,
-                    cityText, photoPath, "0", "", "", "", "", profilePic
+                    nameText, heightSelection.toString(), weightText, ageSelection.toString(), genderSelection.toString(),
+                    cityText, countrySelection.toString(), photoPath, "0", "", "", "", "", profilePic
                 )
                 Log.i("test", profile!!.printForStoring())
                 Log.i("test", requireActivity().application.cacheDir.absolutePath)

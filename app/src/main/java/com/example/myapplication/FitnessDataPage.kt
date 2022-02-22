@@ -116,12 +116,12 @@ class FitnessDataPage : Fragment() {
         var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
         calorieTag.text = HealthCalculator().calculateDailyCalories(
             HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
-                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString()),
-            profile?.weightGoal.toString(), profile?.sex.toString())
+                profile?.age.toString(), profile?.active.toString(), profile?.gender.toString()),
+            profile?.weightGoal.toString(), profile?.gender.toString())
 
         var bmrTag = requireView().findViewById<TextView>(R.id.BMRText)
         bmrTag.text = HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
-                profile?.age.toString(), profile?.active.toString(), profile?.sex.toString())
+                profile?.age.toString(), profile?.active.toString(), profile?.gender.toString())
 
         var bmiTag = view.findViewById<TextView>(R.id.BMRText)
         bmiTag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)).toString())
