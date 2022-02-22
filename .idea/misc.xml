@@ -3,15 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout-sw600dp/activity_main.xml" value="0.13465952563121653" />
-        <entry key="app/src/main/res/layout-sw600dp/fragment_b_m_i_calculator.xml" value="0.22" />
-        <entry key="app/src/main/res/layout-sw600dp/fragment_fitness_data_page.xml" value="0.22" />
-        <entry key="app/src/main/res/layout-sw600dp/fragment_home_page.xml" value="0.1" />
-        <entry key="app/src/main/res/layout-sw600dp/fragment_load_page.xml" value="0.13465952563121653" />
-        <entry key="app/src/main/res/layout-sw600dp/fragment_profile_page.xml" value="0.25" />
-        <entry key="app/src/main/res/layout-sw600dp/load_page.xml" value="0.13465952563121653" />
-        <entry key="app/src/main/res/layout-sw600dp/main_window.xml" value="0.13465952563121653" />
-        <entry key="app/src/main/res/layout/modules_side_bar.xml" value="0.27447916666666666" />
         <entry key="app/src/main/res/drawable/activity_level_array.xml" value="0.1545" />
         <entry key="app/src/main/res/drawable/button.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/drawable/edit_text.xml" value="0.1545" />
@@ -28,6 +19,7 @@
         <entry key="app/src/main/res/layout-land/fragment_home_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout-land/fragment_load_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout-land/fragment_profile_page.xml" value="0.26197916666666665" />
+        <entry key="app/src/main/res/layout-sw600dp/fragment_load_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout-v26/load_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13994565217391305" />
         <entry key="app/src/main/res/layout/fragment_b_m_i_calculator.xml" value="0.25" />
