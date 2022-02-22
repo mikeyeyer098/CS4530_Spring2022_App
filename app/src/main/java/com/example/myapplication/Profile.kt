@@ -7,8 +7,9 @@ class Profile(
     var height: String, // saved as the index selection in the spinner (0 = 4' tall)
     var weight: String,
     var age: String,
-    var sex: String,
+    var gender: String,
     var city: String,
+    var country: String,
     var imagePath: String,
     var active: String,
     var bmr: String,
@@ -34,9 +35,9 @@ class Profile(
             age = "NA"
         }
 
-        if (sex == "")
+        if (gender == "")
         {
-            sex = "NA"
+            gender = "NA"
         }
 
         if (city == "")
@@ -56,7 +57,7 @@ class Profile(
 
     fun printForStoring(): String {
         return "${this.name} ${this.height} ${this.weight} " +
-                "${this.age} ${this.sex} ${this.city} " +
+                "${this.age} ${this.gender} ${this.city} ${this.country} " +
                 "${this.imagePath} ${this.active} " +
                 "${this.weightGoal} ${this.regimen} " +
                 "${this.bmr} ${this.bmi} "

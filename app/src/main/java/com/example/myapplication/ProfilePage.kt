@@ -1,6 +1,8 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Editable
@@ -13,6 +15,8 @@ import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.*
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +53,13 @@ class ProfilePage : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val backButton = view.findViewById<ImageButton>(R.id.backArrow)
+
+        backButton.setOnClickListener {
+            Log.i("test", "back button pressed")
+            fragmentManager?.popBackStack()
+        }
 
         if (isTablet(this.requireContext())) {
             val arrayAdapter: ArrayAdapter<String>
