@@ -122,6 +122,11 @@ class home_page : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("FRAGMENT", "home")
+        super.onSaveInstanceState(outState)
+    }
+
     fun getWeatherDetails(view: View){
         // Instantiate the RequestQueue.
         //val queue = Volley.newRequestQueue(view.context)

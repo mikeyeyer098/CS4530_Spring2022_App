@@ -46,6 +46,11 @@ class load_page : Fragment() {
         return inflater.inflate(R.layout.fragment_load_page, container, false)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("FRAGMENT", "load")
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         nav = parentFragmentManager
 

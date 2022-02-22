@@ -46,6 +46,11 @@ class FitnessDataPage : Fragment() {
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("FRAGMENT", "fitdat")
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)

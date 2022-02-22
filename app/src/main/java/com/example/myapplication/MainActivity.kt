@@ -23,10 +23,34 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        replaceFragment(load_page())
+        if (savedInstanceState == null) {
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+            replaceFragment(load_page())
+        }
+        else {
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+            if(savedInstanceState.getString("FRAGMENT") == "bmi")
+            {
+                replaceFragment(BMI_calculator())
+            }
+            if(savedInstanceState.getString("FRAGMENT") == "home")
+            {
+                replaceFragment(home_page())
+            }
+            if(savedInstanceState.getString("FRAGMENT") == "prof")
+            {
+                replaceFragment(ProfilePage())
+            }
+            if(savedInstanceState.getString("FRAGMENT") == "fitdat")
+            {
+                replaceFragment(FitnessDataPage())
+            }
+            if(savedInstanceState.getString("FRAGMENT") == "load") {
+                replaceFragment(load_page())
+            }
+        }
     }
 
     private fun replaceFragment(fragment : Fragment) {
