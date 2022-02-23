@@ -77,6 +77,8 @@ class ProfilePage : Fragment() {
             }
         }
 
+        genderSpinner.isEnabled = false
+
         val ageSpinner = view.findViewById(R.id.ageSpinner) as Spinner
         var ages : ArrayList<String> = arrayListOf()
         for(i in 18..100){
@@ -94,6 +96,9 @@ class ProfilePage : Fragment() {
                 ageSpinner.setSelection(0)
             }
         }
+
+        ageSpinner.isEnabled = false
+
         val heightSpinner : Spinner = view.findViewById(R.id.heightSpinner)
         var heights : ArrayList<String> = arrayListOf()
         for(i in 4..7) {
@@ -105,6 +110,7 @@ class ProfilePage : Fragment() {
         heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         heightSpinner.adapter = heightAdapter
         heightSpinner.prompt = "Select height:"
+        heightSpinner.isEnabled = false
 
         profile?.height?.toInt().let {
             if (it != null) {
@@ -118,11 +124,15 @@ class ProfilePage : Fragment() {
         val weightTag = view.findViewById<EditText>(R.id.weightTextField)
         weightTag.setText(profile?.weight)
 
+        weightTag.setTextIsSelectable(false)
+
         val cityTag = view.findViewById<EditText>(R.id.cityTextField)
         cityTag.setText(profile?.city)
+        cityTag.setTextIsSelectable(false)
 
         val nameTag = view.findViewById<EditText>(R.id.nameTextField)
         nameTag.setText(profile?.name)
+        nameTag.setTextIsSelectable(false)
 
         val updateProfileButton = view.findViewById<Button>(R.id.updateProfileButton)
         updateProfileButton.isEnabled = false
