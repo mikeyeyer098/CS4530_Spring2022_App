@@ -41,7 +41,7 @@ class BMI_calculator : Fragment() {
         return inflater.inflate(R.layout.fragment_b_m_i_calculator, container, false)
     }
 
-    fun isTablet(context: Context): Boolean {
+    private fun isTablet(context: Context): Boolean {
         return ((context.getResources().getConfiguration().screenLayout
                 and Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE)

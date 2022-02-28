@@ -187,6 +187,7 @@ class ProfilePage : Fragment() {
             val modules = arrayOf(
                 "Homepage", "My Fitness Regime", "BMI Calculator"
             )
+
             var moduleListView = view.findViewById<ListView>(R.id.moduleListProfile)
             arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.modules_side_bar, modules)
 
