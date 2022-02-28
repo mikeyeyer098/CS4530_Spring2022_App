@@ -25,7 +25,7 @@
             android:fontFamily="@font/comfortaa_bold"
             android:text="Healthy Health"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="45sp"
             tools:ignore="TextContrastCheck" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/comfortaa_bold"
                 android:textColor="@color/white"
-                android:textSize="40sp"
+                android:textSize="55sp"
                 android:textAlignment="center"
                 />
             <EditText
@@ -61,7 +61,7 @@
                 android:fontFamily="@font/comfortaa_bold"
                 android:textColor="@color/white"
                 android:textColorHint="#d9d9d9"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:hint="Name:"
                 android:lines="1"
                 android:maxLines="1" />
@@ -78,7 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="75dp"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:paddingHorizontal="10dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
@@ -91,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="75dp"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:background="@drawable/edit_text"
                 android:paddingHorizontal="10dp"
                 android:layout_marginStart="15dp"
@@ -117,7 +117,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="75dp"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:paddingHorizontal="10dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
@@ -130,7 +130,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".6"
                 android:layout_height="75dp"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:paddingHorizontal="10dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
@@ -149,7 +149,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="75dp"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:background="@drawable/edit_text"
                 android:paddingHorizontal="10dp"
                 android:layout_marginStart="15dp"
@@ -165,7 +165,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".4"
                 android:layout_height="75dp"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:background="@drawable/edit_text"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
@@ -191,24 +191,26 @@
                 android:orientation="horizontal">
             <ImageView
                 android:id="@+id/ProfilePicImageView"
-                android:layout_width="136dp"
-                android:layout_height="135dp"
+                android:layout_width="0dp"
+                android:layout_height="170dp"
+                android:layout_weight="0.4"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 app:srcCompat="@drawable/profile_pic_button"/>
                 <Button
                     android:id="@+id/TakePictureButton"
                     android:layout_width="0dp"
-                    android:layout_weight=".7"
+                    android:layout_weight=".6"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
+                    android:padding="15dp"
                     android:backgroundTint="@drawable/green_background"
                     android:text="take profile pic"
                     android:fontFamily="@font/comfortaa_bold"
                     android:textColor="#434343"
                     android:layout_gravity="center_vertical"
-                    android:textSize="18sp" />
+                    android:textSize="35sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -225,12 +227,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
-                android:padding="10dp"
+                android:padding="15dp"
                 android:fontFamily="@font/comfortaa_bold"
                 android:text="Create Profile"
                 android:backgroundTint="@drawable/green_background"
                 android:textColor="#434343"
-                android:textSize="18sp" />
+                android:textSize="45sp" />
 
 
         </LinearLayout>

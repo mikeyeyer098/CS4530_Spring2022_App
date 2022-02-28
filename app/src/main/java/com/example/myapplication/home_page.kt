@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.media.Image
 import android.net.Uri
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
+import android.content.res.Configuration
 import android.util.Log
 import android.widget.*
 import com.android.volley.Request
@@ -119,6 +121,9 @@ class home_page : Fragment() {
 
         getWeatherDetails(view)
 
+        if(isTablet(this.requireContext())) {
+
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -178,6 +183,12 @@ class home_page : Fragment() {
 
         //Add the request to the RequestQueue.
         queue.add(stringRequest)
+    }
+
+    fun isTablet(context: Context): Boolean {
+        return ((context.getResources().getConfiguration().screenLayout
+                and Configuration.SCREENLAYOUT_SIZE_MASK)
+                >= Configuration.SCREENLAYOUT_SIZE_LARGE)
     }
 
     companion object {
