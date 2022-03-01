@@ -43,17 +43,88 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/profile_pic" />
         </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/comfortaa_bold"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="7dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:text="Modules"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:layout_gravity="center_horizontal"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/widget_background"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
+
+                <Button
+                    android:id="@+id/MyProfileButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:backgroundTint="@drawable/yellow_background"
+                    android:text="My Profile"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textColor="#434343"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    />
+
+                <Button
+                    android:id="@+id/BMICalcButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:backgroundTint="@drawable/pink_background"
+                    android:text="BMI Calculator"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textColor="#434343"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    />
+            <Button
+                android:id="@+id/MyFitnessRegimenButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginBottom="7dp"
+                android:backgroundTint="@drawable/green_background"
+                android:text="My Fitness Regimen"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="#434343"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                />
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="2dp"
-            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
 
@@ -120,7 +191,7 @@
                     android:textAlignment="center"
                     android:layout_gravity="center_horizontal"
                     android:textSize="18sp"
-                     />
+                    />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
@@ -160,79 +231,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/widget_background"
-            android:layout_marginTop="30dp"
-            android:padding="5dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/comfortaa_bold"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="7dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:text="Modules"
-                android:textColor="@color/white"
-                android:textAlignment="center"
-                android:textSize="25sp"
-                android:layout_gravity="center_horizontal"/>
-                <Button
-                    android:id="@+id/MyProfileButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:backgroundTint="@drawable/yellow_background"
-                    android:text="My Profile"
-                    android:fontFamily="@font/comfortaa_bold"
-                    android:textColor="#434343"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    />
-
-                <Button
-                    android:id="@+id/BMICalcButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:backgroundTint="@drawable/pink_background"
-                    android:text="BMI Calculator"
-                    android:fontFamily="@font/comfortaa_bold"
-                    android:textColor="#434343"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    />
-            <Button
-                android:id="@+id/MyFitnessRegimenButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_marginBottom="7dp"
-                android:backgroundTint="@drawable/green_background"
-                android:text="My Fitness Regimen"
-                android:fontFamily="@font/comfortaa_bold"
-                android:textColor="#434343"
-                android:textAlignment="center"
-                android:textSize="22sp"
-                />
-
-        </LinearLayout>
 </LinearLayout>
     </LinearLayout>
 </FrameLayout>

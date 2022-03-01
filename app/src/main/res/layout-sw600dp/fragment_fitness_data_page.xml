@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0C343D"
-    tools:context=".FitnessDataPage">
+    tools:context=".ProfilePage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,13 +14,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/backArrow"
-                android:layout_width="65dp"
-                android:layout_height="40dp"
+                android:layout_width="105dp"
+                android:layout_height="60dp"
                 android:layout_marginLeft="5dp"
                 android:adjustViewBounds="true"
                 android:padding="0dp"
@@ -42,44 +42,47 @@
                 android:text="Healthy Health"
                 android:textAlignment="center"
                 android:textColor="#434343"
-                android:textSize="22sp"
+                android:textSize="35sp"
                 tools:ignore="TextContrastCheck" />
 
             <ImageButton
                 android:id="@+id/ProfilePicThumbnail"
-                android:layout_width="50dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:padding="0dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/profile_pic" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
             <ListView
                 android:id="@+id/moduleListFitness"
-                android:layout_width="200dp"
-                android:layout_height="match_parent">
-            </ListView>
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="55sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="900dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/comfortaa_bold"
                     android:text="Your Fitness Data:"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="26sp" />
+                    android:textSize="45sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -93,13 +96,14 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_weight="0.6"
+                        android:layout_weight="0.33"
                         android:fontFamily="@font/comfortaa_bold"
                         android:padding="5sp"
                         android:text="Height:"
+                        android:layout_gravity="center"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="30sp" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -108,13 +112,29 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_weight="0.6"
+                        android:layout_weight="0.33"
                         android:fontFamily="@font/comfortaa_bold"
                         android:padding="5sp"
+                        android:layout_gravity="center"
                         android:text="Weight:"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="30sp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.33"
+                        android:fontFamily="@font/comfortaa_bold"
+                        android:padding="5sp"
+                        android:text="Fitness Goal:"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -128,99 +148,79 @@
                     <Spinner
                         android:id="@+id/heightSpinner"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_weight=".33"
+                        android:layout_height="50dp"
+                        android:paddingHorizontal="10dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:layout_weight=".4"
-                        android:background="@drawable/edit_text"
-                        android:paddingHorizontal="10dp" />
+                        android:background="@drawable/edit_text" />
 
                     <EditText
                         android:id="@+id/weightTextField"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_weight=".4"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight=".33"
                         android:background="@drawable/edit_text"
                         android:fontFamily="@font/comfortaa_bold"
                         android:lines="1"
                         android:maxLines="1"
-                        android:paddingHorizontal="10dp"
+                        android:padding="8dp"
+                        android:layout_gravity="center"
                         android:textColor="@color/white" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_weight="0.6"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="5sp"
-                        android:text="Fitness Goal:"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_weight="0.6"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="5sp"
-                        android:text="Activity Level:"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="30dp"
-                    android:orientation="horizontal">
-
                     <Spinner
                         android:id="@+id/regimenSpinner"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:layout_weight="1"
+                        android:layout_weight=".33"
                         android:background="@drawable/edit_text"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/comfortaa_bold"
                         android:padding="8dp"
                         android:textColor="@color/white" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="0.33"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/comfortaa_bold"
+                        android:padding="5sp"
+                        android:layout_gravity="center"
+                        android:text="Activity Level:"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
                     <Spinner
                         android:id="@+id/activityLevelSpinner"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:layout_weight="1"
+                        android:layout_gravity="center"
                         android:background="@drawable/edit_text"
                         android:fontFamily="@font/comfortaa_bold"
                         android:padding="8dp"
@@ -230,193 +230,202 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.33"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_marginEnd="15dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_weight="0.6"
                         android:fontFamily="@font/comfortaa_bold"
                         android:padding="5sp"
                         android:text="Weight goal:"
                         android:textAlignment="center"
+                        android:layout_gravity="center"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="30sp" />
+
 
                     <Spinner
                         android:id="@+id/poundsGoalSpinner"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight="0.7"
+                        android:layout_gravity="center"
                         android:background="@drawable/edit_text"
                         android:fontFamily="@font/comfortaa_bold"
                         android:padding="8dp"
                         android:textColor="@color/white" />
+
+
                 </LinearLayout>
-
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.33"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="0dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/editProfileButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="0.5"
-                        android:backgroundTint="@drawable/green_background"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="10dp"
-                        android:text="edit profile"
-                        android:textColor="#434343"
-                        android:textSize="16sp" />
-
-                    <Button
-                        android:id="@+id/updateProfileButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="0.6"
-                        android:backgroundTint="@drawable/green_background"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="10dp"
-                        android:text="update profile"
-                        android:textColor="#434343"
-                        android:textSize="16sp" />
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
+                <Button
+                    android:id="@+id/editProfileButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:backgroundTint="@drawable/green_background"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:padding="15dp"
+                    android:text="edit fitness data"
+                    android:textColor="#434343"
+                    android:textSize="25sp" />
+                <Button
+                    android:id="@+id/updateProfileButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:backgroundTint="@drawable/green_background"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:padding="15dp"
+                    android:text="update fitness data"
+                    android:textColor="#434343"
+                    android:textSize="25sp" />
                 </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight="0.6"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="5sp"
-                        android:text="Daily calories to meet your goal:"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/DailyCaloriesText"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight=".4"
-                        android:background="#b4a7d6"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="8dp"
-                        android:textColor="#434343" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight="0.6"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="5sp"
-                        android:text="Your BMR:"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/BMRText"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight=".4"
-                        android:background="#b4a7d6"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="8dp"
-                        android:textColor="#434343" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight="0.6"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="5sp"
-                        android:text="Your BMI:"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/BMIText"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_weight=".4"
-                        android:background="#b4a7d6"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:padding="8dp"
-                        android:textColor="#434343" />
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1000dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_weight="0.6"
+                android:fontFamily="@font/comfortaa_bold"
+                android:padding="5sp"
+                android:text="Daily calories to meet your goal:"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/DailyCaloriesText"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_weight=".3"
+                android:background="#b6d7a8"
+                android:fontFamily="@font/comfortaa_bold"
+                android:padding="8dp"
+                android:textColor="#434343" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_weight="0.6"
+                android:fontFamily="@font/comfortaa_bold"
+                android:padding="5sp"
+                android:text="Your BMR:"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/BMRText"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_weight=".3"
+                android:background="#b6d7a8"
+                android:fontFamily="@font/comfortaa_bold"
+                android:padding="8dp"
+                android:textColor="#434343" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_weight="0.6"
+                android:fontFamily="@font/comfortaa_bold"
+                android:padding="5sp"
+                android:text="Your BMI:"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/BMIText"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_weight=".3"
+                android:background="#b6d7a8"
+                android:fontFamily="@font/comfortaa_bold"
+                android:padding="8dp"
+                android:textColor="#434343" />
+        </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

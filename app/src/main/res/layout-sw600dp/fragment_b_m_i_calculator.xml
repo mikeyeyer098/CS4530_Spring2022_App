@@ -14,13 +14,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="30dp"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/backArrow"
-                android:layout_width="65dp"
-                android:layout_height="40dp"
+                android:layout_width="105dp"
+                android:layout_height="60dp"
                 android:layout_marginLeft="5dp"
                 android:adjustViewBounds="true"
                 android:padding="0dp"
@@ -42,12 +42,12 @@
                 android:text="Healthy Health"
                 android:textAlignment="center"
                 android:textColor="#434343"
-                android:textSize="22sp"
+                android:textSize="35sp"
                 tools:ignore="TextContrastCheck" />
 
             <ImageButton
                 android:id="@+id/ProfilePicThumbnail"
-                android:layout_width="50dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:padding="0dp"
@@ -88,7 +88,7 @@
                     android:text="BMI Calculator"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:textSize="45sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -104,10 +104,11 @@
                     android:text="Input height and weight to calculate your bmi"
                     android:textAlignment="center"
                     android:textColor="#d9d9d9"
-                    android:textSize="20sp" />
+                    android:textSize="35sp" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="600dp"
+                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -124,7 +125,7 @@
                         android:text="Height:"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="30sp" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -139,11 +140,12 @@
                         android:text="Weight:"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="30sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="600dp"
+                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
@@ -153,7 +155,7 @@
                     <Spinner
                         android:id="@+id/heightSpinner"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
@@ -167,7 +169,7 @@
                     <EditText
                         android:id="@+id/weightTextField"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
@@ -183,10 +185,29 @@
                         android:textColor="@color/white" />
 
                 </LinearLayout>
+                <Button
+                    android:id="@+id/CalculateBMIButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginBottom="10dp"
+                    android:adjustViewBounds="true"
+                    android:backgroundTint="@drawable/green_background"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:text="Calculate BMI"
+                    android:textAlignment="center"
+                    android:textColor="#434343"
+                    android:textSize="35sp" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="600dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     android:orientation="horizontal">
@@ -206,12 +227,12 @@
                         android:text="Your BMI:"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="30sp" />
 
                     <EditText
                         android:id="@+id/BMIText"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_marginStart="7dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="7dp"
@@ -223,29 +244,13 @@
                         android:padding="10dp"
                         android:scaleType="fitCenter"
                         android:text=""
+                        android:layout_gravity="center"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/CalculateBMIButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="7dp"
-                    android:layout_marginBottom="10dp"
-                    android:adjustViewBounds="true"
-                    android:backgroundTint="@drawable/green_background"
-                    android:fontFamily="@font/comfortaa_bold"
-                    android:padding="10dp"
-                    android:scaleType="fitCenter"
-                    android:text="Calculate BMI"
-                    android:textAlignment="center"
-                    android:textColor="#434343"
-                    android:textSize="20sp" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

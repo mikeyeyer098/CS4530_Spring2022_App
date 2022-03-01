@@ -18,148 +18,30 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="20dp"
                 android:layout_gravity="center_horizontal"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingHorizontal="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
                 android:background="#b4a7d6"
                 android:fontFamily="@font/comfortaa_bold"
+                android:paddingHorizontal="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:text="Healthy Health"
-                android:textColor="#434343"
                 android:textAlignment="center"
-                android:textSize="22sp"
+                android:textColor="#434343"
+                android:textSize="35sp"
                 tools:ignore="TextContrastCheck" />
 
             <ImageButton
                 android:id="@+id/ProfilePicThumbnail"
-                android:layout_width="50dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:padding="0dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/profile_pic" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:orientation="horizontal"
-            android:padding="2dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-
-            >
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="170dp"
-                android:orientation="vertical"
-                android:background="@drawable/widget_background"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-
-                >
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingHorizontal="10dp"
-                    android:fontFamily="@font/comfortaa_bold"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:text="Hikes near me:"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    tools:ignore="TextContrastCheck" />
-                <ImageButton
-                    android:id="@+id/HikesFinderButton"
-                    android:layout_height="110dp"
-                    android:layout_width="wrap_content"
-                    android:background="#134f5c"
-                    android:src="@drawable/maps"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:layout_gravity="center_horizontal"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="170dp"
-                android:orientation="vertical"
-                android:background="@drawable/widget_background"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-
-                >
-                <TextView
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingHorizontal="5dp"
-                    android:fontFamily="@font/comfortaa_bold"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:text="Today's weather:"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="18sp"
-                     />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="120dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/weather_background"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="1dp">
-                    <ImageView
-                        android:id="@+id/WeatherImageView"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:src="@drawable/sun"
-                        android:scaleType="centerCrop"
-                        android:layout_gravity="center"
-                        />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="10dp">
-                        <TextView
-                            android:id="@+id/TemperatureHighText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="55*"
-                            android:fontFamily="@font/comfortaa_bold"
-                            android:textSize="25sp"
-                            />
-                        <TextView
-                            android:id="@+id/TemperatureLowText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="35*"
-                            android:fontFamily="@font/comfortaa_bold"
-                            android:textSize="25sp"
-                            />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -182,39 +64,39 @@
                 android:text="Modules"
                 android:textColor="@color/white"
                 android:textAlignment="center"
-                android:textSize="25sp"
+                android:textSize="45sp"
                 android:layout_gravity="center_horizontal"/>
-                <Button
-                    android:id="@+id/MyProfileButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:backgroundTint="@drawable/yellow_background"
-                    android:text="My Profile"
-                    android:fontFamily="@font/comfortaa_bold"
-                    android:textColor="#434343"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    />
+            <Button
+                android:id="@+id/MyProfileButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginBottom="7dp"
+                android:backgroundTint="@drawable/yellow_background"
+                android:text="My Profile"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="#434343"
+                android:textAlignment="center"
+                android:textSize="35sp"
+                />
 
-                <Button
-                    android:id="@+id/BMICalcButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:backgroundTint="@drawable/pink_background"
-                    android:text="BMI Calculator"
-                    android:fontFamily="@font/comfortaa_bold"
-                    android:textColor="#434343"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    />
+            <Button
+                android:id="@+id/BMICalcButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginBottom="7dp"
+                android:backgroundTint="@drawable/pink_background"
+                android:text="BMI Calculator"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textColor="#434343"
+                android:textAlignment="center"
+                android:textSize="35sp"
+                />
             <Button
                 android:id="@+id/MyFitnessRegimenButton"
                 android:layout_width="match_parent"
@@ -228,9 +110,117 @@
                 android:fontFamily="@font/comfortaa_bold"
                 android:textColor="#434343"
                 android:textAlignment="center"
-                android:textSize="22sp"
+                android:textSize="35sp"
                 />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:background="@drawable/widget_background"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingHorizontal="10dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="Hikes near me:"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="35sp"
+                    tools:ignore="TextContrastCheck" />
+                <ImageButton
+                    android:id="@+id/HikesFinderButton"
+                    android:layout_height="200dp"
+                    android:layout_width="wrap_content"
+                    android:background="#134f5c"
+                    android:src="@drawable/maps"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center_horizontal"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:background="@drawable/widget_background"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingHorizontal="5dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="Today's weather:"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="35sp"
+                    />
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/weather_background"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="1dp">
+                    <ImageView
+                        android:id="@+id/WeatherImageView"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        />
+
+                        <TextView
+                            android:id="@+id/TemperatureHighText"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.4"
+                            android:layout_height="wrap_content"
+                            android:text="NA"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/comfortaa_bold"
+                            android:textSize="35sp"
+                            />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
 </FrameLayout>
