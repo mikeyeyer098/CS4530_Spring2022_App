@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.hbb20.CountryCodePicker
-import java.io.File
 
 private val PERMISSIONCODE = 100
 private val CAMERACODE = 200
@@ -49,10 +48,15 @@ class load_page : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("FRAGMENT", "load")
+        outState.putParcelable("PROFILE", profile)
         super.onSaveInstanceState(outState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            profile = savedInstanceState.getParcelable("PROFILE")!!
+        }
+
         nav = parentFragmentManager
 
         val genderSpinner = view.findViewById(R.id.genderSpinner) as Spinner

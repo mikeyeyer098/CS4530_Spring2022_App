@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.myapplication.Profile.Companion.write
 import com.hbb20.CountryCodePicker
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,6 +41,7 @@ class ProfilePage : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("FRAGMENT", "prof")
+        outState.putParcelable("PROFILE", profile)
         super.onSaveInstanceState(outState)
     }
 
@@ -52,6 +54,9 @@ class ProfilePage : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            profile = savedInstanceState.getParcelable("PROFILE")!!
+        }
 
         val genderSpinner = view.findViewById(R.id.genderSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -79,6 +84,7 @@ class ProfilePage : Fragment() {
 
         var heightTag = requireView().findViewById<Spinner>(R.id.heightSpinner)
         var heights : ArrayList<String> = arrayListOf()
+        heights.add("Height:")
         for(i in 4..7) {
             for (j in 0..11) {
                 heights.add("$i \' $j \"")
@@ -103,8 +109,15 @@ class ProfilePage : Fragment() {
         val backButton = view.findViewById<ImageButton>(R.id.backArrow)
 
         backButton.setOnClickListener {
-            Log.i("test", "back button pressed")
-            fragmentManager?.popBackStack()
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+
+            profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
+                fragmentTransaction?.replace(R.id.fragmentContainer, it2)
+            }
+
+            fragmentTransaction?.setReorderingAllowed(true)
+            fragmentTransaction?.addToBackStack(null)
+            fragmentTransaction?.commit()
         }
 
         if (isTablet(this.requireContext())) {

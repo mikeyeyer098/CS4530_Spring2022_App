@@ -51,6 +51,10 @@ class home_page : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            profile = savedInstanceState.getParcelable("PROFILE")!!
+        }
+
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)
 
@@ -129,6 +133,7 @@ class home_page : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("FRAGMENT", "home")
+        outState.putParcelable("PROFILE", profile)
         super.onSaveInstanceState(outState)
     }
 

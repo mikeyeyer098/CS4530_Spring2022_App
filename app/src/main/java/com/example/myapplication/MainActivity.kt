@@ -33,19 +33,19 @@ class MainActivity : AppCompatActivity() {
             setContentView(binding.root)
             if(savedInstanceState.getString("FRAGMENT") == "bmi")
             {
-                replaceFragment(BMI_calculator())
+                replaceFragment(BMI_calculator.newInstance(Profile.create(savedInstanceState.getParcelable("PROFILE")!!)))
             }
             if(savedInstanceState.getString("FRAGMENT") == "home")
             {
-                replaceFragment(home_page())
+                replaceFragment(home_page.newInstance(Profile.create(savedInstanceState.getParcelable("PROFILE")!!)))
             }
             if(savedInstanceState.getString("FRAGMENT") == "prof")
             {
-                replaceFragment(ProfilePage())
+                replaceFragment(ProfilePage.newInstance(Profile.create(savedInstanceState.getParcelable("PROFILE")!!)))
             }
             if(savedInstanceState.getString("FRAGMENT") == "fitdat")
             {
-                replaceFragment(FitnessDataPage())
+                replaceFragment(FitnessDataPage.newInstance(Profile.create(savedInstanceState.getParcelable("PROFILE")!!)))
             }
             if(savedInstanceState.getString("FRAGMENT") == "load") {
                 replaceFragment(load_page())

@@ -48,15 +48,21 @@ class FitnessDataPage : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("FRAGMENT", "fitdat")
+        outState.putParcelable("PROFILE", profile)
         super.onSaveInstanceState(outState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            profile = savedInstanceState.getParcelable("PROFILE")!!
+        }
+
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)
 
         var heightTag = requireView().findViewById<Spinner>(R.id.heightSpinner)
         var heights : ArrayList<String> = arrayListOf()
+        heights.add("Height:")
         for(i in 4..7) {
             for (j in 0..11) {
                 heights.add("$i \' $j \"")
@@ -65,7 +71,6 @@ class FitnessDataPage : Fragment() {
         var heightAdapter = ArrayAdapter(this.requireContext(), R.layout.spinner_item, heights)
         heightAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         heightTag.adapter = heightAdapter
-
         profile?.height?.toInt().let {
             if (it != null) {
                 heightTag.setSelection(it)
@@ -133,8 +138,15 @@ class FitnessDataPage : Fragment() {
         val backButton = view.findViewById<ImageButton>(R.id.backArrow)
 
         backButton.setOnClickListener {
-            Log.i("test", "back button pressed")
-            fragmentManager?.popBackStack()
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+
+            profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
+                fragmentTransaction?.replace(R.id.fragmentContainer, it2)
+            }
+
+            fragmentTransaction?.setReorderingAllowed(true)
+            fragmentTransaction?.addToBackStack(null)
+            fragmentTransaction?.commit()
         }
 
         val updateProfileButton = view.findViewById<Button>(R.id.updateProfileButton)
