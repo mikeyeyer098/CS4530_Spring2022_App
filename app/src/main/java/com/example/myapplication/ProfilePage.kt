@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.hbb20.CountryCodePicker
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,13 +53,6 @@ class ProfilePage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val backButton = view.findViewById<ImageButton>(R.id.backArrow)
-
-        backButton.setOnClickListener {
-            Log.i("test", "back button pressed")
-            fragmentManager?.popBackStack()
-        }
-
         val genderSpinner = view.findViewById(R.id.genderSpinner) as Spinner
         ArrayAdapter.createFromResource(
             this.requireContext(),
@@ -68,19 +63,10 @@ class ProfilePage : Fragment() {
             genderSpinner.adapter = adapter
         }
         genderSpinner.prompt = "Select gender:"
-        profile?.gender?.toInt().let {
-            if (it != null) {
-                genderSpinner.setSelection(it)
-            }
-            else{
-                genderSpinner.setSelection(0)
-            }
-        }
-
-        genderSpinner.isEnabled = false
 
         val ageSpinner = view.findViewById(R.id.ageSpinner) as Spinner
         var ages : ArrayList<String> = arrayListOf()
+        ages.add("Age:")
         for(i in 18..100){
             ages.add("$i years old")
         }
@@ -88,18 +74,8 @@ class ProfilePage : Fragment() {
         ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         ageSpinner.adapter = ageAdapter
         ageSpinner.prompt = "Select age:"
-        profile?.age?.toInt().let {
-            if (it != null) {
-                ageSpinner.setSelection(it)
-            }
-            else{
-                ageSpinner.setSelection(0)
-            }
-        }
 
-        ageSpinner.isEnabled = false
-
-        val heightSpinner : Spinner = view.findViewById(R.id.heightSpinner)
+        var heightTag = requireView().findViewById<Spinner>(R.id.heightSpinner)
         var heights : ArrayList<String> = arrayListOf()
         for(i in 4..7) {
             for (j in 0..11) {
@@ -108,80 +84,24 @@ class ProfilePage : Fragment() {
         }
         var heightAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, heights)
         heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        heightSpinner.adapter = heightAdapter
-        heightSpinner.prompt = "Select height:"
-        heightSpinner.isEnabled = false
+        heightTag.adapter = heightAdapter
 
         profile?.height?.toInt().let {
             if (it != null) {
-                heightSpinner.setSelection(it)
+                heightTag.setSelection(it)
             }
             else{
-                heightSpinner.setSelection(0)
+                heightTag.setSelection(0)
             }
         }
 
-        val weightTag = view.findViewById<EditText>(R.id.weightTextField)
-        weightTag.setText(profile?.weight)
+        val backButton = view.findViewById<ImageButton>(R.id.backArrow)
 
-        weightTag.setTextIsSelectable(false)
-
-        val cityTag = view.findViewById<EditText>(R.id.cityTextField)
-        cityTag.setText(profile?.city)
-        cityTag.setTextIsSelectable(false)
-
-        val nameTag = view.findViewById<EditText>(R.id.nameTextField)
-        nameTag.setText(profile?.name)
-        nameTag.setTextIsSelectable(false)
-
-        val updateProfileButton = view.findViewById<Button>(R.id.updateProfileButton)
-        updateProfileButton.isEnabled = false
-
-        val editProfileButton = view.findViewById<Button>(R.id.editProfileButton)
-        editProfileButton.setOnClickListener{
-            weightTag.setTextIsSelectable(true)
-            heightSpinner.isEnabled = true
-            nameTag.setTextIsSelectable(true)
-            cityTag.setTextIsSelectable(true)
-            genderSpinner.isEnabled = true
-            ageSpinner.isEnabled = true
-            editProfileButton.isEnabled = false
-
-            updateProfileButton.isEnabled = true
+        backButton.setOnClickListener {
+            Log.i("test", "back button pressed")
+            fragmentManager?.popBackStack()
         }
 
-        updateProfileButton.setOnClickListener{
-            val heightText: Int =
-                heightSpinner.selectedItemPosition
-            val weightText: String =
-                view.findViewById<EditText>(R.id.weightTextField).text.toString()
-            val nameText : String =
-                nameTag.text.toString()
-            val ageText : Int =
-                ageSpinner.selectedItemPosition
-            val genderText : Int =
-                genderSpinner.selectedItemPosition
-            val cityText : String =
-                cityTag.text.toString()
-            weightTag.setTextIsSelectable(false)
-            heightSpinner.isEnabled = false
-            nameTag.setTextIsSelectable(false)
-            cityTag.setTextIsSelectable(false)
-            genderSpinner.isEnabled = false
-            ageSpinner.isEnabled = false
-            updateProfileButton.isEnabled = false
-            editProfileButton.isEnabled = true
-
-            profile?.city = cityText
-            profile?.weight = weightText
-            profile?.height = heightText.toString()
-            profile?.age = ageText.toString()
-            profile?.city = cityText
-            profile?.gender = genderText.toString()
-            profile?.name = nameText
-
-            //  profile?:regimen = regimenText
-        }
         if (isTablet(this.requireContext())) {
             val arrayAdapter: ArrayAdapter<String>
             val modules = arrayOf(
@@ -228,6 +148,27 @@ class ProfilePage : Fragment() {
                 }
             }
         }
+
+        val nameField = view.findViewById<EditText>(R.id.nameTextField)
+        nameField.text = Editable.Factory.getInstance().newEditable(profile?.name)
+
+        heightTag.setSelection(profile?.height!!.toInt())
+
+        val weightField = view.findViewById<EditText>(R.id.weightTextField)
+        weightField.text = Editable.Factory.getInstance().newEditable(profile?.weight)
+
+        ageSpinner.setSelection(profile?.age!!.toInt())
+
+        genderSpinner.setSelection(profile?.gender!!.toInt())
+
+        val cityField = view.findViewById<EditText>(R.id.cityTextField)
+        cityField.text = Editable.Factory.getInstance().newEditable(profile?.city)
+
+        val countrySpinner : CountryCodePicker = view.findViewById(R.id.ccp)
+        countrySpinner.setCountryForNameCode(profile?.country)
+
+        val imageGuy = view.findViewById<ImageView>(R.id.ProfilePicImageView)
+        imageGuy.setImageBitmap(profile?.image)
 
         super.onViewCreated(view, savedInstanceState)
     }

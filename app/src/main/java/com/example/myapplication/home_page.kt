@@ -52,6 +52,7 @@ class home_page : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
+        profileThumb.setImageBitmap(profile?.image)
 
         val mapsButton = view.findViewById<ImageButton>(R.id.HikesFinderButton)
         mapsButton.setOnClickListener {
@@ -60,7 +61,6 @@ class home_page : Fragment() {
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
         }
-        profileThumb.setImageBitmap(profile?.image)
 
         val profileButton = view.findViewById<Button>(R.id.MyProfileButton)
 
@@ -133,26 +133,30 @@ class home_page : Fragment() {
     }
 
     fun getWeatherDetails(view: View){
+        Log.i("test", "a")
         // Instantiate the RequestQueue.
         //val queue = Volley.newRequestQueue(view.context)
         val city = profile?.city
         val id = "4dbd2ed7d890d4f83982194472e820f5"
         val url = " https://api.openweathermap.org/data/2.5/weather?q=${city?.replace("\\s".toRegex(), "")}&appid=4dbd2ed7d890d4f83982194472e820f5"
         val queue = Volley.newRequestQueue(view.context)
-
+        Log.i("test", "b")
         //Request a string response from the provided URL.
         val stringRequest = StringRequest(Request.Method.GET, url,
             { response ->
+                Log.i("test", "c")
                 // Display the first 500 characters of the response string.
-                Log.i("test", "Response is: ${response.substring(0, 500)}")
                 var jsonresponse = JSONObject(response)
                 var temp = jsonresponse.getJSONObject("main").getDouble("temp")
                 temp -= 273.15
                 temp *= (9 / 5)
                 temp += 32
 
+
+
                 view.findViewById<TextView>(R.id.TemperatureHighText).text = temp.toInt().toString() + " \u2109"
 
+                Log.i("test", jsonresponse.getJSONArray("weather").getJSONObject(0).getString("icon"))
                 when(jsonresponse.getJSONArray("weather").getJSONObject(0).getString("icon")) {
                     "01d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a01d)
                     "01n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a01n)

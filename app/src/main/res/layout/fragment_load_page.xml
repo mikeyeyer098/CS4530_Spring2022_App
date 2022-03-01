@@ -90,6 +90,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/edit_text" />
 
+
             <EditText
                 android:id="@+id/weightTextField"
                 android:layout_width="0dp"
