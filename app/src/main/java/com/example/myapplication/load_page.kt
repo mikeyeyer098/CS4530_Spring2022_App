@@ -112,25 +112,19 @@ class load_page : Fragment() {
                 val nameText: String = view.findViewById<EditText>(R.id.nameTextField).text.toString()
                 val heightSelection: Int =
                     heightSpinner.selectedItemPosition
+                Log.i("test", heightSelection.toString())
                 val weightText: String =
                     view.findViewById<EditText>(R.id.weightTextField).text.toString()
                 val ageSelection: Int = ageSpinner.selectedItemPosition
                 val genderSelection: Int = genderSpinner.selectedItemPosition
                 val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
-                val countrySelection: Int = countrySpinner.selectedCountryCodeAsInt
+                val countrySelection: String = countrySpinner.selectedCountryNameCode
 
 
 
                 profile = Profile(
                     nameText, heightSelection.toString(), weightText, ageSelection.toString(), genderSelection.toString(),
                     cityText, countrySelection.toString(), photoPath, "0", "", "", "", "", profilePic
-                )
-                Log.i("test", profile!!.printForStoring())
-                Log.i("test", requireActivity().application.cacheDir.absolutePath)
-                File.createTempFile(
-                    "filename",
-                    profile!!.printForStoring(),
-                    requireActivity().application.cacheDir
                 )
 
                 val fragmentTransaction = fragmentManager?.beginTransaction()
