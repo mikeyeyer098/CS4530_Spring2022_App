@@ -3,8 +3,7 @@
     android:id="@+id/module1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textColor="@color/white"
-    android:gravity="center"
-    android:background="@drawable/widget_background"
+    android:textColor="#d9d9d9"
+    android:background="#666666"
     android:fontFamily="@font/comfortaa_bold"
-    android:textSize="25dp"/>
+    android:textSize="16dp"/>

@@ -62,8 +62,8 @@ class FitnessDataPage : Fragment() {
                 heights.add("$i \' $j \"")
             }
         }
-        var heightAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, heights)
-        heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        var heightAdapter = ArrayAdapter(this.requireContext(), R.layout.spinner_item, heights)
+        heightAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         heightTag.adapter = heightAdapter
 
         profile?.height?.toInt().let {
@@ -71,6 +71,7 @@ class FitnessDataPage : Fragment() {
                 heightTag.setSelection(it)
             }
         }
+        heightTag.isEnabled = false
 
         var weightTag = requireView().findViewById<TextView>(R.id.weightTextField)
         weightTag.hint = "Weight: ${profile?.weight}"
@@ -81,9 +82,9 @@ class FitnessDataPage : Fragment() {
         ArrayAdapter.createFromResource(
             this.requireContext(),
             R.array.regimen_arr,
-            android.R.layout.simple_spinner_item
+            R.layout.spinner_item
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
             regimenSpinner.adapter = adapter
         }
         regimenSpinner.prompt = "Select weight goal:"
@@ -93,9 +94,9 @@ class FitnessDataPage : Fragment() {
         ArrayAdapter.createFromResource(
             this.requireContext(),
             R.array.activity_level_array,
-            android.R.layout.simple_spinner_item
+            R.layout.spinner_item
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
             activitySpinner.adapter = adapter
         }
         activitySpinner.prompt = "Select activity level:"
@@ -105,9 +106,9 @@ class FitnessDataPage : Fragment() {
         ArrayAdapter.createFromResource(
             this.requireContext(),
             R.array.pounds_array,
-            android.R.layout.simple_spinner_item
+            R.layout.spinner_item
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
             poundsSpinner.adapter = adapter
         }
         poundsSpinner.isEnabled = false
@@ -118,13 +119,16 @@ class FitnessDataPage : Fragment() {
             HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
                 profile?.age.toString(), profile?.active.toString(), profile?.gender.toString()),
             profile?.weightGoal.toString(), profile?.gender.toString())
+        calorieTag.setTextIsSelectable(false)
 
         var bmrTag = requireView().findViewById<TextView>(R.id.BMRText)
         bmrTag.text = HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
                 profile?.age.toString(), profile?.active.toString(), profile?.gender.toString())
+        bmrTag.setTextIsSelectable(false)
 
         var bmiTag = view.findViewById<TextView>(R.id.BMRText)
         bmiTag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)).toString())
+        bmiTag.setTextIsSelectable(false)
 
         val backButton = view.findViewById<ImageButton>(R.id.backArrow)
 

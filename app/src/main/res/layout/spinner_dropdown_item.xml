@@ -3,8 +3,9 @@
     android:id="@+id/module1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="5dp"
     android:textColor="@color/white"
-    android:gravity="center"
-    android:background="@drawable/widget_background"
+    android:background="@drawable/edit_text"
+    android:textAlignment="center"
     android:fontFamily="@font/comfortaa_bold"
-    android:textSize="25dp"/>
+    android:textSize="18dp"/>

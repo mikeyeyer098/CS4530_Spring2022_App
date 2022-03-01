@@ -59,8 +59,8 @@ class BMI_calculator : Fragment() {
                 heights.add("$i \' $j \"")
             }
         }
-        var heightAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, heights)
-        heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        var heightAdapter = ArrayAdapter(this.requireContext(), R.layout.spinner_item, heights)
+        heightAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         heightTag.adapter = heightAdapter
 
         profile?.height?.toInt().let {

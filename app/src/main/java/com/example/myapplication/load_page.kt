@@ -59,9 +59,9 @@ class load_page : Fragment() {
         ArrayAdapter.createFromResource(
             this.requireContext(),
             R.array.gender_array,
-            android.R.layout.simple_spinner_item
+            R.layout.spinner_item
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
             genderSpinner.adapter = adapter
         }
         genderSpinner.prompt = "Select gender:"
@@ -72,8 +72,8 @@ class load_page : Fragment() {
         for(i in 18..100){
             ages.add("$i years old")
         }
-        var ageAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, ages)
-        ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        var ageAdapter = ArrayAdapter(this.requireContext(), R.layout.spinner_item, ages)
+        ageAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         ageSpinner.adapter = ageAdapter
         ageSpinner.prompt = "Select age:"
 
@@ -85,8 +85,8 @@ class load_page : Fragment() {
                 heights.add("$i \' $j \"")
             }
         }
-        var heightAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, heights)
-        heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        var heightAdapter = ArrayAdapter(this.requireContext(), R.layout.spinner_item, heights)
+        heightAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         heightSpinner.adapter = heightAdapter
         heightSpinner.prompt = "Select height:"
 
