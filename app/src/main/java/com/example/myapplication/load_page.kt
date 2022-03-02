@@ -120,7 +120,7 @@ class load_page : Fragment() {
                 val weightText: String =
                     view.findViewById<EditText>(R.id.weightTextField).text.toString()
                 val ageSelection: Int = ageSpinner.selectedItemPosition
-                val genderSelection: Int = genderSpinner.selectedItemPosition
+                val genderSelection: String = genderSpinner.selectedItem as String
                 val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
                 val countrySelection: String = countrySpinner.selectedCountryNameCode
 
@@ -128,7 +128,7 @@ class load_page : Fragment() {
 
                 profile = Profile(
                     nameText, heightSelection.toString(), weightText, ageSelection.toString(), genderSelection.toString(),
-                    cityText, countrySelection.toString(), photoPath, "0", "", "", "", "", profilePic
+                    cityText, countrySelection.toString(), photoPath, "0", "", "", "", "0", profilePic
                 )
 
                 val fragmentTransaction = fragmentManager?.beginTransaction()

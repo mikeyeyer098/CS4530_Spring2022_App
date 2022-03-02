@@ -79,7 +79,13 @@ class FitnessDataPage : Fragment() {
         heightTag.isEnabled = false
 
         var weightTag = requireView().findViewById<TextView>(R.id.weightTextField)
-        weightTag.hint = "Weight: ${profile?.weight}"
+
+        try{
+            weightTag.text = profile?.weight!!.toString()
+        } catch (e: Exception) {
+            weightTag.hint = "Weight: ${profile?.weight}"
+        }
+
 
         weightTag.setTextIsSelectable(false)
 
@@ -118,20 +124,18 @@ class FitnessDataPage : Fragment() {
         }
         poundsSpinner.isEnabled = false
 
+        profile?.bmr = HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
+            profile?.age.toString(), profile?.active.toString(), profile?.gender.toString())
+
 
         var calorieTag = requireView().findViewById<TextView>(R.id.DailyCaloriesText)
-        calorieTag.text = HealthCalculator().calculateDailyCalories(
-            HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
-                profile?.age.toString(), profile?.active.toString(), profile?.gender.toString()),
-            profile?.weightGoal.toString(), profile?.gender.toString())
+        calorieTag.text = HealthCalculator().calculateDailyCalories(profile?.bmr!!, profile?.weightGoal.toString(), profile?.gender.toString())
         calorieTag.setTextIsSelectable(false)
 
         var bmrTag = requireView().findViewById<TextView>(R.id.BMRText)
-        bmrTag.text = HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
-                profile?.age.toString(), profile?.active.toString(), profile?.gender.toString())
-        bmrTag.setTextIsSelectable(false)
+        bmrTag.text = profile?.bmr
 
-        var bmiTag = view.findViewById<TextView>(R.id.BMRText)
+        var bmiTag = view.findViewById<TextView>(R.id.BMIText)
         bmiTag.text = HealthCalculator().calculateBMI(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)).toString())
         bmiTag.setTextIsSelectable(false)
 
@@ -174,7 +178,7 @@ class FitnessDataPage : Fragment() {
             val regimenText : String =
                 regimenSpinner.selectedItem.toString()
             val activityText : String =
-                activitySpinner.selectedItem.toString()
+                activitySpinner.selectedItemPosition.toString()
             weightTag.setTextIsSelectable(false)
             heightTag.isEnabled = false
             poundsSpinner.isEnabled = false
@@ -184,10 +188,27 @@ class FitnessDataPage : Fragment() {
             editProfileButton.isEnabled = true
 
             profile?.active = activityText
-            profile?.weightGoal = poundsText
+
+            if (regimenText == "Maintain Weight") {
+                profile?.weightGoal = "0"
+            }
+            else if (regimenText == "Gain Weight") {
+                profile?.weightGoal = poundsText.split(" ")[0]
+            }
+            else {
+                profile?.weightGoal = (poundsText.split(" ")[0].toInt() * -1).toString()
+            }
+
             profile?.height = heightText.toString()
             profile?.weight = weightText
-          //  profile?:regimen = regimenText
+
+            profile?.bmr = HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
+                profile?.age.toString(), profile?.active.toString(), profile?.gender.toString())
+            bmrTag.text = profile?.bmr
+            calorieTag.text = HealthCalculator().calculateDailyCalories(profile?.bmr!!, profile?.weightGoal!!, profile?.gender!!.toUpperCase())
+
+            profile?.bmi = HealthCalculator().calculateBMI(profile?.weight.toString(), (48 + profile?.height?.toInt()!!).toString())
+            bmiTag.text = profile?.bmi
         }
         val profileThumbnail = view.findViewById<ImageButton>(R.id.ProfilePicThumbnail)
 

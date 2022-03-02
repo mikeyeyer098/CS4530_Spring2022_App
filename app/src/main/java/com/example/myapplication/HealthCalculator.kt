@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.util.Log
 import java.lang.Exception
 import kotlin.math.pow
+import kotlin.math.roundToInt
 
 class HealthCalculator {
     fun calculateBMR(weight: String, height: Int, age: String, activity: String, sex: String): String {
@@ -13,9 +14,9 @@ class HealthCalculator {
                 else -> activityLevel = 1.2
             }
             when (sex.uppercase()) {
-                "MALE" -> return (activityLevel * (66 + (6.23 * weight.toDouble()) + (12.7 * height.toDouble()) - (6.8 * age.toDouble()))).toString()
-                "FEMALE" -> return (activityLevel * (66 + (4.35 * weight.toDouble()) + (4.7 * height.toDouble()) - (4.7 * age.toDouble()))).toString()
-                else -> return (activityLevel * (66 + (8.4 * weight.toDouble()) + (8.7 * height.toDouble()) - (5.8 * age.toDouble()))).toString()
+                "MALE" -> return (activityLevel * (66 + (6.23 * weight.toDouble()) + (12.7 * height.toDouble()) - (6.8 * age.toDouble()))).roundToInt().toString()
+                "FEMALE" -> return (activityLevel * (66 + (4.35 * weight.toDouble()) + (4.7 * height.toDouble()) - (4.7 * age.toDouble()))).roundToInt().toString()
+                else -> return (activityLevel * (66 + (8.4 * weight.toDouble()) + (8.7 * height.toDouble()) - (5.8 * age.toDouble()))).roundToInt().toString()
             }
         }
         catch (e: Exception) {

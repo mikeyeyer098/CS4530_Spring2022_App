@@ -179,7 +179,19 @@ class ProfilePage : Fragment() {
 
         ageSpinner.setSelection(profile?.age!!.toInt())
 
-        genderSpinner.setSelection(profile?.gender!!.toInt())
+        if (profile?.gender!!.toUpperCase() == "FEMALE")
+        {
+            genderSpinner.setSelection(1)
+        }
+        else if (profile?.gender!!.toUpperCase() == "MALE")
+        {
+            genderSpinner.setSelection(2)
+        }
+        else
+        {
+            genderSpinner.setSelection(3)
+        }
+
 
         val cityField = view.findViewById<EditText>(R.id.cityTextField)
         cityField.text = Editable.Factory.getInstance().newEditable(profile?.city)
@@ -218,8 +230,8 @@ class ProfilePage : Fragment() {
                 view.findViewById<EditText>(R.id.cityTextField).text.toString()
             val nameText : String =
                 view.findViewById<EditText>(R.id.nameTextField).text.toString()
-            val genderText : Int =
-                genderSpinner.selectedItemPosition
+            val genderText : String =
+                genderSpinner.selectedItem as String
             weightField.setTextIsSelectable(false)
             heightTag.isEnabled = false
             genderSpinner.isEnabled = false
