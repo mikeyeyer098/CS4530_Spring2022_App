@@ -112,7 +112,6 @@ class MainActivityTest {
         onView(withId(R.id.nameTextField)).check(doesNotExist())
         onView(withId(R.id.MyFitnessRegimenButton)).check(matches(isDisplayed()))
 
-
         onView(withId(R.id.MyProfileButton)).perform(click())
 
         onView(withId(R.id.nameTextField)).check(matches(withText("Joe Rogan")))
@@ -385,6 +384,131 @@ class MainActivityTest {
         onView(withId(R.id.MyFitnessRegimenButton)).check(matches(isDisplayed()))
 
         onView(withId(R.id.TemperatureHighText)).check(matches(withText("NA")))
+    }
+
+    @Test
+    fun testHomePageToProfileFromProfilePicThumbnail() {
+        onView(withId(R.id.nameTextField)).perform(typeText("Joe Rogan"))
+        onView(withId(R.id.nameTextField)).check(matches(withText("Joe Rogan")))
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.weightTextField)).perform(typeText("128"))
+        onView(withId(R.id.weightTextField)).check(matches(withText("128")))
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.heightSpinner)).perform(click())
+        onData(allOf(`is`(instanceOf(String::class.java)), `is`("4 ' 6 \""))).perform(click())
+        onView(withId(R.id.heightSpinner)).check(matches(withSpinnerText("4 ' 6 \"")))
+
+        onView(withId(R.id.ageSpinner)).perform(click())
+        onData(allOf(`is`(instanceOf(String::class.java)), `is`("23 years old"))).perform(click())
+        onView(withId(R.id.ageSpinner)).check(matches(withSpinnerText("23 years old")))
+
+        onView(withId(R.id.genderSpinner)).perform(click())
+        onData(allOf(`is`(instanceOf(String::class.java)), `is`("Male"))).perform(click())
+        onView(withId(R.id.genderSpinner)).check(matches(withSpinnerText("Male")))
+
+        onView(withId(R.id.cityTextField)).perform(typeText("Mumbai"))
+        onView(withId(R.id.cityTextField)).check(matches(withText("Mumbai")))
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.createProfileButton)).perform(click())
+        onView(withId(R.id.nameTextField)).check(doesNotExist())
+        onView(withId(R.id.MyFitnessRegimenButton)).check(matches(isDisplayed()))
+
+        // click on top right profile pic
+        onView(withId(R.id.ProfilePicThumbnail)).perform(click())
+
+        onView(withId(R.id.nameTextField)).check(matches(withText("Joe Rogan")))
+        onView(withId(R.id.weightTextField)).check(matches(withText("128")))
+        onView(withId(R.id.heightSpinner)).check(matches(withSpinnerText("4 ' 6 \"")))
+        onView(withId(R.id.ageSpinner)).check(matches(withSpinnerText("23 years old")))
+        onView(withId(R.id.genderSpinner)).check(matches(withSpinnerText("Male")))
+        onView(withId(R.id.cityTextField)).check(matches(withText("Mumbai")))
+    }
+
+    @Test
+    fun testBMICalculatorToProfileFromProfilePicThumbnail() {
+        onView(withId(R.id.nameTextField)).perform(typeText("Joe Rogan"))
+        onView(withId(R.id.nameTextField)).check(matches(withText("Joe Rogan")))
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.weightTextField)).perform(typeText("128"))
+        onView(withId(R.id.weightTextField)).check(matches(withText("128")))
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.heightSpinner)).perform(click())
+        onData(allOf(`is`(instanceOf(String::class.java)), `is`("4 ' 6 \""))).perform(click())
+        onView(withId(R.id.heightSpinner)).check(matches(withSpinnerText("4 ' 6 \"")))
+
+        onView(withId(R.id.ageSpinner)).perform(click())
+        onData(allOf(`is`(instanceOf(String::class.java)), `is`("23 years old"))).perform(click())
+        onView(withId(R.id.ageSpinner)).check(matches(withSpinnerText("23 years old")))
+
+        onView(withId(R.id.genderSpinner)).perform(click())
+        onData(allOf(`is`(instanceOf(String::class.java)), `is`("Male"))).perform(click())
+        onView(withId(R.id.genderSpinner)).check(matches(withSpinnerText("Male")))
+
+        onView(withId(R.id.cityTextField)).perform(typeText("Mumbai"))
+        onView(withId(R.id.cityTextField)).check(matches(withText("Mumbai")))
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.createProfileButton)).perform(click())
+        onView(withId(R.id.nameTextField)).check(doesNotExist())
+        onView(withId(R.id.MyFitnessRegimenButton)).check(matches(isDisplayed()))
+
+        // click on top right profile pic
+        onView(withId(R.id.BMICalcButton)).perform(click())
+        onView(withId(R.id.ProfilePicThumbnail)).perform(click())
+
+        onView(withId(R.id.nameTextField)).check(matches(withText("Joe Rogan")))
+        onView(withId(R.id.weightTextField)).check(matches(withText("128")))
+        onView(withId(R.id.heightSpinner)).check(matches(withSpinnerText("4 ' 6 \"")))
+        onView(withId(R.id.ageSpinner)).check(matches(withSpinnerText("23 years old")))
+        onView(withId(R.id.genderSpinner)).check(matches(withSpinnerText("Male")))
+        onView(withId(R.id.cityTextField)).check(matches(withText("Mumbai")))
+    }
+
+    @Test
+    fun testFitnessRegimeToProfileFromProfilePicThumbnail() {
+        onView(withId(R.id.nameTextField)).perform(typeText("Joe Rogan"))
+        onView(withId(R.id.nameTextField)).check(matches(withText("Joe Rogan")))
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.weightTextField)).perform(typeText("128"))
+        onView(withId(R.id.weightTextField)).check(matches(withText("128")))
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.heightSpinner)).perform(click())
+        onData(allOf(`is`(instanceOf(String::class.java)), `is`("4 ' 6 \""))).perform(click())
+        onView(withId(R.id.heightSpinner)).check(matches(withSpinnerText("4 ' 6 \"")))
+
+        onView(withId(R.id.ageSpinner)).perform(click())
+        onData(allOf(`is`(instanceOf(String::class.java)), `is`("23 years old"))).perform(click())
+        onView(withId(R.id.ageSpinner)).check(matches(withSpinnerText("23 years old")))
+
+        onView(withId(R.id.genderSpinner)).perform(click())
+        onData(allOf(`is`(instanceOf(String::class.java)), `is`("Male"))).perform(click())
+        onView(withId(R.id.genderSpinner)).check(matches(withSpinnerText("Male")))
+
+        onView(withId(R.id.cityTextField)).perform(typeText("Mumbai"))
+        onView(withId(R.id.cityTextField)).check(matches(withText("Mumbai")))
+        Espresso.closeSoftKeyboard()
+
+        onView(withId(R.id.createProfileButton)).perform(click())
+        onView(withId(R.id.nameTextField)).check(doesNotExist())
+        onView(withId(R.id.MyFitnessRegimenButton)).check(matches(isDisplayed()))
+
+        // click on top right profile pic
+        onView(withId(R.id.MyFitnessRegimenButton)).perform(click())
+        onView(withId(R.id.ProfilePicThumbnail)).perform(click())
+
+        onView(withId(R.id.nameTextField)).check(matches(withText("Joe Rogan")))
+        onView(withId(R.id.weightTextField)).check(matches(withText("128")))
+        onView(withId(R.id.heightSpinner)).check(matches(withSpinnerText("4 ' 6 \"")))
+        onView(withId(R.id.ageSpinner)).check(matches(withSpinnerText("23 years old")))
+        onView(withId(R.id.genderSpinner)).check(matches(withSpinnerText("Male")))
+        onView(withId(R.id.cityTextField)).check(matches(withText("Mumbai")))
     }
 
     @After
