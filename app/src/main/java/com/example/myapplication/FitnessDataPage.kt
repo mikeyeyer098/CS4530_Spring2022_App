@@ -101,6 +101,19 @@ class FitnessDataPage : Fragment() {
         regimenSpinner.prompt = "Select weight goal:"
         regimenSpinner.isEnabled = false
 
+        if (profile?.weightGoal!!.toInt() > 0)
+        {
+            regimenSpinner.setSelection(0)
+        }
+        else if (profile?.weightGoal!!.toInt() == 0)
+        {
+            regimenSpinner.setSelection(2)
+        }
+        else
+        {
+            regimenSpinner.setSelection(1)
+        }
+
         val activitySpinner = view.findViewById(R.id.activityLevelSpinner) as Spinner
         ArrayAdapter.createFromResource(
             this.requireContext(),
