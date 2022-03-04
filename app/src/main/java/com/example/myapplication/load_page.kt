@@ -1,6 +1,9 @@
 package com.example.myapplication
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -12,10 +15,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.hbb20.CountryCodePicker
+
 
 private val PERMISSIONCODE = 100
 private val CAMERACODE = 200
@@ -139,10 +144,23 @@ class load_page : Fragment() {
                     )
                 }
                 fragmentTransaction?.commit()
+            } else
+            {
+                Log.i("test", "popup pre")
+                popupMessage()
             }
         }
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    fun popupMessage() {
+        Log.i("test", "popup in")
+        val alertDialogBuilder: AlertDialog.Builder  = AlertDialog.Builder(view?.context)
+        alertDialogBuilder.setMessage("Please enter a name before continuing")
+        alertDialogBuilder.setTitle("Enter Name")
+        val alertDialog: AlertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     override fun onRequestPermissionsResult(
