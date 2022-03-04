@@ -85,7 +85,7 @@ class FitnessDataPage : Fragment() {
         } catch (e: Exception) {
             weightTag.hint = "Weight: ${profile?.weight}"
         }
-
+        weightTag.isEnabled = false
 
         weightTag.setTextIsSelectable(false)
 
@@ -172,6 +172,7 @@ class FitnessDataPage : Fragment() {
         val editProfileButton = view.findViewById<Button>(R.id.editProfileButton)
         editProfileButton.setOnClickListener{
             weightTag.setTextIsSelectable(true)
+            weightTag.isEnabled = true
             heightTag.isEnabled = true
             poundsSpinner.isEnabled = true
             regimenSpinner.isEnabled = true
@@ -193,6 +194,7 @@ class FitnessDataPage : Fragment() {
             val activityText : String =
                 activitySpinner.selectedItemPosition.toString()
             weightTag.setTextIsSelectable(false)
+            weightTag.isEnabled = false
             heightTag.isEnabled = false
             poundsSpinner.isEnabled = false
             regimenSpinner.isEnabled = false
