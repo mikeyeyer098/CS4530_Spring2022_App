@@ -1,9 +1,11 @@
 package com.example.myapplication
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
@@ -18,10 +20,6 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.Profile.Companion.write
 import com.hbb20.CountryCodePicker
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -30,6 +28,9 @@ private const val ARG_PARAM2 = "param2"
  */
 class ProfilePage : Fragment() {
 
+    private val PERMISSIONCODE = 100
+    private val CAMERACODE = 200
+    var profilePic: Bitmap? = null
     private var profile: Profile? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +70,8 @@ class ProfilePage : Fragment() {
         }
         genderSpinner.prompt = "Select gender:"
         genderSpinner.isEnabled = false
+        genderSpinner.alpha = 0.5f
+
 
         val ageSpinner = view.findViewById(R.id.ageSpinner) as Spinner
         var ages : ArrayList<String> = arrayListOf()
@@ -81,6 +84,7 @@ class ProfilePage : Fragment() {
         ageSpinner.adapter = ageAdapter
         ageSpinner.prompt = "Select age:"
         ageSpinner.isEnabled = false
+        ageSpinner.alpha = 0.5f
 
         var heightTag = requireView().findViewById<Spinner>(R.id.heightSpinner)
         var heights : ArrayList<String> = arrayListOf()
@@ -103,6 +107,7 @@ class ProfilePage : Fragment() {
             }
         }
         heightTag.isEnabled = false
+        heightTag.alpha = 0.5f
 
 
 
@@ -170,12 +175,14 @@ class ProfilePage : Fragment() {
         val nameField = view.findViewById<EditText>(R.id.nameTextField)
         nameField.text = Editable.Factory.getInstance().newEditable(profile?.name)
         nameField.setTextIsSelectable(false)
+        nameField.alpha = 0.5f
 
         heightTag.setSelection(profile?.height!!.toInt())
 
         val weightField = view.findViewById<EditText>(R.id.weightTextField)
         weightField.text = Editable.Factory.getInstance().newEditable(profile?.weight)
         weightField.setTextIsSelectable(false)
+        weightField.alpha = 0.5f
 
         ageSpinner.setSelection(profile?.age!!.toInt())
 
@@ -196,12 +203,26 @@ class ProfilePage : Fragment() {
         val cityField = view.findViewById<EditText>(R.id.cityTextField)
         cityField.text = Editable.Factory.getInstance().newEditable(profile?.city)
         cityField.setTextIsSelectable(false)
+        cityField.alpha = 0.5f
 
         val countrySpinner : CountryCodePicker = view.findViewById(R.id.ccp)
         countrySpinner.setCountryForNameCode(profile?.country)
+        countrySpinner.isEnabled = false
+        countrySpinner.alpha = 0.5f
 
         val imageGuy = view.findViewById<ImageView>(R.id.ProfilePicImageView)
         imageGuy.setImageBitmap(profile?.image)
+
+        val takePictureButton: Button = view.findViewById(R.id.TakePictureButton)
+        takePictureButton.isEnabled = false
+        takePictureButton.setOnClickListener{
+            if (ContextCompat.checkSelfPermission(requireActivity().applicationContext, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(intent, CAMERACODE)
+            } else {
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.CAMERA), PERMISSIONCODE)
+            }
+        }
 
         val updateProfileButton = view.findViewById<Button>(R.id.updateProfileButton)
         updateProfileButton.isEnabled = false
@@ -213,8 +234,19 @@ class ProfilePage : Fragment() {
             genderSpinner.isEnabled = true
             ageSpinner.isEnabled = true
             cityField.setTextIsSelectable(true)
+            countrySpinner.isEnabled = true
             nameField.setTextIsSelectable(true)
             editProfileButton.isEnabled = false
+            takePictureButton.isEnabled = true
+
+            weightField.alpha = 1f
+            heightTag.alpha = 1f
+            genderSpinner.alpha = 1f
+            ageSpinner.alpha = 1f
+            cityField.alpha = 1f
+            countrySpinner.alpha = 1f
+            nameField.alpha = 1f
+
 
             updateProfileButton.isEnabled = true
         }
@@ -236,17 +268,30 @@ class ProfilePage : Fragment() {
             heightTag.isEnabled = false
             genderSpinner.isEnabled = false
             ageSpinner.isEnabled = false
+            countrySpinner.isEnabled = false
             cityField.setTextIsSelectable(false)
             nameField.setTextIsSelectable(false)
             editProfileButton.isEnabled = true
+            takePictureButton.isEnabled = false
+
+            weightField.alpha = 0.5f
+            heightTag.alpha = 0.5f
+            genderSpinner.alpha = 0.5f
+            ageSpinner.alpha = 0.5f
+            cityField.alpha = 0.5f
+            countrySpinner.alpha = 0.5f
+            nameField.alpha = 0.5f
+
             updateProfileButton.isEnabled = false
 
             profile?.height = heightText.toString()
             profile?.weight = weightText
             profile?.age = ageText.toString()
             profile?.city = cityText
+            profile?.country = countrySpinner.selectedCountryCode
             profile?.name = nameText
             profile?.gender = genderText.toString()
+            profile?.image = profilePic
 
         }
         super.onViewCreated(view, savedInstanceState)
@@ -256,6 +301,31 @@ class ProfilePage : Fragment() {
         return ((context.getResources().getConfiguration().screenLayout
                 and Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode ==  PERMISSIONCODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(intent, CAMERACODE)
+            }
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        val profilePicImageView = view?.findViewById<ImageView>(R.id.ProfilePicImageView)
+
+        if (resultCode == Activity.RESULT_OK && requestCode == CAMERACODE) {
+            val picDisplay: Bitmap = data!!.extras!!.get("data") as Bitmap
+            profilePicImageView?.setImageBitmap(picDisplay)
+            profilePic = picDisplay
+        }
     }
 
     companion object {

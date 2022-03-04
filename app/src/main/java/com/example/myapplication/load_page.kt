@@ -17,8 +17,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.hbb20.CountryCodePicker
 
-private val PERMISSIONCODE = 100
-private val CAMERACODE = 200
 
 /**
  * A simple [Fragment] subclass.

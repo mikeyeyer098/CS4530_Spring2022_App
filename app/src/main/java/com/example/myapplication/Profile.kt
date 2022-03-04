@@ -38,8 +38,7 @@ data class Profile(
         parcel.readString(),
         parcel.readString(),
         parcel.readParcelable(Bitmap::class.java.classLoader)
-    ) {
-    }
+    )
 
     companion object : Parceler<Profile> {
 

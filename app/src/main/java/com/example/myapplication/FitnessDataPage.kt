@@ -77,6 +77,7 @@ class FitnessDataPage : Fragment() {
             }
         }
         heightTag.isEnabled = false
+        heightTag.alpha = 0.5f
 
         var weightTag = requireView().findViewById<TextView>(R.id.weightTextField)
 
@@ -85,9 +86,9 @@ class FitnessDataPage : Fragment() {
         } catch (e: Exception) {
             weightTag.hint = "Weight: ${profile?.weight}"
         }
-
-
         weightTag.setTextIsSelectable(false)
+        weightTag.alpha = 0.5f
+
 
         val regimenSpinner = view.findViewById(R.id.regimenSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -100,6 +101,8 @@ class FitnessDataPage : Fragment() {
         }
         regimenSpinner.prompt = "Select weight goal:"
         regimenSpinner.isEnabled = false
+        regimenSpinner.alpha = 0.5f
+
 
         val activitySpinner = view.findViewById(R.id.activityLevelSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -112,6 +115,7 @@ class FitnessDataPage : Fragment() {
         }
         activitySpinner.prompt = "Select activity level:"
         activitySpinner.isEnabled = false
+        activitySpinner.alpha = 0.5f
 
         val poundsSpinner : Spinner = view.findViewById(R.id.poundsGoalSpinner)
         ArrayAdapter.createFromResource(
@@ -123,6 +127,7 @@ class FitnessDataPage : Fragment() {
             poundsSpinner.adapter = adapter
         }
         poundsSpinner.isEnabled = false
+        poundsSpinner.alpha = 0.5f
 
         profile?.bmr = HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
             profile?.age.toString(), profile?.active.toString(), profile?.gender.toString())
@@ -165,6 +170,12 @@ class FitnessDataPage : Fragment() {
             activitySpinner.isEnabled = true
             editProfileButton.isEnabled = false
 
+            weightTag.alpha = 1f
+            heightTag.alpha = 1f
+            poundsSpinner.alpha = 1f
+            regimenSpinner.alpha = 1f
+            activitySpinner.alpha = 1f
+
             updateProfileButton.isEnabled = true
         }
 
@@ -186,6 +197,13 @@ class FitnessDataPage : Fragment() {
             activitySpinner.isEnabled = false
             updateProfileButton.isEnabled = false
             editProfileButton.isEnabled = true
+
+            weightTag.alpha = 0.5f
+            heightTag.alpha = 0.5f
+            poundsSpinner.alpha = 0.5f
+            regimenSpinner.alpha = 0.5f
+            activitySpinner.alpha = 0.5f
+
 
             profile?.active = activityText
 
