@@ -77,6 +77,7 @@ class FitnessDataPage : Fragment() {
             }
         }
         heightTag.isEnabled = false
+        heightTag.alpha = 0.5f
 
         var weightTag = requireView().findViewById<TextView>(R.id.weightTextField)
 
@@ -85,9 +86,9 @@ class FitnessDataPage : Fragment() {
         } catch (e: Exception) {
             weightTag.hint = "Weight: ${profile?.weight}"
         }
-        weightTag.isEnabled = false
-
         weightTag.setTextIsSelectable(false)
+        weightTag.alpha = 0.5f
+
 
         val regimenSpinner = view.findViewById(R.id.regimenSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -100,19 +101,8 @@ class FitnessDataPage : Fragment() {
         }
         regimenSpinner.prompt = "Select weight goal:"
         regimenSpinner.isEnabled = false
+        regimenSpinner.alpha = 0.5f
 
-        if (profile?.weightGoal!!.toInt() > 0)
-        {
-            regimenSpinner.setSelection(0)
-        }
-        else if (profile?.weightGoal!!.toInt() == 0)
-        {
-            regimenSpinner.setSelection(2)
-        }
-        else
-        {
-            regimenSpinner.setSelection(1)
-        }
 
         val activitySpinner = view.findViewById(R.id.activityLevelSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -125,6 +115,7 @@ class FitnessDataPage : Fragment() {
         }
         activitySpinner.prompt = "Select activity level:"
         activitySpinner.isEnabled = false
+        activitySpinner.alpha = 0.5f
 
         val poundsSpinner : Spinner = view.findViewById(R.id.poundsGoalSpinner)
         ArrayAdapter.createFromResource(
@@ -136,6 +127,7 @@ class FitnessDataPage : Fragment() {
             poundsSpinner.adapter = adapter
         }
         poundsSpinner.isEnabled = false
+        poundsSpinner.alpha = 0.5f
 
         profile?.bmr = HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
             profile?.age.toString(), profile?.active.toString(), profile?.gender.toString())
@@ -172,12 +164,17 @@ class FitnessDataPage : Fragment() {
         val editProfileButton = view.findViewById<Button>(R.id.editProfileButton)
         editProfileButton.setOnClickListener{
             weightTag.setTextIsSelectable(true)
-            weightTag.isEnabled = true
             heightTag.isEnabled = true
             poundsSpinner.isEnabled = true
             regimenSpinner.isEnabled = true
             activitySpinner.isEnabled = true
             editProfileButton.isEnabled = false
+
+            weightTag.alpha = 1f
+            heightTag.alpha = 1f
+            poundsSpinner.alpha = 1f
+            regimenSpinner.alpha = 1f
+            activitySpinner.alpha = 1f
 
             updateProfileButton.isEnabled = true
         }
@@ -194,13 +191,19 @@ class FitnessDataPage : Fragment() {
             val activityText : String =
                 activitySpinner.selectedItemPosition.toString()
             weightTag.setTextIsSelectable(false)
-            weightTag.isEnabled = false
             heightTag.isEnabled = false
             poundsSpinner.isEnabled = false
             regimenSpinner.isEnabled = false
             activitySpinner.isEnabled = false
             updateProfileButton.isEnabled = false
             editProfileButton.isEnabled = true
+
+            weightTag.alpha = 0.5f
+            heightTag.alpha = 0.5f
+            poundsSpinner.alpha = 0.5f
+            regimenSpinner.alpha = 0.5f
+            activitySpinner.alpha = 0.5f
+
 
             profile?.active = activityText
 
