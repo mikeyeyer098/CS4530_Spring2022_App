@@ -58,10 +58,6 @@ class load_page : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if (savedInstanceState != null) {
-            profile = savedInstanceState.getParcelable("PROFILE")!!
-        }
-
         nav = parentFragmentManager
 
         val genderSpinner = view.findViewById(R.id.genderSpinner) as Spinner
