@@ -3,7 +3,7 @@ package com.example.myapplication
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 
-class Repository : ViewModel() {
+class ProfileViewModel : ViewModel() {
     lateinit var curProfile: Profile;
 
     fun createProfile (name: String?,
