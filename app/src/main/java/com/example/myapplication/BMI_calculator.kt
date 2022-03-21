@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.activityViewModels
 
 
 class BMI_calculator : Fragment() {
@@ -25,7 +26,6 @@ class BMI_calculator : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("FRAGMENT", "bmi")
-        outState.putParcelable("PROFILE", profile)
         super.onSaveInstanceState(outState)
     }
 
@@ -49,9 +49,9 @@ class BMI_calculator : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if (savedInstanceState != null) {
-            profile = savedInstanceState.getParcelable("PROFILE")!!
-        }
+        val model: ProfileViewModel by activityViewModels()
+
+        profile = model.curProfile
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)
@@ -109,11 +109,7 @@ class BMI_calculator : Fragment() {
 
         backButton.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-
-            profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-            }
-
+            fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -123,12 +119,7 @@ class BMI_calculator : Fragment() {
 
         profileThumbnail.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-            profile?.let { it1 -> ProfilePage.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(
-                    R.id.fragmentContainer,
-                    it2
-                )
-            }
+            fragmentTransaction?.replace(R.id.fragmentContainer, ProfilePage.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -148,31 +139,19 @@ class BMI_calculator : Fragment() {
                 val selectedItem = parent.getItemAtPosition(position) as String
                 if (selectedItem == "My Fitness Regime") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    profile?.let { it1 -> FitnessDataPage.newInstance(it1) }?.let { it2 ->
-                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-                    }
-
+                    fragmentTransaction?.replace(R.id.fragmentContainer, FitnessDataPage.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
                 } else if (selectedItem == "Homepage") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
-                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-                    }
-
+                    fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
                 } else if (selectedItem == "My Profile") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    profile?.let { it1 -> ProfilePage.newInstance(it1) }?.let { it2 ->
-                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-                    }
-
+                    fragmentTransaction?.replace(R.id.fragmentContainer, ProfilePage.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
@@ -185,11 +164,9 @@ class BMI_calculator : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(profile: Profile) =
+        fun newInstance() =
             BMI_calculator().apply {
-                this.profile = profile
                 arguments = Bundle().apply {
-
                 }
             }
     }

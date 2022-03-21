@@ -3,12 +3,12 @@ package com.example.myapplication
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,14 +48,13 @@ class FitnessDataPage : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("FRAGMENT", "fitdat")
-        outState.putParcelable("PROFILE", profile)
         super.onSaveInstanceState(outState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if (savedInstanceState != null) {
-            profile = savedInstanceState.getParcelable("PROFILE")!!
-        }
+        val model: ProfileViewModel by activityViewModels()
+
+        profile = model.curProfile
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)
@@ -148,11 +147,7 @@ class FitnessDataPage : Fragment() {
 
         backButton.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-
-            profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-            }
-
+            fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -232,12 +227,7 @@ class FitnessDataPage : Fragment() {
 
         profileThumbnail.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-            profile?.let { it1 -> ProfilePage.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(
-                    R.id.fragmentContainer,
-                    it2
-                )
-            }
+            fragmentTransaction?.replace(R.id.fragmentContainer, ProfilePage.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -257,31 +247,19 @@ class FitnessDataPage : Fragment() {
                 val selectedItem = parent.getItemAtPosition(position) as String
                 if (selectedItem == "Homepage") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
-                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-                    }
-
+                    fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
                 } else if (selectedItem == "BMI Calculator") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    profile?.let { it1 -> BMI_calculator.newInstance(it1) }?.let { it2 ->
-                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-                    }
-
+                    fragmentTransaction?.replace(R.id.fragmentContainer, BMI_calculator.newInstance());
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
                 } else if (selectedItem == "My Profile") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    profile?.let { it1 -> ProfilePage.newInstance(it1) }?.let { it2 ->
-                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-                    }
-
+                    fragmentTransaction?.replace(R.id.fragmentContainer, ProfilePage.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
@@ -295,9 +273,8 @@ class FitnessDataPage : Fragment() {
 
     companion object {
 
-        fun newInstance(profile: Profile) =
+        fun newInstance() =
             FitnessDataPage().apply {
-                this.profile = profile
                 arguments = Bundle().apply {
 
                 }

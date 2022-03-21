@@ -2,8 +2,6 @@ package com.example.myapplication
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -15,10 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.activityViewModels
 import com.hbb20.CountryCodePicker
 
 
@@ -53,12 +51,13 @@ class load_page : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("FRAGMENT", "load")
-        outState.putParcelable("PROFILE", profile)
         super.onSaveInstanceState(outState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         nav = parentFragmentManager
+
+        val model: ProfileViewModel by activityViewModels()
 
         val genderSpinner = view.findViewById(R.id.genderSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -127,18 +126,11 @@ class load_page : Fragment() {
 
 
 
-                profile = Profile(
-                    nameText, heightSelection.toString(), weightText, ageSelection.toString(), genderSelection.toString(),
-                    cityText, countrySelection.toString(), photoPath, "0", "", "", "", "0", profilePic
-                )
+                model.createProfile(nameText, heightSelection.toString(), weightText, ageSelection.toString(), genderSelection.toString(),
+                    cityText, countrySelection.toString(), photoPath, "0", "", "", "", "0", profilePic)
 
                 val fragmentTransaction = fragmentManager?.beginTransaction()
-                profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
-                    fragmentTransaction?.replace(
-                        R.id.fragmentContainer,
-                        it2
-                    )
-                }
+                fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
                 fragmentTransaction?.commit()
             } else
             {

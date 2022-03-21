@@ -1,8 +1,6 @@
 package com.example.myapplication
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,13 +11,10 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.util.Log
 import android.widget.*
+import androidx.fragment.app.activityViewModels
 import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.google.android.material.button.MaterialButton
-import org.json.JSONException
 import org.json.JSONObject
 
 
@@ -51,9 +46,9 @@ class home_page : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if (savedInstanceState != null) {
-            profile = savedInstanceState.getParcelable("PROFILE")!!
-        }
+        val model: ProfileViewModel by activityViewModels()
+
+        profile = model.curProfile
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)
@@ -70,12 +65,7 @@ class home_page : Fragment() {
 
         profileButton.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-            profile?.let { it1 -> ProfilePage.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(
-                    R.id.fragmentContainer,
-                    it2
-                )
-            }
+            fragmentTransaction?.replace(R.id.fragmentContainer, ProfilePage.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -85,12 +75,7 @@ class home_page : Fragment() {
 
         profileThumbnail.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-            profile?.let { it1 -> ProfilePage.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(
-                    R.id.fragmentContainer,
-                    it2
-                )
-            }
+            fragmentTransaction?.replace(R.id.fragmentContainer, ProfilePage.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -99,12 +84,7 @@ class home_page : Fragment() {
         val bmiButton = view.findViewById<Button>(R.id.BMICalcButton)
         bmiButton.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-            profile?.let { it1 -> BMI_calculator.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(
-                    R.id.fragmentContainer,
-                    it2
-                )
-            }
+            fragmentTransaction?.replace(R.id.fragmentContainer, BMI_calculator.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -113,11 +93,7 @@ class home_page : Fragment() {
         val myFitRegButt = view.findViewById<Button>(R.id.MyFitnessRegimenButton)
         myFitRegButt.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-
-            profile?.let { it1 -> FitnessDataPage.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-            }
-
+            fragmentTransaction?.replace(R.id.fragmentContainer, FitnessDataPage.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -133,7 +109,6 @@ class home_page : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("FRAGMENT", "home")
-        outState.putParcelable("PROFILE", profile)
         super.onSaveInstanceState(outState)
     }
 
@@ -207,9 +182,8 @@ class home_page : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(profile: Profile) =
+        fun newInstance() =
             home_page().apply {
-                this.profile = profile
                 arguments = Bundle().apply {
                 }
             }

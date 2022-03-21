@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import com.example.myapplication.Profile.Companion.write
 import com.hbb20.CountryCodePicker
 
@@ -42,7 +43,6 @@ class ProfilePage : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("FRAGMENT", "prof")
-        outState.putParcelable("PROFILE", profile)
         super.onSaveInstanceState(outState)
     }
 
@@ -55,9 +55,9 @@ class ProfilePage : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if (savedInstanceState != null) {
-            profile = savedInstanceState.getParcelable("PROFILE")!!
-        }
+        val model: ProfileViewModel by activityViewModels()
+
+        profile = model.curProfile
 
         val genderSpinner = view.findViewById(R.id.genderSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -115,11 +115,7 @@ class ProfilePage : Fragment() {
 
         backButton.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-
-            profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
-                fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-            }
-
+            fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -140,31 +136,20 @@ class ProfilePage : Fragment() {
                 val selectedItem = parent.getItemAtPosition(position) as String
                 if (selectedItem == "Homepage") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    profile?.let { it1 -> home_page.newInstance(it1) }?.let { it2 ->
-                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-                    }
-
+                    fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
+
                 } else if (selectedItem == "My Fitness Regime") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    profile?.let { it1 -> FitnessDataPage.newInstance(it1) }?.let { it2 ->
-                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-                    }
-
+                    fragmentTransaction?.replace(R.id.fragmentContainer, FitnessDataPage.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
                 } else if (selectedItem == "BMI Calculator") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-
-                    profile?.let { it1 -> BMI_calculator.newInstance(it1) }?.let { it2 ->
-                        fragmentTransaction?.replace(R.id.fragmentContainer, it2)
-                    }
-
+                    fragmentTransaction?.replace(R.id.fragmentContainer, BMI_calculator.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
@@ -330,9 +315,8 @@ class ProfilePage : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(profile: Profile) =
+        fun newInstance() =
             ProfilePage().apply {
-                this.profile = profile
                 arguments = Bundle().apply {
                 }
             }
