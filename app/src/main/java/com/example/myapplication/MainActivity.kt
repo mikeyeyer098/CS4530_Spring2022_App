@@ -14,6 +14,7 @@ import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityMainBinding
 import java.io.File
 
@@ -23,6 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var viewModel = ViewModelProvider(this).get(Repository::class.java)
+
         if (savedInstanceState == null) {
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
