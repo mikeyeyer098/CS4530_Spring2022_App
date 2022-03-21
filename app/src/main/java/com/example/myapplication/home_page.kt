@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
 import android.content.res.Configuration
+import android.text.Editable
 import android.util.Log
 import android.widget.*
 import androidx.fragment.app.activityViewModels
@@ -34,6 +35,8 @@ class home_page : Fragment() {
         arguments?.let {
 
         }
+
+
 
     }
 
@@ -116,7 +119,12 @@ class home_page : Fragment() {
         Log.i("test", "a")
         // Instantiate the RequestQueue.
         //val queue = Volley.newRequestQueue(view.context)
+
         val city = profile?.city
+        val cityText = view.findViewById<Button>(R.id.cityTextField)
+        cityText.text = Editable.Factory.getInstance().newEditable(profile?.city)
+        cityText.setTextIsSelectable(false)
+
         val id = "4dbd2ed7d890d4f83982194472e820f5"
         val url = " https://api.openweathermap.org/data/2.5/weather?q=${city?.replace("\\s".toRegex(), "")}&appid=4dbd2ed7d890d4f83982194472e820f5"
         val queue = Volley.newRequestQueue(view.context)
