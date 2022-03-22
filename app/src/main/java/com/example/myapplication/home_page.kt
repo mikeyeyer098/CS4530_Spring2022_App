@@ -12,6 +12,7 @@ import android.content.res.Configuration
 import android.text.Editable
 import android.util.Log
 import android.widget.*
+import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.activityViewModels
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
@@ -116,26 +117,14 @@ class home_page : Fragment() {
     }
 
     fun getWeatherDetails(view: View){
-        Log.i("test", "a")
-        // Instantiate the RequestQueue.
-        //val queue = Volley.newRequestQueue(view.context)
 
-        val city = profile?.city
         val cityText = view.findViewById<Button>(R.id.cityTextField)
         cityText.text = Editable.Factory.getInstance().newEditable(profile?.city)
         cityText.setTextIsSelectable(false)
 
-        val id = "4dbd2ed7d890d4f83982194472e820f5"
-        val url = " https://api.openweathermap.org/data/2.5/weather?q=${city?.replace("\\s".toRegex(), "")}&appid=4dbd2ed7d890d4f83982194472e820f5"
-        val queue = Volley.newRequestQueue(view.context)
-        Log.i("test", "b")
-        //Request a string response from the provided URL.
-        val stringRequest = StringRequest(Request.Method.GET, url,
-            { response ->
-                Log.i("test", "c")
-                // Display the first 500 characters of the response string.
-                var jsonresponse = JSONObject(response)
-                var temp = jsonresponse.getJSONObject("main").getDouble("temp")
+                var viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
+                var result = profile?.city?.let { viewModel.getWeatherData(it, view.context) }
+                var temp = result!!.getJSONObject("main").getDouble("temp")
                 temp -= 273.15
                 temp *= (9 / 5)
                 temp += 32
@@ -144,8 +133,8 @@ class home_page : Fragment() {
 
                 view.findViewById<TextView>(R.id.TemperatureHighText).text = temp.toInt().toString() + " \u2109"
 
-                Log.i("test", jsonresponse.getJSONArray("weather").getJSONObject(0).getString("icon"))
-                when(jsonresponse.getJSONArray("weather").getJSONObject(0).getString("icon")) {
+                var icon = result!!.getJSONArray("weather").getJSONObject(0).getString("icon")
+                when(icon) {
                     "01d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a01d)
                     "01n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a01n)
                     "02d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a02d)
@@ -166,11 +155,8 @@ class home_page : Fragment() {
                     "50n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a50n)
                 }
 
-            },
-            { Log.i("test", "That didn't work!") })
+            }
 
-        //Add the request to the RequestQueue.
-        queue.add(stringRequest)
     }
 
     fun isTablet(context: Context): Boolean {
