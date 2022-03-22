@@ -10,13 +10,8 @@ import android.view.ViewGroup
 import android.content.Intent
 import android.content.res.Configuration
 import android.text.Editable
-import android.util.Log
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.activityViewModels
-import com.android.volley.Request
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 
@@ -38,7 +33,6 @@ class home_page : Fragment() {
         }
 
 
-
     }
 
     override fun onCreateView(
@@ -50,9 +44,9 @@ class home_page : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val model: ProfileViewModel by activityViewModels()
+        val profileModel: ProfileViewModel by activityViewModels()
 
-        profile = model.curProfile
+        profile = profileModel.curProfile
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)
@@ -105,7 +99,7 @@ class home_page : Fragment() {
 
         getWeatherDetails(view)
 
-        if(isTablet(this.requireContext())) {
+        if (isTablet(this.requireContext())) {
 
         }
         super.onViewCreated(view, savedInstanceState)
@@ -116,47 +110,70 @@ class home_page : Fragment() {
         super.onSaveInstanceState(outState)
     }
 
-    fun getWeatherDetails(view: View){
-
-        val cityText = view.findViewById<Button>(R.id.cityTextField)
+    fun getWeatherDetails(view: View) {
+        val weatherModel: WeatherViewModel by activityViewModels()
+        val cityText = view.findViewById<TextView>(R.id.cityTextField)
         cityText.text = Editable.Factory.getInstance().newEditable(profile?.city)
         cityText.setTextIsSelectable(false)
 
-                var viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
-                var result = profile?.city?.let { viewModel.getWeatherData(it, view.context) }
-                var temp = result!!.getJSONObject("main").getDouble("temp")
-                temp -= 273.15
-                temp *= (9 / 5)
-                temp += 32
+        var result: JSONObject? = null
 
+        context?.let {
+            profile?.city?.let { it1 ->
+                weatherModel.getWeatherData(it1, it, object : ServerCallback {
+                    override fun onSuccess(receiveMessage: JSONObject?) {
+                        result = receiveMessage
+                        var temp = result!!.getJSONObject("main").getDouble("temp")
+                        temp -= 273.15
+                        temp *= (9 / 5)
+                        temp += 32
 
+                        view.findViewById<TextView>(R.id.TemperatureHighText).text =
+                            temp.toInt().toString() + " \u2109"
 
-                view.findViewById<TextView>(R.id.TemperatureHighText).text = temp.toInt().toString() + " \u2109"
-
-                var icon = result!!.getJSONArray("weather").getJSONObject(0).getString("icon")
-                when(icon) {
-                    "01d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a01d)
-                    "01n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a01n)
-                    "02d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a02d)
-                    "02n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a02n)
-                    "03d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a03n)
-                    "03n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a03n)
-                    "04d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a04d)
-                    "04n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a04n)
-                    "09d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a09d)
-                    "09n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a09n)
-                    "10d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a10d)
-                    "10n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a10n)
-                    "11d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a11d)
-                    "11n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a11n)
-                    "13d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a13d)
-                    "13n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a13n)
-                    "50d" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a50d)
-                    "50n" -> view.findViewById<ImageView>(R.id.WeatherImageView).setBackgroundResource(R.drawable.a50n)
-                }
-
+                        var icon = result!!.getJSONArray("weather").getJSONObject(0).getString("icon")
+                        when (icon) {
+                            "01d" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a01d)
+                            "01n" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a01n)
+                            "02d" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a02d)
+                            "02n" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a02n)
+                            "03d" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a03n)
+                            "03n" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a03n)
+                            "04d" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a04d)
+                            "04n" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a04n)
+                            "09d" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a09d)
+                            "09n" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a09n)
+                            "10d" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a10d)
+                            "10n" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a10n)
+                            "11d" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a11d)
+                            "11n" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a11n)
+                            "13d" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a13d)
+                            "13n" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a13n)
+                            "50d" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a50d)
+                            "50n" -> view.findViewById<ImageView>(R.id.WeatherImageView)
+                                .setBackgroundResource(R.drawable.a50n)
+                        }
+                    }
+                })
             }
-
+        }
     }
 
     fun isTablet(context: Context): Boolean {

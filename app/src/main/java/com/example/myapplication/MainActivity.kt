@@ -13,7 +13,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        var profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        var weatherViewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
 
         if (savedInstanceState == null) {
             binding = ActivityMainBinding.inflate(layoutInflater)
