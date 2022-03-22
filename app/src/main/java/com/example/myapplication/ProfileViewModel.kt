@@ -4,7 +4,9 @@ import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 
 class ProfileViewModel : ViewModel() {
-    lateinit var curProfile: Profile;
+    lateinit var curProfile: Profile
+
+    var repo: ProfileRepo = ProfileRepo()
 
     fun createProfile (name: String?,
                        height: String?, // saved as the index selection in the spinner (0 = 4' tall)
@@ -20,7 +22,9 @@ class ProfileViewModel : ViewModel() {
                        regimen: String?,
                        weightGoal: String?,
                        image: Bitmap?) {
-        curProfile = Profile(name, height, weight, age, gender, city, country, imagePath, active, bmr, bmi, regimen, weightGoal, image)
+        repo.curProfile = Profile(name, height, weight, age, gender, city, country, imagePath, active, bmr, bmi, regimen, weightGoal, image)
+
+        curProfile = repo.curProfile
     }
 
     fun changeProfile (profile: Profile) {
