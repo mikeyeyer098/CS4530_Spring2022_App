@@ -10,8 +10,13 @@ import android.view.ViewGroup
 import android.content.Intent
 import android.content.res.Configuration
 import android.text.Editable
+import android.util.Log
 import android.widget.*
+import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.activityViewModels
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 
@@ -33,6 +38,7 @@ class home_page : Fragment() {
         }
 
 
+
     }
 
     override fun onCreateView(
@@ -44,9 +50,9 @@ class home_page : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val profileModel: ProfileViewModel by activityViewModels()
+        val model: ProfileViewModel by activityViewModels()
 
-        profile = profileModel.curProfile
+        profile = model.curProfile
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)
@@ -99,7 +105,7 @@ class home_page : Fragment() {
 
         getWeatherDetails(view)
 
-        if (isTablet(this.requireContext())) {
+        if(isTablet(this.requireContext())) {
 
         }
         super.onViewCreated(view, savedInstanceState)
