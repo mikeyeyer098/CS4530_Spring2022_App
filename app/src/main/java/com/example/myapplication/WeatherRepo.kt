@@ -17,8 +17,6 @@ sealed class Result<out R> {
 
 class WeatherRepo {
 
-    private var jsonResponse = MutableLiveData<JSONObject>()
-
     fun makeWeatherRequest(loc: String, context: Context, serverCallback: ServerCallback){
         val url = " https://api.openweathermap.org/data/2.5/weather?q=${loc?.replace("\\s".toRegex(), "")}&appid=4dbd2ed7d890d4f83982194472e820f5"
         val queue = Volley.newRequestQueue(context)
