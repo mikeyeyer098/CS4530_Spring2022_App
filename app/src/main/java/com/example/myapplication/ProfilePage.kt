@@ -18,7 +18,6 @@ import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
-import com.example.myapplication.Profile.Companion.write
 import com.hbb20.CountryCodePicker
 
 

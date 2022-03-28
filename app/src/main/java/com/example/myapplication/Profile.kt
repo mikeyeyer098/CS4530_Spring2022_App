@@ -8,10 +8,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Users")
 data class Profile(
-    @PrimaryKey(autoGenerate = true)
-    var uID : Int,
-
-    @ColumnInfo(name= "name")
+    @PrimaryKey
     var name: String?,
     @ColumnInfo(name= "height")
     var height: String?, // saved as the index selection in the spinner (0 = 4' tall)

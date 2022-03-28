@@ -14,14 +14,14 @@ interface UserDao {
     @Update
     fun update(user: Profile)
 
-    @Query("SELECT * FROM Users WHERE Users.uID = :uID")
-    fun get(uID : Long) : Profile?
+    @Query("SELECT * FROM Users WHERE Users.name = :userName")
+    fun get(userName : String) : Profile?
 
     @Query("DELETE FROM Users")
     fun clearAll()
 
-    @Query("DELETE FROM Users WHERE Users.uID= :uID")
-    fun deleteUser(uID : Long)
+    @Query("DELETE FROM Users WHERE Users.name= :userName")
+    fun deleteUser(userName : String)
 
     @Query("SELECT * FROM Users")
     fun getAllUsers(): LiveData<List<Profile>>
