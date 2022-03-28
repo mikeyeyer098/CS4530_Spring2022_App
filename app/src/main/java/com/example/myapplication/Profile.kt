@@ -1,13 +1,10 @@
 package com.example.myapplication
 
 import android.graphics.Bitmap
-import android.os.Parcel
-import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.parcelize.Parceler
-import kotlinx.parcelize.Parcelize
+
 
 @Entity(tableName = "Users")
 data class Profile(
