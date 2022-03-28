@@ -6,19 +6,21 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.hbb20.CountryCodePicker
+import kotlinx.coroutines.runBlocking
+import java.io.ByteArrayOutputStream
 
 
 /**
@@ -56,7 +58,7 @@ class ProfilePage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val model: ProfileViewModel by activityViewModels()
 
-        profile = model.getProfile()
+        profile = runBlocking { model.getProfile() }
 
         val genderSpinner = view.findViewById(R.id.genderSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -195,7 +197,7 @@ class ProfilePage : Fragment() {
         countrySpinner.alpha = 0.5f
 
         val imageGuy = view.findViewById<ImageView>(R.id.ProfilePicImageView)
-        imageGuy.setImageBitmap(profile?.image)
+        imageGuy.setImageBitmap(profile?.image?.let { BitmapFactory.decodeByteArray(profile?.image, 0, it.size) })
 
         val takePictureButton: Button = view.findViewById(R.id.TakePictureButton)
         takePictureButton.isEnabled = false
@@ -275,8 +277,11 @@ class ProfilePage : Fragment() {
             profile?.country = countrySpinner.selectedCountryCode
             profile?.name = nameText
             profile?.gender = genderText.toString()
-            profile?.image = profilePic
+            val bos = ByteArrayOutputStream()
+            profilePic?.compress(Bitmap.CompressFormat.PNG, 100, bos)
+            profile?.image = bos.toByteArray()
 
+            runBlocking { model.updateProfile(profile!!) }
         }
         super.onViewCreated(view, savedInstanceState)
     }

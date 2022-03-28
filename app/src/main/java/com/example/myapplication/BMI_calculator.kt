@@ -2,6 +2,8 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -11,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.activityViewModels
+import kotlinx.coroutines.runBlocking
 
 
 class BMI_calculator : Fragment() {
@@ -51,10 +54,10 @@ class BMI_calculator : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val model: ProfileViewModel by activityViewModels()
 
-        profile = model.getProfile()
+        profile = runBlocking { model.getProfile() }
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
-        profileThumb.setImageBitmap(profile?.image)
+        profileThumb.setImageBitmap(profile?.image?.let { BitmapFactory.decodeByteArray(profile?.image, 0, it.size) })
 
         var heightTag = requireView().findViewById<Spinner>(R.id.heightSpinner)
         var heights : ArrayList<String> = arrayListOf()

@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import com.hbb20.CountryCodePicker
+import kotlinx.coroutines.runBlocking
+import java.io.ByteArrayOutputStream
 
 
 private val PERMISSIONCODE = 100
@@ -124,10 +126,12 @@ class load_page : Fragment() {
                 val cityText: String = view.findViewById<EditText>(R.id.cityTextField).text.toString()
                 val countrySelection: String = countrySpinner.selectedCountryNameCode
 
+                val bos = ByteArrayOutputStream()
+                profilePic?.compress(Bitmap.CompressFormat.PNG, 100, bos)
+                val bArray: ByteArray = bos.toByteArray()
 
-
-                model.createProfile(nameText, heightSelection.toString(), weightText, ageSelection.toString(), genderSelection.toString(),
-                    cityText, countrySelection.toString(), photoPath, "0", "", "", "", "0", profilePic)
+                runBlocking { model.createProfile(nameText, heightSelection.toString(), weightText, ageSelection.toString(), genderSelection.toString(),
+                    cityText, countrySelection.toString(), photoPath, "0", "", "", "", "0", bArray) }
 
                 val fragmentTransaction = fragmentManager?.beginTransaction()
                 fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())

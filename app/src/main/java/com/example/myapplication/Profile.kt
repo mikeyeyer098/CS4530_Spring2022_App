@@ -35,5 +35,5 @@ data class Profile(
     @ColumnInfo(name= "weightGoal")
     var weightGoal: String?,
     @ColumnInfo(name= "image")
-    var image: ByteArray
+    var image: ByteArray?
 )

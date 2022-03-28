@@ -19,8 +19,4 @@ interface UserDao {
 
     @Query("DELETE FROM Users WHERE Users.name= :userName")
     suspend fun deleteUser(userName : String)
-
-    @Query("SELECT * FROM Users")
-    suspend fun getAllUsers(): LiveData<List<Profile>>
-
 }

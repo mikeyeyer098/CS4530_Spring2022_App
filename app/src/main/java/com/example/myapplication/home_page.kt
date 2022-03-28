@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.BitmapFactory
 import android.text.Editable
 import android.util.Log
 import android.widget.*
@@ -17,6 +18,7 @@ import androidx.fragment.app.activityViewModels
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 
 
@@ -52,10 +54,10 @@ class home_page : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val model: ProfileViewModel by activityViewModels()
 
-        profile = model.getProfile()
+        profile = runBlocking { model.getProfile() }
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
-        profileThumb.setImageBitmap(profile?.image)
+        profileThumb.setImageBitmap(profile?.image?.let { BitmapFactory.decodeByteArray(profile?.image, 0, it.size) })
 
         val mapsButton = view.findViewById<ImageButton>(R.id.HikesFinderButton)
         mapsButton.setOnClickListener {

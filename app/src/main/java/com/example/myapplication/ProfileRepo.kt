@@ -14,4 +14,8 @@ class ProfileRepo (){
     suspend fun createProfile(profile: Profile) {
         userDao.insert(profile)
     }
+
+    suspend fun updateProfile(profile: Profile) {
+        userDao.update(profile)
+    }
 }
