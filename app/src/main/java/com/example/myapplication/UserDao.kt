@@ -1,29 +1,26 @@
 package com.example.myapplication
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface UserDao {
-    @Insert
-    fun insert(user : Profile)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(user : Profile)
 
     @Update
-    fun update(user: Profile)
+    suspend fun update(user: Profile)
 
     @Query("SELECT * FROM Users WHERE Users.name = :userName")
-    fun get(userName : String) : Profile?
+    suspend fun get(userName : String) : Profile?
 
     @Query("DELETE FROM Users")
-    fun clearAll()
+    suspend fun clearAll()
 
     @Query("DELETE FROM Users WHERE Users.name= :userName")
-    fun deleteUser(userName : String)
+    suspend fun deleteUser(userName : String)
 
     @Query("SELECT * FROM Users")
-    fun getAllUsers(): LiveData<List<Profile>>
+    suspend fun getAllUsers(): LiveData<List<Profile>>
 
 }

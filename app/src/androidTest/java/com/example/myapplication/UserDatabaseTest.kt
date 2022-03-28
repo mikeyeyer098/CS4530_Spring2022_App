@@ -1,9 +1,12 @@
 package com.example.myapplication
 
+import android.content.Context
 import androidx.room.Room
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import junit.framework.Assert.assertEquals
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -19,7 +22,7 @@ import java.io.IOException
 
         @Before
         fun createDb() {
-            val context = InstrumentationRegistry.getInstrumentation().targetContext
+            val context : Context = ApplicationProvider.getApplicationContext()
             // Using an in-memory database because the information stored here disappears when the
             // process is killed.
             db = Room.inMemoryDatabaseBuilder(context, UserDatabase::class.java)
@@ -37,7 +40,7 @@ import java.io.IOException
 
         @Test
         @Throws(Exception::class)
-        fun insertAndGetUser() {
+        fun insertAndGetUser() = runBlocking {
             val user = Profile("testUser", null, null, null, null, null, null, null, null, null,null,null, null, null)
             userDao.insert(user)
             val gotUser = userDao.get("testUser")
