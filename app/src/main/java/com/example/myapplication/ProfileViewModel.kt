@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 
 class ProfileViewModel : ViewModel() {
-    lateinit var curProfile: Profile
+    lateinit var curUserName: String
 
     var repo: ProfileRepo = ProfileRepo()
 
@@ -22,12 +22,11 @@ class ProfileViewModel : ViewModel() {
                        regimen: String?,
                        weightGoal: String?,
                        image: Bitmap?) {
-        repo.curProfile = Profile(name, height, weight, age, gender, city, country, imagePath, active, bmr, bmi, regimen, weightGoal, image)
-
-        curProfile = repo.curProfile
+        curUserName = name!!
+        repo.createProfile(Profile(name, height, weight, age, gender, city, country, imagePath, active, bmr, bmi, regimen, weightGoal, image))
     }
 
-    fun changeProfile (profile: Profile) {
-        curProfile = profile
+    fun getProfile (): Profile? {
+        return repo.userDao.get(curUserName)
     }
 }

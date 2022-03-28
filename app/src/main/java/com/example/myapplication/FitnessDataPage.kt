@@ -54,7 +54,7 @@ class FitnessDataPage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val model: ProfileViewModel by activityViewModels()
 
-        profile = model.curProfile
+        profile = model.getProfile()
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image)

@@ -56,7 +56,7 @@ class ProfilePage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val model: ProfileViewModel by activityViewModels()
 
-        profile = model.curProfile
+        profile = model.getProfile()
 
         val genderSpinner = view.findViewById(R.id.genderSpinner) as Spinner
         ArrayAdapter.createFromResource(

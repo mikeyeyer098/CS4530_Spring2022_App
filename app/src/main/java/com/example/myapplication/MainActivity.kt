@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         var profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        profileViewModel.repo.createDb(this)
         var weatherViewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
 
         if (savedInstanceState == null) {

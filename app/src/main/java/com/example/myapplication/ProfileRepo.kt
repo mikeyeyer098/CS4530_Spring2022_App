@@ -1,7 +1,17 @@
 package com.example.myapplication
 
-import android.graphics.Bitmap
+import android.content.Context
 
-class ProfileRepo {
-    lateinit var curProfile: Profile;
+class ProfileRepo (){
+    lateinit var userDao: UserDao
+    lateinit var db: UserDatabase
+
+    fun createDb(context: Context) {
+        db = UserDatabase.getInstance(context)
+        userDao = db.userDao
+    }
+
+    fun createProfile(profile: Profile) {
+        userDao.insert(profile)
+    }
 }
