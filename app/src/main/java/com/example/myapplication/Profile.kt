@@ -3,65 +3,43 @@ package com.example.myapplication
 import android.graphics.Bitmap
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
 
-@Parcelize
+@Entity(tableName = "Users")
 data class Profile(
+    @PrimaryKey(autoGenerate = true)
+    var uID : Int,
+
+    @ColumnInfo(name= "name")
     var name: String?,
+    @ColumnInfo(name= "height")
     var height: String?, // saved as the index selection in the spinner (0 = 4' tall)
+    @ColumnInfo(name= "weight")
     var weight: String?,
+    @ColumnInfo(name= "age")
     var age: String?,
+    @ColumnInfo(name= "gender")
     var gender: String?,
+    @ColumnInfo(name= "city")
     var city: String?,
+    @ColumnInfo(name= "country")
     var country: String?,
+    @ColumnInfo(name= "imagePath")
     var imagePath: String?,
+    @ColumnInfo(name= "active")
     var active: String?,
+    @ColumnInfo(name= "bmr")
     var bmr: String?,
+    @ColumnInfo(name= "bmi")
     var bmi: String?,
+    @ColumnInfo(name= "regimen")
     var regimen: String?,
+    @ColumnInfo(name= "weightGoal")
     var weightGoal: String?,
+    @ColumnInfo(name= "image")
     var image: Bitmap?,
-) :Parcelable {
-    constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readParcelable(Bitmap::class.java.classLoader)
-    )
-
-    companion object : Parceler<Profile> {
-
-        override fun Profile.write(parcel: Parcel, flags: Int) {
-            parcel.writeString(name)
-            parcel.writeString(height)
-            parcel.writeString(weight)
-            parcel.writeString(age)
-            parcel.writeString(gender)
-            parcel.writeString(city)
-            parcel.writeString(country)
-            parcel.writeString(imagePath)
-            parcel.writeString(active)
-            parcel.writeString(bmr)
-            parcel.writeString(bmi)
-            parcel.writeString(regimen)
-            parcel.writeString(weightGoal)
-            parcel.writeParcelable(image, flags)
-        }
-
-        override fun create(parcel: Parcel): Profile {
-            return Profile(parcel)
-        }
-    }
-}
-
+)
