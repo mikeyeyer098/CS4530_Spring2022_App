@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             }
             if(savedInstanceState.getString("FRAGMENT") == "home")
             {
-                replaceFragment(home_page.newInstance())
+                replaceFragment(HomePage.newInstance())
             }
             if(savedInstanceState.getString("FRAGMENT") == "prof")
             {

@@ -116,7 +116,7 @@ class ProfilePage : Fragment() {
 
         backButton.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
+            fragmentTransaction?.replace(R.id.fragmentContainer, HomePage.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -137,7 +137,7 @@ class ProfilePage : Fragment() {
                 val selectedItem = parent.getItemAtPosition(position) as String
                 if (selectedItem == "Homepage") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-                    fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
+                    fragmentTransaction?.replace(R.id.fragmentContainer, HomePage.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()

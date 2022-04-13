@@ -2,7 +2,6 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.res.Configuration
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.text.Editable
@@ -112,7 +111,7 @@ class BMI_calculator : Fragment() {
 
         backButton.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
+            fragmentTransaction?.replace(R.id.fragmentContainer, HomePage.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -148,7 +147,7 @@ class BMI_calculator : Fragment() {
                     fragmentTransaction?.commit()
                 } else if (selectedItem == "Homepage") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
-                    fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
+                    fragmentTransaction?.replace(R.id.fragmentContainer, HomePage.newInstance())
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()

@@ -11,13 +11,8 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.text.Editable
-import android.util.Log
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.activityViewModels
-import com.android.volley.Request
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 
@@ -27,10 +22,10 @@ import org.json.JSONObject
 
 /**
  * A simple [Fragment] subclass.
- * Use the [home_page.newInstance] factory method to
+ * Use the [HomePage.newInstance] factory method to
  * create an instance of this fragment.
  */
-class home_page : Fragment() {
+class HomePage : Fragment() {
     private var profile: Profile? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,6 +95,14 @@ class home_page : Fragment() {
         myFitRegButt.setOnClickListener {
             val fragmentTransaction = fragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.fragmentContainer, FitnessDataPage.newInstance())
+            fragmentTransaction?.setReorderingAllowed(true)
+            fragmentTransaction?.addToBackStack(null)
+            fragmentTransaction?.commit()
+        }
+        val stepCountButt = view.findViewById<Button>(R.id.StepCounterButton)
+        stepCountButt.setOnClickListener {
+            val fragmentTransaction = fragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.fragmentContainer, StepCounterPage.newInstance())
             fragmentTransaction?.setReorderingAllowed(true)
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
@@ -202,7 +205,7 @@ class home_page : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() =
-            home_page().apply {
+            HomePage().apply {
                 arguments = Bundle().apply {
                 }
             }

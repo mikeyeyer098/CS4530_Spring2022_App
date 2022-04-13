@@ -134,7 +134,7 @@ class load_page : Fragment() {
                     cityText, countrySelection.toString(), photoPath, "0", "", "", "", "0", bArray) }
 
                 val fragmentTransaction = fragmentManager?.beginTransaction()
-                fragmentTransaction?.replace(R.id.fragmentContainer, home_page.newInstance())
+                fragmentTransaction?.replace(R.id.fragmentContainer, HomePage.newInstance())
                 fragmentTransaction?.commit()
             } else
             {
