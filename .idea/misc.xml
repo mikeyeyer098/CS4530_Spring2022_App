@@ -21,12 +21,14 @@
         <entry key="app/src/main/res/layout-land/fragment_home_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout-land/fragment_load_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout-land/fragment_profile_page.xml" value="0.26197916666666665" />
+        <entry key="app/src/main/res/layout-land/step_counter_page_fragment.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_b_m_i_calculator.xml" value="0.165" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_fitness_data_page.xml" value="0.165" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_home_page.xml" value="0.165" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_load_page.xml" value="0.125" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_profile_page.xml" value="0.165" />
         <entry key="app/src/main/res/layout-sw600dp/load_page.xml" value="0.19296448087431695" />
+        <entry key="app/src/main/res/layout-sw600dp/step_counter_page_fragment.xml" value="0.125" />
         <entry key="app/src/main/res/layout-v26/load_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13994565217391305" />
         <entry key="app/src/main/res/layout/fragment_b_m_i_calculator.xml" value="0.25" />
@@ -39,6 +41,7 @@
         <entry key="app/src/main/res/layout/modules_side_bar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/spinner_dropdown_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/spinner_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/step_counter_page_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/text_row_item.xml" value="0.2658514492753623" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.228125" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2520833333333333" />

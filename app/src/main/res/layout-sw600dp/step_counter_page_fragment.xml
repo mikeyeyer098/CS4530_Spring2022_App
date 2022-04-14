@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0C343D"
+    tools:context=".StepCounterPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/backArrow"
+            android:layout_width="105dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back_arrow" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:background="#b4a7d6"
+            android:fontFamily="@font/comfortaa_bold"
+            android:paddingHorizontal="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Healthy Health"
+            android:textAlignment="center"
+            android:textColor="#434343"
+            android:textSize="35sp"
+            tools:ignore="TextContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/ProfilePicThumbnail"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/profile_pic" />
+    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Step Counter:"
+            android:layout_gravity="center"
+            android:fontFamily="@font/comfortaa_bold"
+            android:textColor="@color/white"
+            android:textSize="45sp"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:orientation="horizontal">
+            <ListView
+                android:id="@+id/moduleListFitness"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/comfortaa_bold"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="55sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:padding="5sp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="Average Daily Steps:"
+                        android:fontFamily="@font/comfortaa_bold"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textAlignment="center"/>
+                    <TextView
+                        android:id="@+id/AverageStepsText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="#b4a7d6"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="25dp"
+                        android:padding="15dp"
+                        android:fontFamily="@font/comfortaa_bold"
+                        android:textColor="#434343" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="Average Daily Mileage:"
+                        android:fontFamily="@font/comfortaa_bold"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textAlignment="center"/>
+                    <TextView
+                        android:id="@+id/AverageMileageText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="#b4a7d6"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="25dp"
+                        android:padding="15dp"
+                        android:fontFamily="@font/comfortaa_bold"
+                        android:textColor="#434343" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/widget_background"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center_horizontal"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingHorizontal="10dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:text="Today's Steps:"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    tools:ignore="TextContrastCheck" />
+                <TextView
+                    android:id="@+id/TodaysStepsText"
+                    android:layout_width="400dp"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:background="#b6d7a8"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:padding="8dp"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:textColor="#434343" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

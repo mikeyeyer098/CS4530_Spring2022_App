@@ -125,7 +125,7 @@ class ProfilePage : Fragment() {
         if (isTablet(this.requireContext())) {
             val arrayAdapter: ArrayAdapter<String>
             val modules = arrayOf(
-                "Homepage", "My Fitness Regime", "BMI Calculator"
+                "Homepage", "My Fitness Regime", "BMI Calculator", "Step Counter"
             )
 
             var moduleListView = view.findViewById<ListView>(R.id.moduleListProfile)
@@ -151,6 +151,14 @@ class ProfilePage : Fragment() {
                 } else if (selectedItem == "BMI Calculator") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
                     fragmentTransaction?.replace(R.id.fragmentContainer, BMI_calculator.newInstance())
+                    fragmentTransaction?.setReorderingAllowed(true)
+                    fragmentTransaction?.addToBackStack(null)
+                    fragmentTransaction?.commit()
+                }else if (selectedItem == "Step Counter") {
+                    val fragmentTransaction = fragmentManager?.beginTransaction()
+                    fragmentTransaction?.replace(R.id.fragmentContainer,
+                        StepCounterPage.newInstance()
+                    )
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
@@ -286,7 +294,7 @@ class ProfilePage : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    fun isTablet(context: Context): Boolean {
+    private fun isTablet(context: Context): Boolean {
         return ((context.getResources().getConfiguration().screenLayout
                 and Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE)

@@ -238,7 +238,7 @@ class FitnessDataPage : Fragment() {
         if(isTablet(this.requireContext())) {
             val arrayAdapter : ArrayAdapter<String>
             val modules = arrayOf(
-                "Homepage", "My Profile", "BMI Calculator"
+                "Homepage", "My Profile", "BMI Calculator", "Step Counter"
             )
             var moduleListView = view.findViewById<ListView>(R.id.moduleListFitness)
             arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.modules_side_bar, modules)
@@ -262,6 +262,14 @@ class FitnessDataPage : Fragment() {
                 } else if (selectedItem == "My Profile") {
                     val fragmentTransaction = fragmentManager?.beginTransaction()
                     fragmentTransaction?.replace(R.id.fragmentContainer, ProfilePage.newInstance())
+                    fragmentTransaction?.setReorderingAllowed(true)
+                    fragmentTransaction?.addToBackStack(null)
+                    fragmentTransaction?.commit()
+                }else if (selectedItem == "Step Counter") {
+                    val fragmentTransaction = fragmentManager?.beginTransaction()
+                    fragmentTransaction?.replace(R.id.fragmentContainer,
+                        StepCounterPage.newInstance()
+                    )
                     fragmentTransaction?.setReorderingAllowed(true)
                     fragmentTransaction?.addToBackStack(null)
                     fragmentTransaction?.commit()
