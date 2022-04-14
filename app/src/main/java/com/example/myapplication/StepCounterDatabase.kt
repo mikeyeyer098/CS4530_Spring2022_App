@@ -1,4 +1,32 @@
 package com.example.myapplication
 
-class StepCounterDatabase {
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+
+@Database(entities = [Profile::class], version = 1, exportSchema = false )
+abstract class StepCounterDatabase : RoomDatabase(){
+    abstract val stepCounterDao : StepCounterDao
+    companion object {
+        @Volatile
+        private var INSTANCE: StepCounterDatabase? = null
+        fun getInstance(context: Context): StepCounterDatabase {
+            synchronized(this) {
+                var instance = INSTANCE
+
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        StepCounterDatabase::class.java,
+                        "step_counter_database"
+                    )
+                        .fallbackToDestructiveMigration()
+                        .build()
+                    INSTANCE = instance
+                }
+                return instance
+            }
+        }
+    }
 }

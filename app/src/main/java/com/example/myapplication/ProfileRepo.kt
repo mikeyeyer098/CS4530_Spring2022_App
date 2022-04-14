@@ -2,7 +2,7 @@ package com.example.myapplication
 
 import android.content.Context
 
-class ProfileRepo (){
+class ProfileRepo {
     lateinit var userDao: UserDao
     lateinit var db: UserDatabase
 
