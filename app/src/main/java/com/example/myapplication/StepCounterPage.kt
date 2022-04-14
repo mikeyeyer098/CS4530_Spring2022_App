@@ -56,7 +56,7 @@ class StepCounterPage : Fragment() {
                 "Homepage", "My Profile", "My Fitness Regime", "BMI Calculator"
             )
 
-            var moduleListView = view.findViewById<ListView>(R.id.moduleListProfile)
+            var moduleListView = view.findViewById<ListView>(R.id.moduleListStepCounter)
             arrayAdapter = ArrayAdapter(this.requireContext(), R.layout.modules_side_bar, modules)
 
             moduleListView.adapter = arrayAdapter

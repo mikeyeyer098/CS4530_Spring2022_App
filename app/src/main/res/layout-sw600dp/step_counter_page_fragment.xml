@@ -71,7 +71,7 @@
             android:layout_marginTop="100dp"
             android:orientation="horizontal">
             <ListView
-                android:id="@+id/moduleListFitness"
+                android:id="@+id/moduleListStepCounter"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/comfortaa_bold"

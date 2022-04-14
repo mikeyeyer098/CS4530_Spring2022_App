@@ -66,10 +66,16 @@
                 android:textAlignment="center"
                 android:textSize="45sp"
                 android:layout_gravity="center_horizontal"/>
-            <Button
-                android:id="@+id/MyProfileButton"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+            <Button
+                android:id="@+id/MyProfileButton"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
                 android:padding="5dp"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
@@ -84,8 +90,9 @@
 
             <Button
                 android:id="@+id/BMICalcButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
                 android:padding="5dp"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
@@ -97,10 +104,17 @@
                 android:textAlignment="center"
                 android:textSize="35sp"
                 />
-            <Button
-                android:id="@+id/MyFitnessRegimenButton"
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+            <Button
+                android:id="@+id/MyFitnessRegimenButton"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
                 android:padding="5dp"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
@@ -112,7 +126,22 @@
                 android:textAlignment="center"
                 android:textSize="35sp"
                 />
-
+                <Button
+                    android:id="@+id/StepCounterButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:backgroundTint="@drawable/blue_background"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:padding="5dp"
+                    android:text="Step Counter"
+                    android:textAlignment="center"
+                    android:textColor="#434343"
+                    android:textSize="35sp" />
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
