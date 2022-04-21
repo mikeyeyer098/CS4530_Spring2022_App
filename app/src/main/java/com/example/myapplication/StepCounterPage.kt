@@ -2,18 +2,18 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.res.Configuration
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
+import android.view.GestureDetector.SimpleOnGestureListener
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.ListView
-import com.google.android.gms.common.util.DeviceProperties.isTablet
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 
-class StepCounterPage : Fragment() {
+
+class StepCounterPage : Fragment(){
 
     companion object {
         fun newInstance() = StepCounterPage()
@@ -31,6 +31,18 @@ class StepCounterPage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val gesture = GestureDetector(
+            activity,
+            object : SimpleOnGestureListener() {
+                override fun onDoubleTap(e: MotionEvent?): Boolean {
+
+                    return super.onDoubleTap(e)
+                }
+            })
+        view.setOnTouchListener { v, event ->
+            gesture.onTouchEvent(event)
+            true
+        }
         val backButton = view.findViewById<ImageButton>(R.id.backArrow)
 
         backButton.setOnClickListener {

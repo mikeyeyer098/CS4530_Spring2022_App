@@ -9,7 +9,7 @@ data class StepCountData (
     @PrimaryKey
     var name: String,
     @ColumnInfo(name= "steps_date")
-    var date: Date?,
+    var date: String?,
     @ColumnInfo(name= "step_count")
     var stepCount: String?,
 )

@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Profile::class], version = 1, exportSchema = false )
+@Database(entities = [StepCountData::class], version = 1, exportSchema = false )
 abstract class StepCounterDatabase : RoomDatabase(){
     abstract val stepCounterDao : StepCounterDao
     companion object {
@@ -19,7 +19,7 @@ abstract class StepCounterDatabase : RoomDatabase(){
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         StepCounterDatabase::class.java,
-                        "step_counter_database"
+                        "Step_Data"
                     )
                         .fallbackToDestructiveMigration()
                         .build()
