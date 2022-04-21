@@ -11,12 +11,15 @@ interface StepCounterDao {
     suspend fun update(stepData: StepCountData)
 
     @Query("SELECT * FROM Step_Data WHERE Step_Data.name = :userName")
-    suspend fun get(userName : String) : StepCountData?
+    suspend fun get(userName : String) : List<StepCountData>?
+
+    @Query("SELECT EXISTS (SELECT 1 FROM Step_Data WHERE Step_Data.name = :userName)")
+    suspend fun exists(userName :String) : Boolean
 
     @Query("DELETE FROM Step_Data")
     suspend fun clearAll()
 
     @Query("DELETE FROM Step_Data WHERE Step_Data.name= :userName")
-    suspend fun deleteUser(userName : String)
+    suspend fun deleteStepData(userName : String)
 
 }

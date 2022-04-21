@@ -3,18 +3,19 @@ package com.example.myapplication
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
-import android.widget.ArrayAdapter
-import android.widget.ImageButton
-import android.widget.ListView
+import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.coroutines.runBlocking
 
 
 class StepCounterPage : Fragment(){
 
+    private var stepData : List<StepCountData>? = null
+    private var profile : Profile? = null
     companion object {
         fun newInstance() = StepCounterPage()
     }
@@ -28,15 +29,65 @@ class StepCounterPage : Fragment(){
         return inflater.inflate(R.layout.step_counter_page_fragment, container, false)
     }
 
+    private fun calcAverageMiles(stepCounts: List<StepCountData>): Double {
+        var steps = 0.0
+        var miles = 0.0
+        var dayCount = 0.0
+        stepCounts.forEach {
+            steps += it.stepCount?.toDouble()!!
+            miles += steps / 2250
+            dayCount++
+        }
+        return miles / dayCount;
+    }
+    private fun calcAverageSteps(stepCounts: List<StepCountData>): Double {
+        var steps = 0.0
+        var dayCount = 0.0
+        stepCounts.forEach {
+            steps += it.stepCount?.toDouble()!!
+            dayCount++
+        }
+        return steps / dayCount;
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val avgStepsText = view.findViewById<TextView>(R.id.AverageStepsText)
+        val avgMileageText = view.findViewById<TextView>(R.id.AverageMileageText)
+        val todaysStepsText = view.findViewById<TextView>(R.id.TodaysStepsText)
+
+        val stepModel: StepCounterPageViewModel by activityViewModels()
+        val userModel: ProfileViewModel by activityViewModels()
+
+        profile = runBlocking { userModel.getProfile() }
+        var exists = runBlocking {profile?.let {
+            stepModel.checkExists(it.name)
+        }}
+        if(exists == true){
+            stepData = runBlocking { profile?.let {
+                stepModel.getStepData(it.name)
+            } }
+            avgMileageText.text = stepData?.let { calcAverageMiles(it) }.toString()
+            avgStepsText.text = stepData?.let { calcAverageSteps(it) }.toString()
+        }else{
+            avgMileageText.text = "N/A"
+            avgStepsText.text = "N/A"
+        }
+
+        // TODO change this
+        todaysStepsText.text = "100"
 
         val gesture = GestureDetector(
             activity,
             object : SimpleOnGestureListener() {
+                // start
                 override fun onDoubleTap(e: MotionEvent?): Boolean {
 
                     return super.onDoubleTap(e)
+                }
+                // stop
+                override fun onLongPress(e: MotionEvent?) {
+                    super.onLongPress(e)
                 }
             })
         view.setOnTouchListener { v, event ->

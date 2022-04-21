@@ -11,7 +11,7 @@ class StepCounterRepo {
         stepCounterDao = db.stepCounterDao
     }
 
-    suspend fun createProfile(stepData: StepCountData) {
+    suspend fun insertSteps(stepData: StepCountData) {
         stepCounterDao.insert(stepData)
     }
 

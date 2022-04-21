@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
         var profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         profileViewModel.repo.createDb(this)
+        var stepsCounterViewModel = ViewModelProvider(this).get(StepCounterPageViewModel::class.java)
+        stepsCounterViewModel.repo.createDb(this)
         var weatherViewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
 
         if (savedInstanceState == null) {

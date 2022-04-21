@@ -4,14 +4,22 @@ import androidx.lifecycle.ViewModel
 
 class StepCounterPageViewModel : ViewModel() {
     var repo: StepCounterRepo = StepCounterRepo()
-    lateinit var curUserName: String
 
     suspend fun updateSteps (stepData: StepCountData) {
-        repo.updateProfile(stepData)
+        repo.stepCounterDao.update(stepData)
     }
 
-    suspend fun getStepData (): StepCountData? {
-        // TODO need to get the user name here
+    suspend fun insertSteps (stepData: StepCountData){
+        repo.stepCounterDao.insert(stepData)
+    }
+
+
+    suspend fun checkExists (curUserName: String) : Boolean{
+        return repo.stepCounterDao.exists(curUserName)
+    }
+
+
+    suspend fun getStepData (curUserName : String): List<StepCountData>? {
         return repo.stepCounterDao.get(curUserName)
     }
 }
