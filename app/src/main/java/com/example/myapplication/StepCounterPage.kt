@@ -2,7 +2,12 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.res.Configuration
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.widget.*
@@ -12,10 +17,17 @@ import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.runBlocking
 
 
-class StepCounterPage : Fragment(){
+class StepCounterPage : Fragment(), SensorEventListener{
 
     private var stepData : List<StepCountData>? = null
     private var profile : Profile? = null
+
+    private var running = true
+    private var totalSteps = 0f
+    private var previousTotalSteps = 0f
+    private var sensorManager: SensorManager ?= null
+    private var stepCounter: Sensor ?= null
+
     companion object {
         fun newInstance() = StepCounterPage()
     }
@@ -50,6 +62,9 @@ class StepCounterPage : Fragment(){
         return steps / dayCount;
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        sensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        stepCounter = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+
         super.onViewCreated(view, savedInstanceState)
 
         val avgStepsText = view.findViewById<TextView>(R.id.AverageStepsText)
@@ -166,6 +181,24 @@ class StepCounterPage : Fragment(){
         return ((context.getResources().getConfiguration().screenLayout
                 and Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("test", "On Resume")
+
+        sensorManager?.registerListener(this, stepCounter, SensorManager.SENSOR_DELAY_UI)
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        Log.d("test", "step senor changed")
+            totalSteps = event!!.values[0]
+            val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
+            view?.findViewById<TextView>(R.id.TodaysStepsText)?.text = currentSteps.toString()
+    }
+
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+        TODO("Not yet implemented")
     }
 
 }

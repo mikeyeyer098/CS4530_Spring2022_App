@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log

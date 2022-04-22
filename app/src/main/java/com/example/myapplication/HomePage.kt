@@ -64,7 +64,7 @@ class HomePage : Fragment() {
 
         profile = runBlocking { model.getProfile() }
 
-        uploadFileToS3(profile);
+        //uploadFileToS3(profile);
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image?.let { BitmapFactory.decodeByteArray(profile?.image, 0, it.size) })
