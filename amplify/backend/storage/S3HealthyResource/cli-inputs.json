@@ -1,0 +1,18 @@
+{
+  "resourceName": "S3HealthyResource",
+  "policyUUID": "0d3f4040",
+  "bucketName": "storagebuckethealthyapp",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

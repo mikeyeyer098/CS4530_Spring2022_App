@@ -11,10 +11,13 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.text.Editable
+import android.util.Log
 import android.widget.*
 import androidx.fragment.app.activityViewModels
+import com.amplifyframework.core.Amplify
 import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
+import java.io.File
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -31,11 +34,7 @@ class HomePage : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
         }
-
-
-
     }
 
     override fun onCreateView(
@@ -46,10 +45,26 @@ class HomePage : Fragment() {
         return view
     }
 
+    private fun uploadFileToS3(profile: Profile?) {
+        val profileFile = File(context?.filesDir, profile?.name + " Profile Backup Data")
+        profileFile.writeText(profile?.name + "\n" + profile?.height + "\n" + profile?.weight + "\n"
+                                + profile?.age + "\n" + profile?.gender + "\n" + profile?.city + "\n"
+                                + profile?.country + "\n" + profile?.imagePath + "\n" + profile?.active + "\n"
+                                + profile?.bmr + "\n" + profile?.bmi + "\n" + profile?.regimen + "\n"
+                                + profile?.weightGoal + "\n" + profile?.image + "\n")
+
+        Amplify.Storage.uploadFile(profile?.name + " Profile Backup Data", profileFile,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) }
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val model: ProfileViewModel by activityViewModels()
 
         profile = runBlocking { model.getProfile() }
+
+        uploadFileToS3(profile);
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image?.let { BitmapFactory.decodeByteArray(profile?.image, 0, it.size) })
