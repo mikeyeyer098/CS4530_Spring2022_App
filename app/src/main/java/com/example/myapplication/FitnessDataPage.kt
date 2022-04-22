@@ -224,6 +224,8 @@ class FitnessDataPage : Fragment() {
 
             profile?.bmi = HealthCalculator().calculateBMI(profile?.weight.toString(), (48 + profile?.height?.toInt()!!).toString())
             bmiTag.text = profile?.bmi
+
+            runBlocking { model.updateProfile(profile!!) }
         }
         val profileThumbnail = view.findViewById<ImageButton>(R.id.ProfilePicThumbnail)
 
