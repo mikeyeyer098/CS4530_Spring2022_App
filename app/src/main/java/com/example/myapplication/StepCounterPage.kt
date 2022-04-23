@@ -23,8 +23,9 @@ class StepCounterPage : Fragment(), SensorEventListener{
     private var stepData : List<StepCountData>? = null
     private var profile : Profile? = null
 
-    private var running = false
+    private var running = true
     private var totalSteps = 0f
+    private var previousTotalSteps = 0f
     private var sensorManager: SensorManager ?= null
     private var stepCounter: Sensor ?= null
 
@@ -89,32 +90,19 @@ class StepCounterPage : Fragment(), SensorEventListener{
             avgStepsText.text = "N/A"
         }
 
-        todaysStepsText.text = "0"
+        // TODO change this
+        todaysStepsText.text = "100"
 
         val gesture = GestureDetector(
             activity,
             object : SimpleOnGestureListener() {
                 // start
                 override fun onDoubleTap(e: MotionEvent?): Boolean {
-                    running = true
-                    view?.findViewById<TextView>(R.id.TodaysStepsText)?.setBackgroundColor(Color.parseColor("#b6d7a8"))
+
                     return super.onDoubleTap(e)
                 }
                 // stop
                 override fun onLongPress(e: MotionEvent?) {
-                    view?.findViewById<TextView>(R.id.TodaysStepsText)?.setBackgroundColor(Color.parseColor("#434343"))
-
-                    if(exists == true){
-                        var lastDate = Integer.parseInt(stepData!!.last().date)
-                        lastDate++;
-                        var newStepData = StepCountData(profile!!.name, lastDate.toString(), totalSteps.toString())
-                        runBlocking { stepModel.insertSteps(newStepData) }
-                    }else{
-                        var lastDate = 1
-                        var newStepData = StepCountData(profile!!.name, lastDate.toString(), totalSteps.toString())
-                        runBlocking { stepModel.insertSteps(newStepData) }
-                    }
-                    running = false
                     super.onLongPress(e)
                 }
             })
@@ -198,17 +186,20 @@ class StepCounterPage : Fragment(), SensorEventListener{
 
     override fun onResume() {
         super.onResume()
+        Log.d("test", "On Resume")
+
         sensorManager?.registerListener(this, stepCounter, SensorManager.SENSOR_DELAY_UI)
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        if(running) {
+        Log.d("test", "step senor changed")
             totalSteps = event!!.values[0]
-            view?.findViewById<TextView>(R.id.TodaysStepsText)?.text = totalSteps.toString()
-        }
+            val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
+            view?.findViewById<TextView>(R.id.TodaysStepsText)?.text = currentSteps.toString()
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+        TODO("Not yet implemented")
     }
 
 }
