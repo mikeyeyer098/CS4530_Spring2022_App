@@ -103,7 +103,8 @@ class FitnessDataPage : Fragment() {
         regimenSpinner.prompt = "Select weight goal:"
         regimenSpinner.isEnabled = false
         regimenSpinner.alpha = 0.5f
-
+        if(profile?.regimen != "")
+            regimenSpinner.setSelection(profile?.regimen!!.toInt())
 
         val activitySpinner = view.findViewById(R.id.activityLevelSpinner) as Spinner
         ArrayAdapter.createFromResource(
@@ -117,6 +118,8 @@ class FitnessDataPage : Fragment() {
         activitySpinner.prompt = "Select activity level:"
         activitySpinner.isEnabled = false
         activitySpinner.alpha = 0.5f
+        if(profile?.active != "")
+             activitySpinner.setSelection(profile?.active!!.toInt())
 
         val poundsSpinner : Spinner = view.findViewById(R.id.poundsGoalSpinner)
         ArrayAdapter.createFromResource(
@@ -129,6 +132,9 @@ class FitnessDataPage : Fragment() {
         }
         poundsSpinner.isEnabled = false
         poundsSpinner.alpha = 0.5f
+        if(profile?.weightGoal != "")
+            poundsSpinner.setSelection(profile?.weightGoal!!.toInt())
+
 
         profile?.bmr = HealthCalculator().calculateBMR(profile?.weight.toString(), (48 + (profile?.height?.toInt()!!)),
             profile?.age.toString(), profile?.active.toString(), profile?.gender.toString())
@@ -182,9 +188,9 @@ class FitnessDataPage : Fragment() {
             val weightText: String =
                 view.findViewById<EditText>(R.id.weightTextField).text.toString()
             val poundsText : String =
-                poundsSpinner.selectedItem.toString()
+                poundsSpinner.selectedItemPosition.toString()
             val regimenText : String =
-                regimenSpinner.selectedItem.toString()
+                regimenSpinner.selectedItemPosition.toString()
             val activityText : String =
                 activitySpinner.selectedItemPosition.toString()
             weightTag.setTextIsSelectable(false)
@@ -203,16 +209,8 @@ class FitnessDataPage : Fragment() {
 
 
             profile?.active = activityText
-
-            if (regimenText == "Maintain Weight") {
-                profile?.weightGoal = "0"
-            }
-            else if (regimenText == "Gain Weight") {
-                profile?.weightGoal = poundsText.split(" ")[0]
-            }
-            else {
-                profile?.weightGoal = (poundsText.split(" ")[0].toInt() * -1).toString()
-            }
+            profile?.weightGoal = poundsText
+            profile?.regimen = regimenText
 
             profile?.height = heightText.toString()
             profile?.weight = weightText

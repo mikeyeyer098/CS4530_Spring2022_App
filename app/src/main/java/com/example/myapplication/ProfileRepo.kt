@@ -15,6 +15,11 @@ class ProfileRepo {
         userDao.insert(profile)
     }
 
+    suspend fun deleteProfile(profile: Profile){
+        userDao.deleteUser(profile.name)
+    }
+
+
     suspend fun updateProfile(profile: Profile) {
         userDao.update(profile)
     }

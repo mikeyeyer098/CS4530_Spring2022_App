@@ -5,7 +5,7 @@ import androidx.room.*
 
 @Dao
 interface UserDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user : Profile)
 
     @Update

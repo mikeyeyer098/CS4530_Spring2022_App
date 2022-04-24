@@ -283,6 +283,13 @@ class ProfilePage : Fragment() {
             profile?.age = ageText.toString()
             profile?.city = cityText
             profile?.country = countrySpinner.selectedCountryCode
+
+            if(profile?.name != nameText){
+                runBlocking {
+                    model.deleteProfile(profile!!)
+                    model.createProfile(nameText, profile?.height, profile?.weight, profile?.age, profile?.gender, profile?.city, profile?.country, profile?.imagePath, profile?.active, profile?.bmr, profile?.bmi, profile?.regimen, profile?.weightGoal, profile?.image)
+                }
+            }
             profile?.name = nameText
             profile?.gender = genderText.toString()
             val bos = ByteArrayOutputStream()

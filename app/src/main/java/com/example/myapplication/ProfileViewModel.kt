@@ -30,6 +30,11 @@ class ProfileViewModel : ViewModel() {
         repo.updateProfile(profile)
     }
 
+    suspend fun deleteProfile(profile: Profile){
+        repo.deleteProfile(profile)
+    }
+
+
     suspend fun getProfile (): Profile? {
         return repo.userDao.get(curUserName)
     }
