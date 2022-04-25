@@ -15,7 +15,9 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import com.amplifyframework.core.Amplify
 import kotlinx.coroutines.runBlocking
+import java.io.File
 
 
 class StepCounterPage : Fragment(), SensorEventListener{
@@ -115,6 +117,8 @@ class StepCounterPage : Fragment(), SensorEventListener{
                         runBlocking { stepModel.insertSteps(newStepData) }
                     }
                     running = false
+                    uploadFileToS3();
+
                     super.onLongPress(e)
                 }
             })
@@ -196,6 +200,37 @@ class StepCounterPage : Fragment(), SensorEventListener{
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE)
     }
 
+    private fun uploadFileToS3() {
+
+        val dbFile: File = File(
+            context?.getDatabasePath("Step_Data.db")
+                ?.getPath()
+        )
+
+        val dbFileSH: File = File(
+            context?.getDatabasePath("Step_Data.db-shm")
+                ?.getPath()
+        )
+
+        val dbFileWAL: File = File(
+            context?.getDatabasePath("Step_Data.db-wal")
+                ?.getPath()
+        )
+
+
+        Amplify.Storage.uploadFile(profile?.name + "Step_Data.db", dbFile,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
+
+        Amplify.Storage.uploadFile(profile?.name + "Step_Data.db-shm", dbFileSH,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
+
+        Amplify.Storage.uploadFile(profile?.name + "Step_Data.db-wal", dbFileWAL,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
+    }
+
     override fun onResume() {
         super.onResume()
         sensorManager?.registerListener(this, stepCounter, SensorManager.SENSOR_DELAY_UI)
@@ -205,6 +240,10 @@ class StepCounterPage : Fragment(), SensorEventListener{
         if(running) {
             totalSteps = event!!.values[0]
             view?.findViewById<TextView>(R.id.TodaysStepsText)?.text = totalSteps.toString()
+
+            if(totalSteps % 100 == 0f) {
+                uploadFileToS3();
+            }
         }
     }
 

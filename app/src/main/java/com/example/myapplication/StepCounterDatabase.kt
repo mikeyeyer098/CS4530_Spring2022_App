@@ -19,7 +19,7 @@ abstract class StepCounterDatabase : RoomDatabase(){
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         StepCounterDatabase::class.java,
-                        "Step_Data"
+                        "Step_Data.db"
                     )
                         .fallbackToDestructiveMigration()
                         .build()
