@@ -4,13 +4,16 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.amplifyframework.core.Amplify
 import kotlinx.coroutines.runBlocking
+import java.io.File
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,6 +49,37 @@ class FitnessDataPage : Fragment() {
         return ((context.getResources().getConfiguration().screenLayout
                 and Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE)
+    }
+
+    private fun uploadFileToS3() {
+
+        val dbFile: File = File(
+            context?.getDatabasePath("user_database.db")
+                ?.getPath()
+        )
+
+        val dbFileSH: File = File(
+            context?.getDatabasePath("user_database.db-shm")
+                ?.getPath()
+        )
+
+        val dbFileWAL: File = File(
+            context?.getDatabasePath("user_database.db-wal")
+                ?.getPath()
+        )
+
+
+        Amplify.Storage.uploadFile(profile?.name + ".db", dbFile,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
+
+        Amplify.Storage.uploadFile(profile?.name + ".db-shm", dbFileSH,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
+
+        Amplify.Storage.uploadFile(profile?.name + ".db-wal", dbFileWAL,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -224,6 +258,8 @@ class FitnessDataPage : Fragment() {
             bmiTag.text = profile?.bmi
 
             runBlocking { model.updateProfile(profile!!) }
+
+            uploadFileToS3();
         }
         val profileThumbnail = view.findViewById<ImageButton>(R.id.ProfilePicThumbnail)
 

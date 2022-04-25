@@ -1,23 +1,33 @@
 package com.example.myapplication
 
 import android.content.Context
-import android.net.Uri
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Bundle
+import android.os.Environment
 import android.text.Editable
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.amplifyframework.core.Amplify
 import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 import java.io.File
+import java.lang.String
+import kotlin.Boolean
+import kotlin.apply
+import kotlin.getValue
+import kotlin.let
+import kotlin.plus
+
+
+
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -45,18 +55,35 @@ class HomePage : Fragment() {
         return view
     }
 
-    private fun uploadFileToS3(profile: Profile?) {
-        val profileFile = File(context?.filesDir, profile?.name + " Profile Backup Data")
-        profileFile.writeText(profile?.name + "\n" + profile?.height + "\n" + profile?.weight + "\n"
-                                + profile?.age + "\n" + profile?.gender + "\n" + profile?.city + "\n"
-                                + profile?.country + "\n" + profile?.imagePath + "\n" + profile?.active + "\n"
-                                + profile?.bmr + "\n" + profile?.bmi + "\n" + profile?.regimen + "\n"
-                                + profile?.weightGoal + "\n" + profile?.image + "\n")
+    private fun uploadFileToS3() {
 
-        Amplify.Storage.uploadFile(profile?.name + " Profile Backup Data", profileFile,
-            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
-            { Log.e("MyAmplifyApp", "Upload failed", it) }
+        val dbFile: File = File(
+            context?.getDatabasePath("user_database.db")
+                ?.getPath()
         )
+
+        val dbFileSH: File = File(
+            context?.getDatabasePath("user_database.db-shm")
+                ?.getPath()
+        )
+
+        val dbFileWAL: File = File(
+            context?.getDatabasePath("user_database.db-wal")
+                ?.getPath()
+        )
+
+
+        Amplify.Storage.uploadFile(profile?.name + ".db", dbFile,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
+
+        Amplify.Storage.uploadFile(profile?.name + ".db-shm", dbFileSH,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
+
+        Amplify.Storage.uploadFile(profile?.name + ".db-wal", dbFileWAL,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +91,7 @@ class HomePage : Fragment() {
 
         profile = runBlocking { model.getProfile() }
 
-        //uploadFileToS3(profile);
+        uploadFileToS3();
 
         var profileThumb = requireView().findViewById<ImageButton>(R.id.ProfilePicThumbnail)
         profileThumb.setImageBitmap(profile?.image?.let { BitmapFactory.decodeByteArray(profile?.image, 0, it.size) })

@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,9 +19,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.amplifyframework.core.Amplify
 import com.hbb20.CountryCodePicker
 import kotlinx.coroutines.runBlocking
 import java.io.ByteArrayOutputStream
+import java.io.File
 
 
 /**
@@ -297,6 +300,8 @@ class ProfilePage : Fragment() {
             profile?.image = bos.toByteArray()
 
             runBlocking { model.updateProfile(profile!!) }
+
+            uploadFileToS3();
         }
         super.onViewCreated(view, savedInstanceState)
     }
@@ -305,6 +310,37 @@ class ProfilePage : Fragment() {
         return ((context.getResources().getConfiguration().screenLayout
                 and Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE)
+    }
+
+    private fun uploadFileToS3() {
+
+        val dbFile: File = File(
+            context?.getDatabasePath("user_database.db")
+                ?.getPath()
+        )
+
+        val dbFileSH: File = File(
+            context?.getDatabasePath("user_database.db-shm")
+                ?.getPath()
+        )
+
+        val dbFileWAL: File = File(
+            context?.getDatabasePath("user_database.db-wal")
+                ?.getPath()
+        )
+
+
+        Amplify.Storage.uploadFile(profile?.name + ".db", dbFile,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
+
+        Amplify.Storage.uploadFile(profile?.name + ".db-shm", dbFileSH,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
+
+        Amplify.Storage.uploadFile(profile?.name + ".db-wal", dbFileWAL,
+            { Log.i("MyAmplifyApp", "Successfully uploaded: ${it.key}") },
+            { Log.e("MyAmplifyApp", "Upload failed", it) })
     }
 
     override fun onRequestPermissionsResult(
